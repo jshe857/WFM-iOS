@@ -14,6 +14,9 @@
 		184839AC19E5FAE100527B74 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 184839AB19E5FAE100527B74 /* Images.xcassets */; };
 		184839AF19E5FAE100527B74 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184839AD19E5FAE100527B74 /* LaunchScreen.xib */; };
 		184839BB19E5FAE200527B74 /* WorkforceManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839BA19E5FAE200527B74 /* WorkforceManagementTests.swift */; };
+		184839C819E7877900527B74 /* EmployeeListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839C719E7877900527B74 /* EmployeeListProvider.swift */; };
+		184839CB19EC91BE00527B74 /* EmployeeURLDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839CA19EC91BE00527B74 /* EmployeeURLDelegate.swift */; };
+		184839CD19ECDD6700527B74 /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839CC19ECDD6700527B74 /* CSV.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,9 @@
 		184839B419E5FAE100527B74 /* WorkforceManagementTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorkforceManagementTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		184839B919E5FAE200527B74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		184839BA19E5FAE200527B74 /* WorkforceManagementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkforceManagementTests.swift; sourceTree = "<group>"; };
+		184839C719E7877900527B74 /* EmployeeListProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeListProvider.swift; sourceTree = "<group>"; };
+		184839CA19EC91BE00527B74 /* EmployeeURLDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeURLDelegate.swift; sourceTree = "<group>"; };
+		184839CC19ECDD6700527B74 /* CSV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSV.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +92,9 @@
 				184839AB19E5FAE100527B74 /* Images.xcassets */,
 				184839AD19E5FAE100527B74 /* LaunchScreen.xib */,
 				184839A019E5FAE100527B74 /* Supporting Files */,
+				184839C719E7877900527B74 /* EmployeeListProvider.swift */,
+				184839CA19EC91BE00527B74 /* EmployeeURLDelegate.swift */,
+				184839CC19ECDD6700527B74 /* CSV.swift */,
 			);
 			path = WorkforceManagement;
 			sourceTree = "<group>";
@@ -215,7 +224,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				184839C819E7877900527B74 /* EmployeeListProvider.swift in Sources */,
 				184839A719E5FAE100527B74 /* DetailViewController.swift in Sources */,
+				184839CD19ECDD6700527B74 /* CSV.swift in Sources */,
+				184839CB19EC91BE00527B74 /* EmployeeURLDelegate.swift in Sources */,
 				184839A519E5FAE100527B74 /* MasterViewController.swift in Sources */,
 				184839A319E5FAE100527B74 /* AppDelegate.swift in Sources */,
 			);
@@ -411,6 +423,7 @@
 				184839C019E5FAE200527B74 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		184839C119E5FAE200527B74 /* Build configuration list for PBXNativeTarget "WorkforceManagementTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +432,7 @@
 				184839C319E5FAE200527B74 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
