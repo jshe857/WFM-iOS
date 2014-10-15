@@ -7,8 +7,9 @@
 //
 
 import Foundation
-class EmployeeURLDelegate:NSObject,NSURLSessionDelegate,NSURLSessionTaskDelegate {
+class EmployeeURLDelegate:NSObject,NSURLSessionDelegate,NSURLSessionTaskDelegate,NSURLSessionDataDelegate {
     let credential = NSURLCredential(user: "pracavai", password: "!q3e4r5t", persistence: NSURLCredentialPersistence.ForSession)
+    let progress = 0.0
     func URLSession(session: NSURLSession,
     task: NSURLSessionTask,
     didReceiveChallenge: NSURLAuthenticationChallenge,
@@ -20,8 +21,19 @@ class EmployeeURLDelegate:NSObject,NSURLSessionDelegate,NSURLSessionTaskDelegate
             } else if (didReceiveChallenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodHTTPBasic) {
                 completionHandler(NSURLSessionAuthChallengeDisposition.UseCredential,credential)
             }
+            
     }
-
-    
-    
+    func URLSession(session: NSURLSession,
+        dataTask: NSURLSessionDataTask,
+        didReceiveData: NSData) {
+            println("recieving")
+            
+    }
+    func URLSession(session: NSURLSession,
+        dataTask: NSURLSessionDataTask,
+        didReceiveResponse: NSURLResponse,
+        completionHandler: (NSURLSessionResponseDisposition) -> Void) {
+            println("response")
+            
+    }
 }

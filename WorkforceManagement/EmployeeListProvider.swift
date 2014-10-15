@@ -28,6 +28,5 @@ class EmployeeListProvider {
             }
         })
         task.resume()
-        
     }
 }
