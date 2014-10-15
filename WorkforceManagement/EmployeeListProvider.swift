@@ -20,9 +20,11 @@ class EmployeeListProvider {
         let task = session.dataTaskWithURL(url, completionHandler:{data,response, error in
             if (error != nil) {
                 println(error.localizedDescription)
+                NSNotificationCenter.defaultCenter().postNotificationName("EmployeeListDidFail", object: nil)
             } else {
                 let rawCSV = NSString(data:data, encoding: NSUTF8StringEncoding)
                 self.EmployeeList = CSV(csvString: rawCSV, delimiter: NSCharacterSet(charactersInString: ","))
+                NSNotificationCenter.defaultCenter().postNotificationName("EmployeeListDidComplete", object: nil)
             }
         })
         task.resume()
