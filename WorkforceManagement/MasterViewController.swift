@@ -56,6 +56,8 @@ class MasterViewController: UITableViewController {
         let notification = sender as NSNotification
         if (notification.name == "EmployeeListDidComplete") {
             self.tableView.reloadData()
+        } else {
+            
         }
     }
 
@@ -83,7 +85,9 @@ class MasterViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let list = employeeList
         if let length = list?.rows.count {
+            
             return length
+            
         }
         return 0
     }
@@ -91,7 +95,8 @@ class MasterViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         let object = employeeList?.rows[indexPath.row]
-        cell.textLabel?.text = object?.description
+        //cell.textLabel?.text = object?.description
+        let nameText = cell.viewWithTag(1)
         return cell
     }
 
