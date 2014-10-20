@@ -85,7 +85,7 @@ class MasterViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let list = employeeList
         if let length = list?.rows.count {
-            
+            println(employeeList?.headers)
             return length
             
         }
@@ -96,7 +96,25 @@ class MasterViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         let object = employeeList?.rows[indexPath.row]
         //cell.textLabel?.text = object?.description
-        let nameText = cell.viewWithTag(1)
+        let nameText = cell.viewWithTag(1) as UILabel
+        let locationText = cell.viewWithTag(2) as UILabel
+        let deptText = cell.viewWithTag(3) as UILabel
+        let jobText = cell.viewWithTag(4) as UILabel
+        let availText = cell.viewWithTag(5) as UILabel
+        let availDate = cell.viewWithTag(6) as UILabel
+        nameText.text = object?[1]
+        deptText.text = object?[14]
+        
+        locationText.text=object?[3]
+        jobText.text=object?[28]
+        if object?[17] == "0" {
+            availDate.text = "Now"
+        } else {
+            availDate.text = object?[11]
+            availDate.textColor = UIColor.darkGrayColor()
+            availText.textColor = UIColor.darkGrayColor()
+        }
+        
         return cell
     }
 
