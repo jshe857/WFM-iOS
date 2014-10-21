@@ -85,7 +85,6 @@ class MasterViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let list = employeeList
         if let length = list?.rows.count {
-            println(employeeList?.headers)
             return length
             
         }
