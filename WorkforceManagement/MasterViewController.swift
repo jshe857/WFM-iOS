@@ -93,6 +93,9 @@ class MasterViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        
+        
+        cell.contentView.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleBottomMargin;
         let object = employeeList?.rows[indexPath.row]
         //cell.textLabel?.text = object?.description
         let nameText = cell.viewWithTag(1) as UILabel
@@ -108,9 +111,14 @@ class MasterViewController: UITableViewController {
         jobText.text=object?[28]
         if object?[17] == "0" {
             availDate.text = "Now"
+            let highlight = UIColor(red: 0.114, green: 0.467, blue: 0.937, alpha: 1.0)
+            availDate.textColor = highlight
+            availDate.font = UIFont.systemFontOfSize(14)
+            availText.textColor = highlight
         } else {
             availDate.text = object?[11]
             availDate.textColor = UIColor.darkGrayColor()
+            availDate.font = UIFont.systemFontOfSize(12)
             availText.textColor = UIColor.darkGrayColor()
         }
         

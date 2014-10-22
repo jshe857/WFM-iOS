@@ -71,7 +71,7 @@ public class CSV {
             for field in values {
                 if (!field.isEmpty) && field.hasPrefix("\"") {
                     quoteFound = true
-                    row.append(field.substringFromIndex(field.startIndex.successor()))
+                    row.append(field.substringFromIndex(field.startIndex.successor())+",")
                 } else if (!field.isEmpty) && field.hasSuffix("\"") {
                     quoteFound = false
                     row[row.count-1] += field.substringToIndex(field.endIndex.predecessor())
