@@ -31,16 +31,7 @@ public class CSV {
 
 
     }
-    public convenience init(contentsOfURL url: NSURL, delimiter: NSCharacterSet) {
-        var error:NSError?
-        let csvString = String.stringWithContentsOfURL(url, encoding: NSUTF8StringEncoding, error: &error)
-        self.init(csvString: csvString,delimiter: delimiter)
-    }
-    
-    public convenience init(contentsOfURL url: NSURL) {
-        let comma = NSCharacterSet(charactersInString: ",")
-        self.init(contentsOfURL: url, delimiter: comma)
-    }
+
     
     func parseHeaders(fromLines lines: [String]) -> [String] {
         return lines[0].componentsSeparatedByCharactersInSet(self.delimiter)

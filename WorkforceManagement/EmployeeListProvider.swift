@@ -13,11 +13,10 @@ class EmployeeListProvider {
     var session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: EmployeeURLDelegate(), delegateQueue: nil)
     
     init() {
-        refreshDB()
     }
     
     func refreshDB() {
-        let task = session.dataTaskWithURL(url, completionHandler:{data,response, error in
+        let task = session.dataTaskWithURL(url!, completionHandler:{data,response, error in
             if (error != nil) {
                 println(error.localizedDescription)
                 NSNotificationCenter.defaultCenter().postNotificationName("EmployeeListDidFail", object: nil)

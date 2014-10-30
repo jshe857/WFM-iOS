@@ -34,12 +34,16 @@ class MasterViewController: UITableViewController {
         }
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable:", name: "EmployeeListDidComplete", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable:", name: "EmployeeListDidFail", object: nil)
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl!.tintColor = UIColor.darkGrayColor()
+        self.refreshControl!.addTarget(self, action:"downloadCSV",forControlEvents:.ValueChanged)
+        self.refreshControl!.backgroundColor = UIColor(red: 0.004, green: 0.478, blue: 0.996, alpha: 1.0)
 
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         NSNotificationCenter.defaultCenter().removeObserver(self)
-        
+    
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,17 +54,30 @@ class MasterViewController: UITableViewController {
     func showFilter(sender: AnyObject) {
     
     }
-    
+    func downloadCSV(){
+        employeeListProvider.refreshDB()
+    }
     func refreshTable(sender: AnyObject) {
         employeeList = employeeListProvider.EmployeeList
         let notification = sender as NSNotification
         if (notification.name == "EmployeeListDidComplete") {
             self.tableView.reloadData()
+            if (self.refreshControl != nil) {
+                let formatter = NSDateFormatter()
+                formatter.dateFormat = "MMM d, h:mm a"
+                let date = formatter.stringFromDate(NSDate())
+                let title = "Last update: \(date)"
+                println(title)
+                //let attrsDictionary = NSDictionary(object: (UIColor.whiteColor()),forKey: NSForegroundColorAttributeName)
+                let attributedTitle = NSAttributedString(string: title )
+                self.refreshControl!.attributedTitle = attributedTitle
+                
+                self.refreshControl!.endRefreshing()
+            }
         } else {
             
         }
     }
-
     // MARK: - Segues
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -85,7 +102,21 @@ class MasterViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let list = employeeList
         if let length = list?.rows.count {
+
+            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+            
             return length
+            
+        } else {
+            // Display a message when the table is empty
+            var messageLabel = UILabel(frame: CGRect(x: 0,y: 0, width: self.view.bounds.size.width,height: self.view.bounds.size.height))
+            
+            messageLabel.text = "No data is currently available.\n Please pull down to refresh.";
+            messageLabel.numberOfLines = 0;
+            messageLabel.textAlignment = NSTextAlignment.Center
+            
+            self.tableView.backgroundView = messageLabel
+            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
             
         }
         return 0
@@ -93,9 +124,6 @@ class MasterViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
-        
-        
-        cell.contentView.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleBottomMargin;
         let object = employeeList?.rows[indexPath.row]
         //cell.textLabel?.text = object?.description
         let nameText = cell.viewWithTag(1) as UILabel
