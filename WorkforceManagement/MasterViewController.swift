@@ -35,10 +35,13 @@ class MasterViewController: UITableViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable:", name: "EmployeeListDidComplete", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable:", name: "EmployeeListDidFail", object: nil)
         self.refreshControl = UIRefreshControl()
-        self.refreshControl!.tintColor = UIColor.darkGrayColor()
+        self.refreshControl!.tintColor = UIColor.whiteColor()
         self.refreshControl!.addTarget(self, action:"downloadCSV",forControlEvents:.ValueChanged)
-        self.refreshControl!.backgroundColor = UIColor(red: 0.004, green: 0.478, blue: 0.996, alpha: 1.0)
-
+        self.refreshControl!.backgroundColor = UIColor(red: 0.227, green: 0.588, blue: 0.988, alpha: 1.0)
+        
+        
+        self.refreshControl?.beginRefreshing()
+        downloadCSV()
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
@@ -59,6 +62,7 @@ class MasterViewController: UITableViewController {
     }
     func refreshTable(sender: AnyObject) {
         employeeList = employeeListProvider.EmployeeList
+        
         let notification = sender as NSNotification
         if (notification.name == "EmployeeListDidComplete") {
             self.tableView.reloadData()
@@ -69,7 +73,10 @@ class MasterViewController: UITableViewController {
                 let title = "Last update: \(date)"
                 println(title)
                 //let attrsDictionary = NSDictionary(object: (UIColor.whiteColor()),forKey: NSForegroundColorAttributeName)
-                let attributedTitle = NSAttributedString(string: title )
+                let attributedTitle = NSMutableAttributedString(string: title )
+                attributedTitle.addAttribute(NSForegroundColorAttributeName,
+                    value: UIColor.whiteColor(),
+                    range: NSMakeRange(0, countElements(title)))
                 self.refreshControl!.attributedTitle = attributedTitle
                 
                 self.refreshControl!.endRefreshing()
