@@ -1,4 +1,4 @@
-//
+    //
 //  MasterViewController.swift
 //  WorkforceManagement
 //
@@ -12,7 +12,7 @@ class MasterViewController: UITableViewController {
     var detailViewController: DetailViewController? = nil
     let employeeListProvider = EmployeeListProvider()
     var employeeList:CSV? = nil
-    
+    var alert:UIAlertView? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
@@ -24,10 +24,10 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
-
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "showFilter:")
-        self.navigationItem.rightBarButtonItem = addButton
+//        self.navigationItem.leftBarButtonItem = self.editButtonItem()
+//
+//        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "showFilter:")
+//        self.navigationItem.rightBarButtonItem = addButton
         if let split = self.splitViewController {
             let controllers = split.viewControllers
             self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
@@ -39,9 +39,21 @@ class MasterViewController: UITableViewController {
         self.refreshControl!.addTarget(self, action:"downloadCSV",forControlEvents:.ValueChanged)
         self.refreshControl!.backgroundColor = UIColor(red: 0.227, green: 0.588, blue: 0.988, alpha: 1.0)
         
+        // Display a message when the table is empty
+        var messageLabel = UILabel(frame: CGRect(x: 0,y: 0, width: self.view.bounds.size.width,height: self.view.bounds.size.height))
         
-        self.refreshControl?.beginRefreshing()
-        downloadCSV()
+        messageLabel.text = "";
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = NSTextAlignment.Center
+        
+        self.tableView.backgroundView = messageLabel
+        
+        self.alert = UIAlertView()
+        self.alert!.title = "Could not reach server"
+        self.alert!.message = "Please check your \n connection and try again."
+        self.alert!.addButtonWithTitle("OK")
+
+
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
@@ -71,7 +83,6 @@ class MasterViewController: UITableViewController {
                 formatter.dateFormat = "MMM d, h:mm a"
                 let date = formatter.stringFromDate(NSDate())
                 let title = "Last update: \(date)"
-                println(title)
                 //let attrsDictionary = NSDictionary(object: (UIColor.whiteColor()),forKey: NSForegroundColorAttributeName)
                 let attributedTitle = NSMutableAttributedString(string: title )
                 attributedTitle.addAttribute(NSForegroundColorAttributeName,
@@ -81,8 +92,11 @@ class MasterViewController: UITableViewController {
                 
                 self.refreshControl!.endRefreshing()
             }
-        } else {
-            
+        } else  if (notification.name == "EmployeeListDidFail"){
+
+            alert!.show()
+            self.refreshControl!.endRefreshing()
+
         }
     }
     // MARK: - Segues
@@ -91,7 +105,15 @@ class MasterViewController: UITableViewController {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
                 if let object = employeeList?.rows[indexPath.row] {
-                    let controller = (segue.destinationViewController as UINavigationController).topViewController as DetailViewController
+                    var controller : DetailViewController
+
+                    if UIDevice.currentDevice().systemVersion.hasPrefix("7.") {
+                        controller = segue.destinationViewController as DetailViewController
+                    } else {
+                        controller = (segue.destinationViewController as UINavigationController).topViewController as DetailViewController
+
+                    }
+                    
                     controller.detailItem = object
                     controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
                     controller.navigationItem.leftItemsSupplementBackButton = true
@@ -111,20 +133,14 @@ class MasterViewController: UITableViewController {
         if let length = list?.rows.count {
 
             self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
-            
+            self.tableView.backgroundView = nil
             return length
             
         } else {
-            // Display a message when the table is empty
-            var messageLabel = UILabel(frame: CGRect(x: 0,y: 0, width: self.view.bounds.size.width,height: self.view.bounds.size.height))
-            
-            messageLabel.text = "No data is currently available.\n Please pull down to refresh.";
-            messageLabel.numberOfLines = 0;
-            messageLabel.textAlignment = NSTextAlignment.Center
-            
-            self.tableView.backgroundView = messageLabel
-            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-            
+            var background = (self.tableView.backgroundView as UILabel)
+            background.text = "No data is currently unavailable.\n Please pull up to refresh"
+
+
         }
         return 0
     }
