@@ -109,7 +109,11 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="6" contentMode="right" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6h-C6-W89">
-                                            <rect key="frame" x="514" y="53" width="31" height="18"/>
+                                            <rect key="frame" x="475" y="53" width="100" height="18"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="tpR-U9-3Gn"/>
+                                                <constraint firstAttribute="width" constant="31" id="tyX-Zh-2nA"/>
+                                            </constraints>
                                             <attributedString key="attributedText">
                                                 <fragment content="Now">
                                                     <attributes>
@@ -120,9 +124,17 @@
                                                 </fragment>
                                             </attributedString>
                                             <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="tyX-Zh-2nA"/>
+                                                </mask>
+                                            </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EOV-g0-gBK">
-                                            <rect key="frame" x="501" y="31" width="60" height="18"/>
+                                            <rect key="frame" x="491" y="31" width="70" height="18"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="70" id="Noz-SN-Jzg"/>
+                                            </constraints>
                                             <attributedString key="attributedText">
                                                 <fragment content="Available">
                                                     <attributes>
@@ -135,7 +147,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wub-4H-bmX">
-                                            <rect key="frame" x="13" y="55" width="400" height="17"/>
+                                            <rect key="frame" x="13" y="55" width="468" height="17"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="IQs-hU-dgP"/>
                                                 <constraint firstAttribute="width" constant="400" id="yay-AQ-OzY"/>
@@ -150,9 +162,18 @@
                                                 </fragment>
                                             </attributedString>
                                             <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="IQs-hU-dgP"/>
+                                                    <exclude reference="yay-AQ-OzY"/>
+                                                </mask>
+                                            </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRR-FD-XjN">
-                                            <rect key="frame" x="13" y="36" width="400" height="17"/>
+                                            <rect key="frame" x="13" y="36" width="468" height="17"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="500" id="GDU-2l-juC"/>
+                                            </constraints>
                                             <attributedString key="attributedText">
                                                 <fragment content="Location">
                                                     <attributes>
@@ -163,9 +184,14 @@
                                                 </fragment>
                                             </attributedString>
                                             <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="GDU-2l-juC"/>
+                                                </mask>
+                                            </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aws-ba-xRf">
-                                            <rect key="frame" x="13" y="74" width="400" height="17"/>
+                                            <rect key="frame" x="13" y="74" width="468" height="17"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="Job Role">
                                                     <attributes>
@@ -179,29 +205,26 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="wub-4H-bmX" firstAttribute="top" secondItem="9HT-kM-sIo" secondAttribute="bottom" constant="5" id="03q-p0-ofb"/>
                                         <constraint firstItem="wub-4H-bmX" firstAttribute="width" secondItem="XRR-FD-XjN" secondAttribute="width" id="DB9-tj-6J7"/>
                                         <constraint firstItem="P6h-C6-W89" firstAttribute="centerX" secondItem="EOV-g0-gBK" secondAttribute="centerX" constant="-1.5" id="DST-aP-fQQ"/>
                                         <constraint firstItem="wub-4H-bmX" firstAttribute="centerY" secondItem="P6h-C6-W89" secondAttribute="centerY" constant="1.5" id="J7V-he-1u3"/>
                                         <constraint firstItem="Aws-ba-xRf" firstAttribute="top" secondItem="wub-4H-bmX" secondAttribute="bottom" constant="2" id="KZq-zT-fRX"/>
+                                        <constraint firstItem="EOV-g0-gBK" firstAttribute="leading" secondItem="XRR-FD-XjN" secondAttribute="trailing" constant="10" id="Lsb-Iv-xqk"/>
                                         <constraint firstItem="EOV-g0-gBK" firstAttribute="trailing" secondItem="37f-cq-3Eg" secondAttribute="trailingMargin" constant="2" id="Nns-rU-0IT"/>
                                         <constraint firstItem="wub-4H-bmX" firstAttribute="width" secondItem="Aws-ba-xRf" secondAttribute="width" id="QsN-wP-dIY"/>
                                         <constraint firstItem="wub-4H-bmX" firstAttribute="top" secondItem="XRR-FD-XjN" secondAttribute="bottom" constant="2" id="Rjt-fv-TYb"/>
-                                        <constraint firstItem="9HT-kM-sIo" firstAttribute="top" secondItem="37f-cq-3Eg" secondAttribute="topMargin" constant="5" id="VE6-Yy-LoW" userLabel="Vertical Space - (1) - LAST, FIRST NAME - Content View"/>
                                         <constraint firstItem="9HT-kM-sIo" firstAttribute="leading" secondItem="37f-cq-3Eg" secondAttribute="leadingMargin" constant="5" id="WZN-35-6rV"/>
                                         <constraint firstItem="XRR-FD-XjN" firstAttribute="top" secondItem="9HT-kM-sIo" secondAttribute="bottom" constant="7" id="WbX-NR-TBc" userLabel="Vertical Space - (3) - Location - LAST, FIRST NAME"/>
                                         <constraint firstItem="9HT-kM-sIo" firstAttribute="top" secondItem="37f-cq-3Eg" secondAttribute="topMargin" constant="1" id="Z1P-pt-qez"/>
                                         <constraint firstItem="XRR-FD-XjN" firstAttribute="leading" secondItem="37f-cq-3Eg" secondAttribute="leadingMargin" constant="5" id="aE2-QQ-jzf"/>
-                                        <constraint firstItem="wub-4H-bmX" firstAttribute="top" secondItem="XRR-FD-XjN" secondAttribute="bottom" constant="7" id="cjx-s3-gfu" userLabel="Vertical Space - (3) - DEPT - Location"/>
+                                        <constraint firstItem="EOV-g0-gBK" firstAttribute="leading" secondItem="XRR-FD-XjN" secondAttribute="trailing" constant="450" id="f3E-oy-KbF"/>
                                         <constraint firstItem="EOV-g0-gBK" firstAttribute="centerY" secondItem="XRR-FD-XjN" secondAttribute="centerY" constant="-4.5" id="hXG-5f-Haj"/>
                                         <constraint firstItem="wub-4H-bmX" firstAttribute="leading" secondItem="37f-cq-3Eg" secondAttribute="leadingMargin" constant="5" id="pJO-c7-oja"/>
                                         <constraint firstItem="Aws-ba-xRf" firstAttribute="leading" secondItem="37f-cq-3Eg" secondAttribute="leadingMargin" constant="5" id="psq-LX-uyk"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
-                                            <exclude reference="VE6-Yy-LoW"/>
-                                            <exclude reference="03q-p0-ofb"/>
-                                            <exclude reference="cjx-s3-gfu"/>
+                                            <exclude reference="f3E-oy-KbF"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
