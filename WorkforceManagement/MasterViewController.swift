@@ -48,10 +48,8 @@ class MasterViewController: UITableViewController {
         
         self.tableView.backgroundView = messageLabel
         
-        self.alert = UIAlertView()
-        self.alert!.title = "Could not reach server"
-        self.alert!.message = "Please check your \n connection and try again."
-        self.alert!.addButtonWithTitle("OK")
+        self.alert = UIAlertView(title:"Could not reach server", message: "Please check your \n connection and try again.", delegate:nil ,cancelButtonTitle: "OK")
+        
 
 
     }
@@ -93,8 +91,8 @@ class MasterViewController: UITableViewController {
                 self.refreshControl!.endRefreshing()
             }
         } else  if (notification.name == "EmployeeListDidFail"){
-
-            alert!.show()
+            dispatch_async(dispatch_get_main_queue(), {self.alert!.show()})
+            
             self.refreshControl!.endRefreshing()
 
         }
@@ -106,8 +104,7 @@ class MasterViewController: UITableViewController {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
                 if let object = employeeList?.rows[indexPath.row] {
                     var controller : DetailViewController
-
-                    if UIDevice.currentDevice().systemVersion.hasPrefix("7.") {
+                    if UIDevice.currentDevice().systemVersion.hasPrefix("7.") && UIDevice.currentDevice().localizedModel.hasPrefix("iPhone")    {
                         controller = segue.destinationViewController as DetailViewController
                     } else {
                         controller = (segue.destinationViewController as UINavigationController).topViewController as DetailViewController

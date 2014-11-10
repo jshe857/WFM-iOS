@@ -9,7 +9,6 @@
         <!--Master-->
         <scene sceneID="pY4-Hu-kfo">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8fS-aE-onr" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="ios7" title="Master" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RMx-3f-FxP" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Pmd-2v-anx">
                         <autoresizingMask key="autoresizingMask"/>
@@ -18,6 +17,7 @@
                         <segue destination="7bK-jq-Zjz" kind="relationship" relationship="rootViewController" id="tsl-Nk-0bq"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8fS-aE-onr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-38" y="-630"/>
         </scene>
@@ -33,7 +33,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l7L-9k-aj9">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l7L-9k-aj9">
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="connections" translatesAutoresizingMaskIntoConstraints="NO" id="P1A-Fc-hVs">
                                         <rect key="frame" x="3" y="11" width="36" height="34"/>
@@ -69,13 +69,13 @@
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cZU-Oi-B1e" sceneMemberID="firstResponder"/>
                 <splitViewController storyboardIdentifier="ios8+" useStoryboardIdentifierAsRestorationIdentifier="YES" id="H1p-Uh-vWS" sceneMemberID="viewController">
                     <toolbarItems/>
                     <connections>
                         <segue destination="RMx-3f-FxP" kind="relationship" relationship="masterViewController" id="BlO-5A-QYV"/>
                     </connections>
                 </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cZU-Oi-B1e" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1088" y="-154"/>
         </scene>
@@ -95,8 +95,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9HT-kM-sIo">
-                                            <rect key="frame" x="23" y="13" width="404" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9HT-kM-sIo">
+                                            <rect key="frame" x="13" y="9" width="149" height="20"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="LAST, FIRST NAME">
                                                     <attributes>
@@ -108,21 +108,8 @@
                                             </attributedString>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aws-ba-xRf">
-                                            <rect key="frame" x="23" y="73" width="392" height="21"/>
-                                            <attributedString key="attributedText">
-                                                <fragment content="Job Role">
-                                                    <attributes>
-                                                        <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <font key="NSFont" size="14" name="HelveticaNeue"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="6" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6h-C6-W89">
-                                            <rect key="frame" x="485" y="53" width="74" height="18"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="6" contentMode="right" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6h-C6-W89">
+                                            <rect key="frame" x="514" y="53" width="31" height="18"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="Now">
                                                     <attributes>
@@ -134,21 +121,8 @@
                                             </attributedString>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRR-FD-XjN">
-                                            <rect key="frame" x="23" y="39" width="412" height="21"/>
-                                            <attributedString key="attributedText">
-                                                <fragment content="Location">
-                                                    <attributes>
-                                                        <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <font key="NSFont" size="14" name="HelveticaNeue"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EOV-g0-gBK">
-                                            <rect key="frame" x="492" y="38" width="60" height="18"/>
+                                            <rect key="frame" x="501" y="31" width="60" height="18"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="Available">
                                                     <attributes>
@@ -160,8 +134,12 @@
                                             </attributedString>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wub-4H-bmX">
-                                            <rect key="frame" x="23" y="57" width="404" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wub-4H-bmX">
+                                            <rect key="frame" x="13" y="55" width="400" height="17"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="IQs-hU-dgP"/>
+                                                <constraint firstAttribute="width" constant="400" id="yay-AQ-OzY"/>
+                                            </constraints>
                                             <attributedString key="attributedText">
                                                 <fragment content="DEPT">
                                                     <attributes>
@@ -173,18 +151,57 @@
                                             </attributedString>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRR-FD-XjN">
+                                            <rect key="frame" x="13" y="36" width="400" height="17"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Location">
+                                                    <attributes>
+                                                        <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aws-ba-xRf">
+                                            <rect key="frame" x="13" y="74" width="400" height="17"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Job Role">
+                                                    <attributes>
+                                                        <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="EOV-g0-gBK" firstAttribute="top" secondItem="37f-cq-3Eg" secondAttribute="topMargin" constant="30" id="1RW-lQ-XkB"/>
-                                        <constraint firstItem="EOV-g0-gBK" firstAttribute="centerX" secondItem="P6h-C6-W89" secondAttribute="centerX" id="2Cj-4a-Irb"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="P6h-C6-W89" secondAttribute="bottom" constant="20" id="8mI-9Z-Zfx" userLabel="Vertical Space - (10) - Content View - Now"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="P6h-C6-W89" secondAttribute="trailing" id="fdS-xq-LS8"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="EOV-g0-gBK" secondAttribute="trailing" constant="7" id="hpF-q4-5eq"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="EOV-g0-gBK" secondAttribute="trailing" id="nDd-8b-rB1"/>
+                                        <constraint firstItem="wub-4H-bmX" firstAttribute="top" secondItem="9HT-kM-sIo" secondAttribute="bottom" constant="5" id="03q-p0-ofb"/>
+                                        <constraint firstItem="wub-4H-bmX" firstAttribute="width" secondItem="XRR-FD-XjN" secondAttribute="width" id="DB9-tj-6J7"/>
+                                        <constraint firstItem="P6h-C6-W89" firstAttribute="centerX" secondItem="EOV-g0-gBK" secondAttribute="centerX" constant="-1.5" id="DST-aP-fQQ"/>
+                                        <constraint firstItem="wub-4H-bmX" firstAttribute="centerY" secondItem="P6h-C6-W89" secondAttribute="centerY" constant="1.5" id="J7V-he-1u3"/>
+                                        <constraint firstItem="Aws-ba-xRf" firstAttribute="top" secondItem="wub-4H-bmX" secondAttribute="bottom" constant="2" id="KZq-zT-fRX"/>
+                                        <constraint firstItem="EOV-g0-gBK" firstAttribute="trailing" secondItem="37f-cq-3Eg" secondAttribute="trailingMargin" constant="2" id="Nns-rU-0IT"/>
+                                        <constraint firstItem="wub-4H-bmX" firstAttribute="width" secondItem="Aws-ba-xRf" secondAttribute="width" id="QsN-wP-dIY"/>
+                                        <constraint firstItem="wub-4H-bmX" firstAttribute="top" secondItem="XRR-FD-XjN" secondAttribute="bottom" constant="2" id="Rjt-fv-TYb"/>
+                                        <constraint firstItem="9HT-kM-sIo" firstAttribute="top" secondItem="37f-cq-3Eg" secondAttribute="topMargin" constant="5" id="VE6-Yy-LoW" userLabel="Vertical Space - (1) - LAST, FIRST NAME - Content View"/>
+                                        <constraint firstItem="9HT-kM-sIo" firstAttribute="leading" secondItem="37f-cq-3Eg" secondAttribute="leadingMargin" constant="5" id="WZN-35-6rV"/>
+                                        <constraint firstItem="XRR-FD-XjN" firstAttribute="top" secondItem="9HT-kM-sIo" secondAttribute="bottom" constant="7" id="WbX-NR-TBc" userLabel="Vertical Space - (3) - Location - LAST, FIRST NAME"/>
+                                        <constraint firstItem="9HT-kM-sIo" firstAttribute="top" secondItem="37f-cq-3Eg" secondAttribute="topMargin" constant="1" id="Z1P-pt-qez"/>
+                                        <constraint firstItem="XRR-FD-XjN" firstAttribute="leading" secondItem="37f-cq-3Eg" secondAttribute="leadingMargin" constant="5" id="aE2-QQ-jzf"/>
+                                        <constraint firstItem="wub-4H-bmX" firstAttribute="top" secondItem="XRR-FD-XjN" secondAttribute="bottom" constant="7" id="cjx-s3-gfu" userLabel="Vertical Space - (3) - DEPT - Location"/>
+                                        <constraint firstItem="EOV-g0-gBK" firstAttribute="centerY" secondItem="XRR-FD-XjN" secondAttribute="centerY" constant="-4.5" id="hXG-5f-Haj"/>
+                                        <constraint firstItem="wub-4H-bmX" firstAttribute="leading" secondItem="37f-cq-3Eg" secondAttribute="leadingMargin" constant="5" id="pJO-c7-oja"/>
+                                        <constraint firstItem="Aws-ba-xRf" firstAttribute="leading" secondItem="37f-cq-3Eg" secondAttribute="leadingMargin" constant="5" id="psq-LX-uyk"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
-                                            <exclude reference="nDd-8b-rB1"/>
+                                            <exclude reference="VE6-Yy-LoW"/>
+                                            <exclude reference="03q-p0-ofb"/>
+                                            <exclude reference="cjx-s3-gfu"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>

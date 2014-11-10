@@ -8,8 +8,8 @@
 
 import Foundation
 class EmployeeURLDelegate:NSObject,NSURLSessionDelegate,NSURLSessionTaskDelegate,NSURLSessionDataDelegate {
-    let credential = NSURLCredential(user: "pracavai", password: "!q3e4r5t", persistence: NSURLCredentialPersistence.ForSession)
-    let progress = 0.0
+    let credential = NSURLCredential(user: "pracavai", password: "!e4r5t6y ", persistence: NSURLCredentialPersistence.ForSession)
+    let failed = 0;
     func URLSession(session: NSURLSession,
     task: NSURLSessionTask,
     didReceiveChallenge: NSURLAuthenticationChallenge,
@@ -19,16 +19,24 @@ class EmployeeURLDelegate:NSObject,NSURLSessionDelegate,NSURLSessionTaskDelegate
                 let trust = NSURLCredential(trust:didReceiveChallenge.protectionSpace.serverTrust)
                 completionHandler(NSURLSessionAuthChallengeDisposition.UseCredential, trust)
             } else if (didReceiveChallenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodHTTPBasic) {
-                completionHandler(NSURLSessionAuthChallengeDisposition.UseCredential,credential)
+                
+                if (didReceiveChallenge.previousFailureCount > 2) {
+                    completionHandler(NSURLSessionAuthChallengeDisposition.CancelAuthenticationChallenge,credential)
+                } else {
+                    completionHandler(NSURLSessionAuthChallengeDisposition.UseCredential,credential)
+                }
+
             }
             
     }
+    
     func URLSession(session: NSURLSession,
         dataTask: NSURLSessionDataTask,
         didReceiveData: NSData) {
             println("recieving")
             
     }
+    
     func URLSession(session: NSURLSession,
         dataTask: NSURLSessionDataTask,
         didReceiveResponse: NSURLResponse,
