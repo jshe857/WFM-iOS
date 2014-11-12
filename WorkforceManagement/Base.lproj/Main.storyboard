@@ -443,6 +443,11 @@
                     <navigationItem key="navigationItem" title="WFM" id="Zdf-7t-Un8"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="FM4-Om-JtH">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="709" y="-630"/>
         </scene>
@@ -463,11 +468,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="connections" width="128" height="128"/>
+        <image name="connections" width="65" height="65"/>
         <image name="email" width="80" height="80"/>
         <image name="phone" width="80" height="80"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="n13-1g-s6l"/>
+        <segue reference="6S0-TO-JiA"/>
     </inferredMetricsTieBreakers>
 </document>

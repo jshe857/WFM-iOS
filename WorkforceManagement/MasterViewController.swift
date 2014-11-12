@@ -11,8 +11,13 @@ import UIKit
 class MasterViewController: UITableViewController {
     var detailViewController: DetailViewController? = nil
     let employeeListProvider = EmployeeListProvider()
-    var employeeList:CSV? = nil
-    var alert:UIAlertView? = nil
+    var employeeList:CSV?
+    var alert:UIAlertView?
+    var updateDate:UILabel?
+    var sectionHeader:UILabel?
+    
+    var lastHeight:CGFloat = 0
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
@@ -26,7 +31,7 @@ class MasterViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
 //        self.navigationItem.leftBarButtonItem = self.editButtonItem()
 //
-//        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "showFilter:")
+//        let addButton = UIBarButton`Item(barButtonSystemItem: .Add, target: self, action: "showFilter:")
 //        self.navigationItem.rightBarButtonItem = addButton
         if let split = self.splitViewController {
             let controllers = split.viewControllers
@@ -50,7 +55,11 @@ class MasterViewController: UITableViewController {
         
         self.alert = UIAlertView(title:"Could not reach server", message: "Please check your \n connection and try again.", delegate:nil ,cancelButtonTitle: "OK")
         
+        
+        
 
+        
+        
 
     }
     override func viewWillDisappear(animated: Bool) {
@@ -77,24 +86,41 @@ class MasterViewController: UITableViewController {
         if (notification.name == "EmployeeListDidComplete") {
             self.tableView.reloadData()
             if (self.refreshControl != nil) {
+//                let formatter = NSDateFormatter()
+//                formatter.dateFormat = "MMM d, h:mm a"
+//                let date = formatter.stringFromDate(NSDate())
+//                let title = "Last update: \(date)"
+                //let attrsDictionary = NSDictionary(object: (UIColor.whiteColor()),forKey: NSForegroundColorAttributeName)
+//                let attributedTitle = NSMutableAttributedString(string: title )
+//                attributedTitle.addAttribute(NSForegroundColorAttributeName,
+//                    value: UIColor.whiteColor(),
+//                    range: NSMakeRange(0, countElements(title)))
+//                self.refreshControl!.attributedTitle = attributedTitle
+
+                //Update table header
+                updateDate = UILabel(frame: CGRect(x: 0,y: 0, width: self.view.bounds.size.width,height: 20))
+                updateDate!.backgroundColor = UIColor.lightGrayColor()
                 let formatter = NSDateFormatter()
                 formatter.dateFormat = "MMM d, h:mm a"
                 let date = formatter.stringFromDate(NSDate())
-                let title = "Last update: \(date)"
-                //let attrsDictionary = NSDictionary(object: (UIColor.whiteColor()),forKey: NSForegroundColorAttributeName)
+                let title = "  Last update: \(date)"
                 let attributedTitle = NSMutableAttributedString(string: title )
+                
+                //let font = NSFont(fontWithName:"Helvetica Bold" size:14.0)
+                //let attr = NSDictionary(dictionaryWithObject:font,forKey:NSFontAttributeName)
+                
+                
+                
                 attributedTitle.addAttribute(NSForegroundColorAttributeName,
                     value: UIColor.whiteColor(),
                     range: NSMakeRange(0, countElements(title)))
-                self.refreshControl!.attributedTitle = attributedTitle
                 
+                updateDate!.attributedText = attributedTitle
                 self.refreshControl!.endRefreshing()
             }
         } else  if (notification.name == "EmployeeListDidFail"){
             dispatch_async(dispatch_get_main_queue(), {self.alert!.show()})
-            
             self.refreshControl!.endRefreshing()
-
         }
     }
     // MARK: - Segues
@@ -141,8 +167,6 @@ class MasterViewController: UITableViewController {
         } else {
             var background = (self.tableView.backgroundView as UILabel)
             background.text = "No data is currently unavailable.\n Please pull up to refresh"
-
-
         }
         return 0
     }
@@ -185,8 +209,30 @@ class MasterViewController: UITableViewController {
         return false
     }
 
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
+
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > self.lastHeight {
+            sectionHeader = updateDate
+        } else {
+            sectionHeader = nil
+
+        }
+        self.tableView.reloadData()
+        self.lastHeight = scrollView.contentOffset.y
+    }
+
+    
+    override func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+
+    }
+
+    
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if sectionHeader == nil {
+            return UIView(frame:CGRectMake(0, 0,  tableView.bounds.size.width, 1))
+        }
+        return sectionHeader
     }
 
 
