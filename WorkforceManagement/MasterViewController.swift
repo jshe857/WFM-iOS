@@ -112,8 +112,13 @@ class MasterViewController: UITableViewController {
                     }
                     
                     controller.detailItem = object
-                    controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-                    controller.navigationItem.leftItemsSupplementBackButton = true
+                    if let split = self.splitViewController {
+                        if split.respondsToSelector(Selector("displayModeButtonItem")){
+                    
+                            controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+                            controller.navigationItem.leftItemsSupplementBackButton = true
+                        }
+                    }
                 }
             }
         }
@@ -146,6 +151,8 @@ class MasterViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         let object = employeeList?.rows[indexPath.row]
         //cell.textLabel?.text = object?.description
+        
+        //populate cell with csv data
         let nameText = cell.viewWithTag(1) as UILabel
         let locationText = cell.viewWithTag(2) as UILabel
         let deptText = cell.viewWithTag(3) as UILabel

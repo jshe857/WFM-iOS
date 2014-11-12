@@ -12,20 +12,25 @@ import Foundation
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate{
 
     var window: UIWindow?
-
+    private var collapseDetailViewController = false
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let storyboard =  UIStoryboard(name: "Main",bundle: nil)
-        if UIDevice.currentDevice().systemVersion.hasPrefix("7.")  && UIDevice.currentDevice().localizedModel.hasPrefix("iPhone"){
-            self.window!.rootViewController = storyboard.instantiateViewControllerWithIdentifier("ios7") as? UIViewController
-//        } else if (UIDevice.currentDevice().systemVersion.hasPrefix("7.") ) {
+
+        // Override point for customization after application launch.
+        
+        if let splitViewController = self.window!.rootViewController as? UISplitViewController {
             
-        } else {
-            // Override point for customization after application launch.
-            self.window!.rootViewController = storyboard.instantiateViewControllerWithIdentifier("ios8+") as? UIViewController
-            let splitViewController = self.window!.rootViewController as UISplitViewController
+            
             let navigationController = splitViewController.viewControllers[0] as UINavigationController
-            //navigationController.topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
+            if (splitViewController.respondsToSelector(Selector("displayModeButtonItem"))){
+                navigationController.topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
+                splitViewController.preferredDisplayMode = UISplitViewControllerDisplayMode.AllVisible
+
+            } else {
+            
+            
+            }
             splitViewController.delegate = self
+
         }
         return true
     }
@@ -53,6 +58,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     }
 
     // MARK: - Split view
+    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController!, ontoPrimaryViewController primaryViewController: UIViewController!) -> Bool {
+        return true
+    }
 
 }
 

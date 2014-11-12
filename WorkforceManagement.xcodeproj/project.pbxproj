@@ -30,7 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1848399D19E5FAE100527B74 /* WorkforceManagement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkforceManagement.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1848399D19E5FAE100527B74 /* WFM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WFM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		184839A119E5FAE100527B74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		184839A219E5FAE100527B74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		184839A419E5FAE100527B74 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -76,7 +76,7 @@
 		1848399E19E5FAE100527B74 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1848399D19E5FAE100527B74 /* WorkforceManagement.app */,
+				1848399D19E5FAE100527B74 /* WFM.app */,
 				184839B419E5FAE100527B74 /* WorkforceManagementTests.xctest */,
 			);
 			name = Products;
@@ -141,7 +141,7 @@
 			);
 			name = WorkforceManagement;
 			productName = WorkforceManagement;
-			productReference = 1848399D19E5FAE100527B74 /* WorkforceManagement.app */;
+			productReference = 1848399D19E5FAE100527B74 /* WFM.app */;
 			productType = "com.apple.product-type.application";
 		};
 		184839B319E5FAE100527B74 /* WorkforceManagementTests */ = {
@@ -360,7 +360,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: International Business Machines";
 				INFOPLIST_FILE = WorkforceManagement/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = WFM;
 			};
 			name = Debug;
 		};
@@ -372,7 +372,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: International Business Machines";
 				INFOPLIST_FILE = WorkforceManagement/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = WFM;
 			};
 			name = Release;
 		};
@@ -455,7 +455,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: International Business Machines";
 				INFOPLIST_FILE = WorkforceManagement/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = WFM;
 			};
 			name = Distribution;
 		};
