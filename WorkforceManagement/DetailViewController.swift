@@ -12,7 +12,6 @@ class DetailViewController: UIViewController {
 
     @IBOutlet weak var detailDescriptionLabel: UILabel!
 
-
     var detailItem: AnyObject? {
         didSet {
             // Update the view.
@@ -22,6 +21,8 @@ class DetailViewController: UIViewController {
 
     func configureView() {
         // Update the user interface for the detail item.
+        
+       // (self.view as UIScrollView).contentSize = CGSizeMake(320,758);
         if let detail: Array<String> = self.detailItem as? Array<String>{
             self.navigationItem.title = detail[1]
             
