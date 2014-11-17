@@ -22,7 +22,12 @@ class DetailViewController: UIViewController {
     func configureView() {
         // Update the user interface for the detail item.
         
-       // (self.view as UIScrollView).contentSize = CGSizeMake(320,758);
+        
+        let scroll = self.view.subviews[0] as UIScrollView
+        scroll.center = CGPointMake(0,-100)
+        scroll.contentSize = CGSize(width: self.view.bounds.width,height: self.view.bounds.height)
+        scroll.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
+
         if let detail: Array<String> = self.detailItem as? Array<String>{
             self.navigationItem.title = detail[1]
             

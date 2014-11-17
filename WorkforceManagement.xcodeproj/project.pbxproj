@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		181604651A197652003D8DDD /* FilterPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181604641A197652003D8DDD /* FilterPicker.swift */; };
+		183AE53C1A15686500E86FBA /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183AE53B1A15686500E86FBA /* FilterViewController.swift */; };
 		184839A319E5FAE100527B74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839A219E5FAE100527B74 /* AppDelegate.swift */; };
 		184839A519E5FAE100527B74 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839A419E5FAE100527B74 /* MasterViewController.swift */; };
 		184839A719E5FAE100527B74 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839A619E5FAE100527B74 /* DetailViewController.swift */; };
@@ -30,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		181604641A197652003D8DDD /* FilterPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterPicker.swift; sourceTree = "<group>"; };
+		183AE53B1A15686500E86FBA /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		1848399D19E5FAE100527B74 /* WFM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WFM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		184839A119E5FAE100527B74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		184839A219E5FAE100527B74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +89,8 @@
 		1848399F19E5FAE100527B74 /* WorkforceManagement */ = {
 			isa = PBXGroup;
 			children = (
+				181604641A197652003D8DDD /* FilterPicker.swift */,
+				183AE53B1A15686500E86FBA /* FilterViewController.swift */,
 				184839A219E5FAE100527B74 /* AppDelegate.swift */,
 				184839A419E5FAE100527B74 /* MasterViewController.swift */,
 				184839A619E5FAE100527B74 /* DetailViewController.swift */,
@@ -224,6 +230,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				183AE53C1A15686500E86FBA /* FilterViewController.swift in Sources */,
+				181604651A197652003D8DDD /* FilterPicker.swift in Sources */,
 				184839C819E7877900527B74 /* EmployeeListProvider.swift in Sources */,
 				184839A719E5FAE100527B74 /* DetailViewController.swift in Sources */,
 				184839CD19ECDD6700527B74 /* CSV.swift in Sources */,

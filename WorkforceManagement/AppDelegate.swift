@@ -21,9 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             
             
             let navigationController = splitViewController.viewControllers[0] as UINavigationController
-
+            
             if (splitViewController.respondsToSelector(Selector("displayModeButtonItem"))){
-                navigationController.topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
                 splitViewController.preferredDisplayMode = UISplitViewControllerDisplayMode.AllVisible
 
             } else {

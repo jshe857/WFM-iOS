@@ -1,4 +1,4 @@
-    //
+//
 //  MasterViewController.swift
 //  WorkforceManagement
 //
@@ -28,17 +28,22 @@ class MasterViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
-//        self.navigationItem.leftBarButtonItem = self.editButtonItem()
-//
-//        let addButton = UIBarButton`Item(barButtonSystemItem: .Add, target: self, action: "showFilter:")
-//        self.navigationItem.rightBarButtonItem = addButton
+        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target:self, action: "showFilter:")
+        self.navigationItem.rightBarButtonItem = addButton
+    
+        
         if let split = self.splitViewController {
             let controllers = split.viewControllers
             self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
         }
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable:", name: "EmployeeListDidComplete", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable:", name: "EmployeeListDidFail", object: nil)
+        
+        //refresh control set up
         self.refreshControl = UIRefreshControl()
         self.refreshControl!.tintColor = UIColor.whiteColor()
         self.refreshControl!.addTarget(self, action:"downloadCSV",forControlEvents:.ValueChanged)
@@ -46,16 +51,16 @@ class MasterViewController: UITableViewController {
         
         // Display a message when the table is empty
         var messageLabel = UILabel(frame: CGRect(x: 0,y: 0, width: self.view.bounds.size.width,height: self.view.bounds.size.height))
-        
         messageLabel.text = "";
         messageLabel.numberOfLines = 0;
         messageLabel.textAlignment = NSTextAlignment.Center
-        
         self.tableView.backgroundView = messageLabel
         
+        
+        //initialize alert error message
         self.alert = UIAlertView(title:"Could not reach server", message: "Please check your \n connection and try again.", delegate:nil ,cancelButtonTitle: "OK")
         
-        
+
         
 
         
@@ -74,6 +79,7 @@ class MasterViewController: UITableViewController {
     }
 
     func showFilter(sender: AnyObject) {
+        self.performSegueWithIdentifier("showFilter",sender:nil)
     
     }
     func downloadCSV(){
@@ -81,11 +87,12 @@ class MasterViewController: UITableViewController {
     }
     func refreshTable(sender: AnyObject) {
         employeeList = employeeListProvider.EmployeeList
-        
         let notification = sender as NSNotification
         if (notification.name == "EmployeeListDidComplete") {
             self.tableView.reloadData()
             if (self.refreshControl != nil) {
+                
+                //Code to add date to refresh control
 //                let formatter = NSDateFormatter()
 //                formatter.dateFormat = "MMM d, h:mm a"
 //                let date = formatter.stringFromDate(NSDate())
@@ -98,22 +105,16 @@ class MasterViewController: UITableViewController {
 //                self.refreshControl!.attributedTitle = attributedTitle
 
                 //Update table header
-                updateDate = UILabel(frame: CGRect(x: 0,y: 0, width: self.view.bounds.size.width,height: 20))
+                updateDate = UILabel(frame: CGRect(x: 0,y: 0, width: self.view.bounds.size.width,height: 15))
                 updateDate!.backgroundColor = UIColor.lightGrayColor()
                 let formatter = NSDateFormatter()
                 formatter.dateFormat = "MMM d, h:mm a"
                 let date = formatter.stringFromDate(NSDate())
                 let title = "  Last update: \(date)"
-                let attributedTitle = NSMutableAttributedString(string: title )
+                let font = UIFont(name: "Helvetica Bold", size:12.0)
+                let attr = NSDictionary(objects:[font!,UIColor.whiteColor()],forKeys:[NSFontAttributeName,NSForegroundColorAttributeName])
                 
-                //let font = NSFont(fontWithName:"Helvetica Bold" size:14.0)
-                //let attr = NSDictionary(dictionaryWithObject:font,forKey:NSFontAttributeName)
-                
-                
-                
-                attributedTitle.addAttribute(NSForegroundColorAttributeName,
-                    value: UIColor.whiteColor(),
-                    range: NSMakeRange(0, countElements(title)))
+                let attributedTitle = NSAttributedString(string: title, attributes: attr)
                 
                 updateDate!.attributedText = attributedTitle
                 self.refreshControl!.endRefreshing()
@@ -134,7 +135,6 @@ class MasterViewController: UITableViewController {
                         controller = segue.destinationViewController as DetailViewController
                     } else {
                         controller = (segue.destinationViewController as UINavigationController).topViewController as DetailViewController
-
                     }
                     
                     controller.detailItem = object
@@ -147,6 +147,9 @@ class MasterViewController: UITableViewController {
                     }
                 }
             }
+        } else if segue.identifier == "showFilter" {
+            let controller = segue.destinationViewController as FilterViewController
+
         }
     }
 
@@ -212,7 +215,7 @@ class MasterViewController: UITableViewController {
 
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
-        if scrollView.contentOffset.y > self.lastHeight {
+        if scrollView.contentOffset.y < self.lastHeight {
             sectionHeader = updateDate
         } else {
             sectionHeader = nil
