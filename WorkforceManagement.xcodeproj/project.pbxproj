@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		181604651A197652003D8DDD /* FilterPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181604641A197652003D8DDD /* FilterPicker.swift */; };
+		183987461A1BF7400063BEF6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 183987451A1BF7400063BEF6 /* CoreData.framework */; };
+		183987491A1BF8F10063BEF6 /* Practitioners.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 183987471A1BF8F10063BEF6 /* Practitioners.xcdatamodeld */; };
 		183AE53C1A15686500E86FBA /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183AE53B1A15686500E86FBA /* FilterViewController.swift */; };
 		184839A319E5FAE100527B74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839A219E5FAE100527B74 /* AppDelegate.swift */; };
 		184839A519E5FAE100527B74 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839A419E5FAE100527B74 /* MasterViewController.swift */; };
@@ -19,6 +20,7 @@
 		184839C819E7877900527B74 /* EmployeeListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839C719E7877900527B74 /* EmployeeListProvider.swift */; };
 		184839CB19EC91BE00527B74 /* EmployeeURLDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839CA19EC91BE00527B74 /* EmployeeURLDelegate.swift */; };
 		184839CD19ECDD6700527B74 /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839CC19ECDD6700527B74 /* CSV.swift */; };
+		18D9ACB71A1C9A0F0098D3EC /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9ACB61A1C9A0F0098D3EC /* ListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		181604641A197652003D8DDD /* FilterPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterPicker.swift; sourceTree = "<group>"; };
+		183987451A1BF7400063BEF6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		183987481A1BF8F10063BEF6 /* Practitioners.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Practitioners.xcdatamodel; sourceTree = "<group>"; };
 		183AE53B1A15686500E86FBA /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		1848399D19E5FAE100527B74 /* WFM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WFM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		184839A119E5FAE100527B74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,6 +51,7 @@
 		184839C719E7877900527B74 /* EmployeeListProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeListProvider.swift; sourceTree = "<group>"; };
 		184839CA19EC91BE00527B74 /* EmployeeURLDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeURLDelegate.swift; sourceTree = "<group>"; };
 		184839CC19ECDD6700527B74 /* CSV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSV.swift; sourceTree = "<group>"; };
+		18D9ACB61A1C9A0F0098D3EC /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				183987461A1BF7400063BEF6 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +76,7 @@
 		1848399419E5FAE100527B74 = {
 			isa = PBXGroup;
 			children = (
+				183987451A1BF7400063BEF6 /* CoreData.framework */,
 				1848399F19E5FAE100527B74 /* WorkforceManagement */,
 				184839B719E5FAE200527B74 /* WorkforceManagementTests */,
 				1848399E19E5FAE100527B74 /* Products */,
@@ -89,7 +95,8 @@
 		1848399F19E5FAE100527B74 /* WorkforceManagement */ = {
 			isa = PBXGroup;
 			children = (
-				181604641A197652003D8DDD /* FilterPicker.swift */,
+				183987471A1BF8F10063BEF6 /* Practitioners.xcdatamodeld */,
+				18D9ACB61A1C9A0F0098D3EC /* ListViewController.swift */,
 				183AE53B1A15686500E86FBA /* FilterViewController.swift */,
 				184839A219E5FAE100527B74 /* AppDelegate.swift */,
 				184839A419E5FAE100527B74 /* MasterViewController.swift */,
@@ -231,12 +238,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				183AE53C1A15686500E86FBA /* FilterViewController.swift in Sources */,
-				181604651A197652003D8DDD /* FilterPicker.swift in Sources */,
 				184839C819E7877900527B74 /* EmployeeListProvider.swift in Sources */,
 				184839A719E5FAE100527B74 /* DetailViewController.swift in Sources */,
 				184839CD19ECDD6700527B74 /* CSV.swift in Sources */,
 				184839CB19EC91BE00527B74 /* EmployeeURLDelegate.swift in Sources */,
+				18D9ACB71A1C9A0F0098D3EC /* ListViewController.swift in Sources */,
 				184839A519E5FAE100527B74 /* MasterViewController.swift in Sources */,
+				183987491A1BF8F10063BEF6 /* Practitioners.xcdatamodeld in Sources */,
 				184839A319E5FAE100527B74 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -516,6 +524,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		183987471A1BF8F10063BEF6 /* Practitioners.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				183987481A1BF8F10063BEF6 /* Practitioners.xcdatamodel */,
+			);
+			currentVersion = 183987481A1BF8F10063BEF6 /* Practitioners.xcdatamodel */;
+			path = Practitioners.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1848399519E5FAE100527B74 /* Project object */;
 }

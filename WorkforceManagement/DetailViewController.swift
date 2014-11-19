@@ -10,8 +10,15 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
-
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var availability: UILabel!
+    @IBOutlet weak var band: UILabel!
+    @IBOutlet weak var home: UILabel!
+    @IBOutlet weak var business: UILabel!
+    @IBOutlet weak var jrss: UILabel!
+    @IBOutlet weak var manager: UILabel!
+    @IBOutlet weak var project: UILabel!
+    
     var detailItem: AnyObject? {
         didSet {
             // Update the view.
@@ -28,8 +35,17 @@ class DetailViewController: UIViewController {
         scroll.contentSize = CGSize(width: self.view.bounds.width,height: self.view.bounds.height)
         scroll.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
 
-        if let detail: Array<String> = self.detailItem as? Array<String>{
-            self.navigationItem.title = detail[1]
+        if let detail = self.detailItem as? [String:String]{
+            self.navigationItem.title = "Details"
+            name.text = detail["Name"]
+            availability.text = detail["Avail Date"]
+            jrss.text = detail["JRSS"]
+            band.text = detail["Band"]
+            home.text = detail["Home Location"]
+            business.text = detail["Business Unit"]
+            manager.text = detail["Manager"]
+            project.text = detail["Current Or Most Recent Client/Customer Assignment"]
+            
             
         }
     }

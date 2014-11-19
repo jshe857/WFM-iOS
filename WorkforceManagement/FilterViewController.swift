@@ -7,65 +7,72 @@
 //
 
 import UIKit
-
-class FilterViewController : UITableViewController,UIPickerViewDataSource {
-    var filterKeys: Dictionary<String,Array<String>> = ["Avaibility":["All","1 Week"]]
-
-    var currFilters:Dictionary<String,String> = ["Availability":"All"]
-    
+import Foundation
+class FilterViewController : UITableViewController {
+    var employeeList:CSV?
+    var filterTitles = ["Availability","Home Location","Band","Business Unit","JRSS"]
+    var filterKeys = ["Wks to Avail","Home Location","Band","Business Unit","JRSS"]
     override func awakeFromNib() {
         super.awakeFromNib()
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
             self.clearsSelectionOnViewWillAppear = false
             self.preferredContentSize = CGSize(width: 320.0, height: 600.0)
         }
+
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .Done, target:self, action: "applyFilter:")
+        self.navigationItem.rightBarButtonItem = doneButton
+        NSNotificationCenter.defaultCenter().addObserver(self,selector:"refresh:", name:"FilterUpdated", object:nil)
+
+    }
+    
+    func refresh(sender:AnyObject) {
+        self.tableView.reloadData()
+    }
+    
+    func applyFilter(sender:AnyObject) {
+        employeeList!.applyFilters()
+        NSNotificationCenter.defaultCenter().postNotificationName("EmployeeListDidComplete", object: nil)
+        self.navigationController?.popViewControllerAnimated(true)
+        
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return filterKeys.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("filter", forIndexPath: indexPath) as UITableViewCell
-        var criteria = ""
-        switch indexPath.row {
-        case 0:
-            criteria = "Availability"
-        case 1:
-            criteria = "Home Location"
-        case 2:
-            criteria = "Band"
-        case 3:
-            criteria = "Business Unit"
-        case 4:
-            criteria = "JRSS"
-        default:
-            break;
-            
-        }
+        var criteria = filterTitles[indexPath.row]
         (cell.viewWithTag(1) as UILabel).text = criteria
-        (cell.viewWithTag(2) as UITextField).text = currFilters[criteria]
-        let picker  = UIPickerView()
-        picker.dataSource = self
-        
-        (cell.viewWithTag(2) as UITextField).inputView = picker as UIView
+        if let currFilter = employeeList?.currFilters[criteria] {
+            (cell.viewWithTag(2) as UILabel).text = currFilter
+        } else {
+            (cell.viewWithTag(2) as UILabel).text = "All"
+        }
         
         return cell
     }
+//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        let selectedCell = tableView.cellForRowAtIndexPath(indexPath)
+//        selectedKey = (selectedCell?.viewWithTag(1)? as UILabel).text!
+//        self.performSegueWithIdentifier("show", sender: nil)
+//        
+//    }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 1
-        
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "show" {
+                let controller = segue.destinationViewController  as ListViewController
+                controller.employeeList = employeeList
+                controller.selectedKey = filterKeys[self.tableView.indexPathForSelectedRow()!.row]
+                controller.navigationItem.title = filterTitles[self.tableView.indexPathForSelectedRow()!.row]
+            
+        }
     }
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
 
     
 }

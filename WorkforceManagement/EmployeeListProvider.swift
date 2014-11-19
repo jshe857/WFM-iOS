@@ -22,7 +22,11 @@ class EmployeeListProvider {
                 NSNotificationCenter.defaultCenter().postNotificationName("EmployeeListDidFail", object: nil)
             } else {
                 let rawCSV = NSString(data:data, encoding: NSUTF8StringEncoding)
-                self.EmployeeList = CSV(csvString: rawCSV, delimiter: NSCharacterSet(charactersInString: ","))
+                var filters:[String:String]?
+                if self.EmployeeList != nil {
+                   filters = self.EmployeeList?.currFilters
+                }
+                self.EmployeeList = CSV(csvString: rawCSV, delimiter: NSCharacterSet(charactersInString: ","),filters:filters)
                 NSNotificationCenter.defaultCenter().postNotificationName("EmployeeListDidComplete", object: nil)
             }
         })

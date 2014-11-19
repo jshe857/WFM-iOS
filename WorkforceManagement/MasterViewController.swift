@@ -79,12 +79,15 @@ class MasterViewController: UITableViewController {
     }
 
     func showFilter(sender: AnyObject) {
-        self.performSegueWithIdentifier("showFilter",sender:nil)
-    
+        //if !self.refreshControl!.refreshing && employeeList != nil {
+            self.performSegueWithIdentifier("showFilter",sender:nil)
+        //}
     }
+    
     func downloadCSV(){
         employeeListProvider.refreshDB()
     }
+    
     func refreshTable(sender: AnyObject) {
         employeeList = employeeListProvider.EmployeeList
         let notification = sender as NSNotification
@@ -129,7 +132,7 @@ class MasterViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
-                if let object = employeeList?.rows[indexPath.row] {
+                if let object = employeeList?.processedRows[indexPath.row] {
                     var controller : DetailViewController
                     if UIDevice.currentDevice().systemVersion.hasPrefix("7.") && UIDevice.currentDevice().localizedModel.hasPrefix("iPhone")    {
                         controller = segue.destinationViewController as DetailViewController
@@ -148,8 +151,16 @@ class MasterViewController: UITableViewController {
                 }
             }
         } else if segue.identifier == "showFilter" {
-            let controller = segue.destinationViewController as FilterViewController
-
+            var controller: FilterViewController
+            if UIDevice.currentDevice().systemVersion.hasPrefix("7.") && UIDevice.currentDevice().localizedModel.hasPrefix("iPhone") {
+                controller = segue.destinationViewController as FilterViewController
+            } else {
+                controller = (segue.destinationViewController as UINavigationController).topViewController as FilterViewController
+            }
+            
+            if employeeList != nil {
+                controller.employeeList = employeeList!
+            }
         }
     }
 
@@ -161,7 +172,7 @@ class MasterViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let list = employeeList
-        if let length = list?.rows.count {
+        if let length = list?.processedRows.count {
 
             self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
             self.tableView.backgroundView = nil
@@ -169,14 +180,14 @@ class MasterViewController: UITableViewController {
             
         } else {
             var background = (self.tableView.backgroundView as UILabel)
-            background.text = "No data is currently unavailable.\n Please pull up to refresh"
+            background.text = "No data is currently available.\n Please pull up to refresh"
         }
         return 0
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
-        let object = employeeList?.rows[indexPath.row]
+        let object = employeeList?.processedRows[indexPath.row]
         //cell.textLabel?.text = object?.description
         
         //populate cell with csv data
@@ -186,19 +197,22 @@ class MasterViewController: UITableViewController {
         let jobText = cell.viewWithTag(4) as UILabel
         let availText = cell.viewWithTag(5) as UILabel
         let availDate = cell.viewWithTag(6) as UILabel
-        nameText.text = object?[1]
-        deptText.text = object?[14]
         
-        locationText.text=object?[3]
-        jobText.text=object?[28]
-        if object?[17] == "0" {
+        
+        nameText.text = object?["Name"]
+        deptText.text = object?["Service"]
+        
+        locationText.text=object?["Home Location"]
+        jobText.text=object?["JRSS"]
+        
+        if object?["Wks to Avail"] == "0.0" {
             availDate.text = "Now"
             let highlight = UIColor(red: 0.114, green: 0.467, blue: 0.937, alpha: 1.0)
             availDate.textColor = highlight
             availDate.font = UIFont.systemFontOfSize(14)
             availText.textColor = highlight
         } else {
-            availDate.text = object?[11]
+            availDate.text = object?["Avail Date"]
             availDate.textColor = UIColor.darkGrayColor()
             availDate.font = UIFont.systemFontOfSize(12)
             availText.textColor = UIColor.darkGrayColor()
