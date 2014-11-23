@@ -12,6 +12,7 @@ class ListViewController : UITableViewController {
     var employeeList:CSV?
     var list = [String]()
     var selectedKey = ""
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
@@ -35,7 +36,7 @@ class ListViewController : UITableViewController {
         if list[indexPath.row] != "All" {
             employeeList!.currFilters[selectedKey] = list[indexPath.row]
         } else {
-            if employeeList?.currFilters[selectedKey] != nil{
+            if employeeList?.currFilters[selectedKey] != nil    {
                  employeeList!.currFilters.removeValueForKey(selectedKey)
             }
         }
@@ -50,7 +51,11 @@ class ListViewController : UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("item", forIndexPath: indexPath) as UITableViewCell
-        (cell.viewWithTag(1) as UILabel).text = list[indexPath.row]
+        if list[indexPath.row] != "" {
+            (cell.viewWithTag(1) as UILabel).text = list[indexPath.row]
+        } else {
+            (cell.viewWithTag(1) as UILabel).text = "Unspecified"
+        }
 
         return cell
     }

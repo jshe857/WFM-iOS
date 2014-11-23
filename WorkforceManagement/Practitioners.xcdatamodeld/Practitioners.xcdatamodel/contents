@@ -2,17 +2,17 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14B25" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Practitioner" syncable="YES">
         <attribute name="availability" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="band" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="band" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="home" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="jrss" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="manager" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="project" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="serial" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="serial" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="wkstoavail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wkstoavail" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Practitioner" positionX="-63" positionY="-18" width="128" height="193"/>
+        <element name="Practitioner" positionX="-63" positionY="-18" width="128" height="195"/>
     </elements>
 </model>

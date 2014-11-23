@@ -37,6 +37,7 @@ class FilterViewController : UITableViewController {
     func applyFilter(sender:AnyObject) {
         employeeList!.applyFilters()
         NSNotificationCenter.defaultCenter().postNotificationName("EmployeeListDidComplete", object: nil)
+        
         self.navigationController?.popViewControllerAnimated(true)
         
     }

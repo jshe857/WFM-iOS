@@ -20,6 +20,7 @@
 		184839C819E7877900527B74 /* EmployeeListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839C719E7877900527B74 /* EmployeeListProvider.swift */; };
 		184839CB19EC91BE00527B74 /* EmployeeURLDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839CA19EC91BE00527B74 /* EmployeeURLDelegate.swift */; };
 		184839CD19ECDD6700527B74 /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839CC19ECDD6700527B74 /* CSV.swift */; };
+		1879BDEA1A1DA1E3002D7E31 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1879BDE91A1DA1E3002D7E31 /* libsqlite3.dylib */; };
 		18D9ACB71A1C9A0F0098D3EC /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9ACB61A1C9A0F0098D3EC /* ListViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		184839C719E7877900527B74 /* EmployeeListProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeListProvider.swift; sourceTree = "<group>"; };
 		184839CA19EC91BE00527B74 /* EmployeeURLDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeURLDelegate.swift; sourceTree = "<group>"; };
 		184839CC19ECDD6700527B74 /* CSV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSV.swift; sourceTree = "<group>"; };
+		1879BDE91A1DA1E3002D7E31 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		18D9ACB61A1C9A0F0098D3EC /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1879BDEA1A1DA1E3002D7E31 /* libsqlite3.dylib in Frameworks */,
 				183987461A1BF7400063BEF6 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,6 +79,7 @@
 		1848399419E5FAE100527B74 = {
 			isa = PBXGroup;
 			children = (
+				1879BDE91A1DA1E3002D7E31 /* libsqlite3.dylib */,
 				183987451A1BF7400063BEF6 /* CoreData.framework */,
 				1848399F19E5FAE100527B74 /* WorkforceManagement */,
 				184839B719E5FAE200527B74 /* WorkforceManagementTests */,

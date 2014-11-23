@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 class MasterViewController: UITableViewController {
     var detailViewController: DetailViewController? = nil
     let employeeListProvider = EmployeeListProvider()
@@ -132,7 +131,7 @@ class MasterViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
-                if let object = employeeList?.processedRows[indexPath.row] {
+                if let object = employeeList?.getRows()[indexPath.row] {
                     var controller : DetailViewController
                     if UIDevice.currentDevice().systemVersion.hasPrefix("7.") && UIDevice.currentDevice().localizedModel.hasPrefix("iPhone")    {
                         controller = segue.destinationViewController as DetailViewController
@@ -172,14 +171,15 @@ class MasterViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let list = employeeList
-        if let length = list?.processedRows.count {
+        var background = (self.tableView.backgroundView as UILabel)
+        if let length = list?.getRows().count {
 
             self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
-            self.tableView.backgroundView = nil
+            background.text = ""
             return length
             
         } else {
-            var background = (self.tableView.backgroundView as UILabel)
+            
             background.text = "No data is currently available.\n Please pull up to refresh"
         }
         return 0
@@ -187,7 +187,7 @@ class MasterViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
-        let object = employeeList?.processedRows[indexPath.row]
+        let object = employeeList?.getRows()[indexPath.row]
         //cell.textLabel?.text = object?.description
         
         //populate cell with csv data

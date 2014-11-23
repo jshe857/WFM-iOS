@@ -7,12 +7,15 @@
 
 import CoreData
 
+
 public class CSV {
     public var headers = [String]()
     public var allRows = [Dictionary<String,String>]()
     public var processedRows = [Dictionary<String,String>]()
     public var columnKeys = [String:[String:Int]]()
     public var currFilters = [String:String]()
+    
+    
     
     let delimiter = NSCharacterSet(charactersInString: ",")
 
@@ -30,7 +33,6 @@ public class CSV {
             self.allRows = self.parseRows(fromLines: lines)
             if filters != nil {
                 self.currFilters = filters!
-                println("gets here")
                 self.processedRows = filterRows()
             } else {
                 self.processedRows = allRows
@@ -119,6 +121,10 @@ public class CSV {
             return columnKeys[column]!.keys.array.sorted {$0 < $1}
         }
         return []
+    }
+    
+    public func getRows() ->[Dictionary<String,String>]{
+        return processedRow
     }
     
     

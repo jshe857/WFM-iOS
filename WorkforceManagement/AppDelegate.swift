@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
         // Override point for customization after application launch.
-        
         if let splitViewController = self.window!.rootViewController as? UISplitViewController {
             
             
@@ -24,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             
             if (splitViewController.respondsToSelector(Selector("displayModeButtonItem"))){
                 splitViewController.preferredDisplayMode = UISplitViewControllerDisplayMode.AllVisible
-
             } else {
             
             
