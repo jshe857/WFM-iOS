@@ -12,6 +12,7 @@ class ListViewController : UITableViewController {
     var employeeList:CSV?
     var list = [String]()
     var selectedKey = ""
+    var selectedVal:String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,19 +29,16 @@ class ListViewController : UITableViewController {
         if let values = employeeList?.getColumnValues(selectedKey) {
             list += values
         }
-        //self.navigationItem.title = selectedKey
     }
 
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+       
         if list[indexPath.row] != "All" {
-            employeeList!.currFilters[selectedKey] = list[indexPath.row]
-        } else {
-            if employeeList?.currFilters[selectedKey] != nil    {
-                 employeeList!.currFilters.removeValueForKey(selectedKey)
-            }
+            selectedVal = list[indexPath.row]
         }
-        NSNotificationCenter.defaultCenter().postNotificationName("FilterUpdated", object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("FilterUpdated", object:self)
         self.navigationController?.popViewControllerAnimated(true)
     }
     

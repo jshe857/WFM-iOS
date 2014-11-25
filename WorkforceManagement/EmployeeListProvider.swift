@@ -13,20 +13,32 @@ class EmployeeListProvider {
     var session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: EmployeeURLDelegate(), delegateQueue: nil)
     
     init() {
+        
     }
     
     func refreshDB() {
         let task = session.dataTaskWithURL(url!, completionHandler:{data,response, error in
             if (error != nil) {
                 println(error.localizedDescription)
-                NSNotificationCenter.defaultCenter().postNotificationName("EmployeeListDidFail", object: nil)
+                //NSNotificationCenter.defaultCenter().postNotificationName("EmployeeListDidFail", object: nil)
+                let filePath = NSBundle.mainBundle().pathForResource("GBS Bench Report",ofType:"csv")
+                if (filePath != nil) {
+                    let rawCSV = String(contentsOfFile:filePath!)
+                    self.EmployeeList = CSV(String: rawCSV!)
+                    NSNotificationCenter.defaultCenter().postNotificationName("EmployeeListDidComplete", object: nil)
+                }else {
+                }
             } else {
                 let rawCSV = NSString(data:data, encoding: NSUTF8StringEncoding)
                 var filters:[String:String]?
                 if self.EmployeeList != nil {
                    filters = self.EmployeeList?.currFilters
                 }
-                self.EmployeeList = CSV(csvString: rawCSV, delimiter: NSCharacterSet(charactersInString: ","),filters:filters)
+                if self.EmployeeList == nil {
+                    self.EmployeeList = CSV(String: rawCSV!)
+                } else {
+                    self.EmployeeList!.update(rawCSV!)
+                }
                 NSNotificationCenter.defaultCenter().postNotificationName("EmployeeListDidComplete", object: nil)
             }
         })

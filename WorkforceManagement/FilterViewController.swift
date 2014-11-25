@@ -12,6 +12,8 @@ class FilterViewController : UITableViewController {
     var employeeList:CSV?
     var filterTitles = ["Availability","Home Location","Band","Business Unit","JRSS"]
     var filterKeys = ["Wks to Avail","Home Location","Band","Business Unit","JRSS"]
+    var currFilters:[String:String]?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
@@ -26,16 +28,20 @@ class FilterViewController : UITableViewController {
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
         let doneButton = UIBarButtonItem(barButtonSystemItem: .Done, target:self, action: "applyFilter:")
         self.navigationItem.rightBarButtonItem = doneButton
+        self.currFilters = employeeList?.getFilters()
         NSNotificationCenter.defaultCenter().addObserver(self,selector:"refresh:", name:"FilterUpdated", object:nil)
 
     }
     
     func refresh(sender:AnyObject) {
+        if let list = sender as? ListViewController {
+            currFilters![list.selectedKey] = list.selectedVal
+        }
         self.tableView.reloadData()
     }
     
     func applyFilter(sender:AnyObject) {
-        employeeList!.applyFilters()
+        employeeList?.applyFilters(currFilters!)
         NSNotificationCenter.defaultCenter().postNotificationName("EmployeeListDidComplete", object: nil)
         
         self.navigationController?.popViewControllerAnimated(true)
@@ -50,8 +56,8 @@ class FilterViewController : UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("filter", forIndexPath: indexPath) as UITableViewCell
         var criteria = filterTitles[indexPath.row]
         (cell.viewWithTag(1) as UILabel).text = criteria
-        if let currFilter = employeeList?.currFilters[criteria] {
-            (cell.viewWithTag(2) as UILabel).text = currFilter
+        if let currFilter = employeeList?.currFilters {
+            (cell.viewWithTag(2) as UILabel).text = currFilter[criteria]
         } else {
             (cell.viewWithTag(2) as UILabel).text = "All"
         }

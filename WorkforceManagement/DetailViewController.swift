@@ -38,7 +38,7 @@ class DetailViewController: UIViewController {
         if let detail = self.detailItem as? [String:String]{
             self.navigationItem.title = "Details"
             name.text = detail["Name"]
-            availability.text = detail["Avail Date"]
+                availability.text = detail["Avail Date"]
             jrss.text = detail["JRSS"]
             band.text = detail["Band"]
             home.text = detail["Home Location"]
