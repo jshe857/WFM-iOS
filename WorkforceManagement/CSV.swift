@@ -14,21 +14,33 @@ public extension String {
 }
 
 public class CSV {
-    public var headers = [String]()
-    public var columnKeys = [String:[String:Int]]()
-    public var currFilters : [String:String]?
+    private var columnKeys = [String:[String:Int]]()
+    private var currFilters = [String:String]()
+    private var processedRows:[[NSObject:AnyObject]]?
+   
+    let db = FMDatabase(path: nil)
+    let schema = "(serial TEXT PRIMARY KEY, name TEXT, band INTEGER, home TEXT, jrss TEXT, project TEXT, availability TEXT, business TEXT, availWks INTEGER, manager TEXT)"
 
-    
-    public var keyedRows: [[String : String]]?
-    public var processedRows:[[String:String]]?
-    
-    public var db: FMDatabase = FMDatabase(path: nil)
     
     public init(String string: String, headers:[String]?, separator:String) {
         
+        if !db.open() {
+            println("Unable to open database")
+            exit(1)
+        }
         
+        if !db.executeUpdate("CREATE TABLE practitioners\(schema)", withArgumentsInArray: nil) {
+            println("create table failed: \(db.lastErrorMessage())")
+        }
+
         parse(String: string, headers: headers, separator: separator)
-        self.processedRows = self.keyedRows
+        let results = db.executeQuery("SELECT * FROM practitioners ORDER BY name",withArgumentsInArray:nil)
+        self.processedRows = [[NSObject:AnyObject]]()
+        if results != nil {
+            while results!.next() {
+                processedRows!.append(results!.resultDictionary())
+            }
+        }
         
         
         
@@ -41,18 +53,39 @@ public class CSV {
     
     
     public func getColumnValues(column:String) ->[String] {
-        if (columnKeys[column] != nil) {
-            return columnKeys[column]!.keys.array.sorted {$0 < $1}
+        var values = [String]()
+        let results = db.executeQuery("SELECT DISTINCT \(column) FROM practitioners ORDER BY \(column)",withArgumentsInArray:nil)
+        if results != nil {
+            while results!.next() {
+                if results!.stringForColumnIndex(0) != "" {
+                    values.append(results!.stringForColumnIndex(0))
+                }
+            }
         }
-        return []
+        return values
     }
     
-    public func getRows() ->[[String:String]] {
+    public func getRow(index:Int) ->[String:String]{
+        var dict  = [String:String]()
         if processedRows != nil {
-            return processedRows!
-        } else {
-            return [[String:String]]()
+            let row = processedRows![index]
+            for (key,val) in row {
+                if let num = val as? Int {
+                    dict[key as String] = String(num)
+                } else {
+                    dict[key as String] = val as? String
+                }
+            }
         }
+        return dict
+    }
+
+    public func getCount() -> Int {
+        var count = 0
+        if processedRows != nil {
+            return processedRows!.count
+        }
+        return count
     }
     
     public func applyFilters([String:String]) {
@@ -90,25 +123,24 @@ public class CSV {
         }
         
         if let unwrappedHeaders = headers {
-            self.headers = unwrappedHeaders
-        }
-        else {
-            self.headers = parsedLines[0]
+        
+        }else {
             parsedLines.removeAtIndex(0)
         }
         
         var rows = parsedLines
-        
-//        self.keyedRows = rows.map{ (field :[String]) -> [String:String] in
-//            
-//            var row = [String:String]()
-//            
-//            for (index, value) in enumerate(field) {
-//                row[self.headers[index]] = value
-//            }
-//            
-//            return row
-//        }
+
+        if db.beginTransaction() {
+            
+            for row in rows {
+                if !db.executeUpdate("INSERT INTO practitioners values (?,?,?,?,?,?,?,?,?,?)",withArgumentsInArray:[row[0],row[1],row[2].toInt()!,row[3],row[5],row[6],row[11],row[14],row[17].toInt()!,row[23]]) {
+                    println("error occurred")
+                }
+            }
+            if !db.commit() {
+                println("failed to commit db transaction")
+            }
+        }
 
     }
     

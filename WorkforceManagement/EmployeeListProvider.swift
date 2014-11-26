@@ -30,10 +30,6 @@ class EmployeeListProvider {
                 }
             } else {
                 let rawCSV = NSString(data:data, encoding: NSUTF8StringEncoding)
-                var filters:[String:String]?
-                if self.EmployeeList != nil {
-                   filters = self.EmployeeList?.currFilters
-                }
                 if self.EmployeeList == nil {
                     self.EmployeeList = CSV(String: rawCSV!)
                 } else {

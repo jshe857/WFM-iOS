@@ -26,7 +26,10 @@ class ListViewController : UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         list = ["All"]
-        if let values = employeeList?.getColumnValues(selectedKey) {
+        
+        if selectedKey == "availWks" {
+            list += ["Now","1 Week","2 Weeks", "3 Weeks", "4 Weeks"]
+        }else if let values = employeeList?.getColumnValues(selectedKey) {
             list += values
         }
     }
@@ -36,8 +39,14 @@ class ListViewController : UITableViewController {
         
        
         if list[indexPath.row] != "All" {
-            selectedVal = list[indexPath.row]
+            if selectedKey == "availWks" {
+                selectedVal = String(indexPath.row-1)
+            } else {
+                selectedVal = list[indexPath.row]
+            }
         }
+        
+        
         NSNotificationCenter.defaultCenter().postNotificationName("FilterUpdated", object:self)
         self.navigationController?.popViewControllerAnimated(true)
     }

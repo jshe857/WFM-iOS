@@ -131,7 +131,7 @@ class MasterViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
-                if let object = employeeList?.getRows()[indexPath.row] {
+                if let object = employeeList?.getRow(indexPath.row) {
                     var controller : DetailViewController
                     if UIDevice.currentDevice().systemVersion.hasPrefix("7.") && UIDevice.currentDevice().localizedModel.hasPrefix("iPhone")    {
                         controller = segue.destinationViewController as DetailViewController
@@ -172,7 +172,7 @@ class MasterViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let list = employeeList
         var background = (self.tableView.backgroundView as UILabel)
-        if let length = list?.getRows().count {
+        if let length = list?.getCount() {
 
             self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
             background.text = ""
@@ -187,7 +187,7 @@ class MasterViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
-        let object = employeeList?.getRows()[indexPath.row]
+        let object = employeeList?.getRow(indexPath.row)
         //cell.textLabel?.text = object?.description
         
         //populate cell with csv data
@@ -199,20 +199,20 @@ class MasterViewController: UITableViewController {
         let availDate = cell.viewWithTag(6) as UILabel
         
         
-        nameText.text = object?["Name"]
-        deptText.text = object?["Service"]
+        nameText.text = object?["name"]
+        deptText.text = object?["business"]
         
-        locationText.text=object?["Home Location"]
-        jobText.text=object?["JRSS"]
+        locationText.text=object?["home"]
+        jobText.text=object?["jrss"]
         
-        if object?["Wks to Avail"] == "0.0" {
+        if object?["availWk"] == "0" {
             availDate.text = "Now"
             let highlight = UIColor(red: 0.114, green: 0.467, blue: 0.937, alpha: 1.0)
             availDate.textColor = highlight
             availDate.font = UIFont.systemFontOfSize(14)
             availText.textColor = highlight
         } else {
-            availDate.text = object?["Avail Date"]
+            availDate.text = object?["availability"]
             availDate.textColor = UIColor.darkGrayColor()
             availDate.font = UIFont.systemFontOfSize(12)
             availText.textColor = UIColor.darkGrayColor()
