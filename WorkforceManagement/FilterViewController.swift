@@ -10,8 +10,12 @@ import UIKit
 import Foundation
 class FilterViewController : UITableViewController {
     var employeeList:CSV?
-    var filterTitles = ["Availability","Home Location","Band","Business Unit","JRSS"]
-    var filterKeys = ["availWks","home","band","business","jrss"]
+    let filterTitles = ["Availability","Home Location","Band","Business Unit","JRSS"]
+    let filterKeys = ["availWks","home","band","business","jrss"]
+    
+    let availKeys = ["Now":"0","1 Week":"1","2 Weeks":"2", "3 Weeks":"3","4 Weeks":"4"]
+    let reverseAvailKeys = ["0":"Now","1":"1 Week","2":"2 Weeks","3": "3 Weeks","4":"4 Weeks"]
+
     var currFilters:[String:String]?
     
     override func awakeFromNib() {
@@ -29,6 +33,8 @@ class FilterViewController : UITableViewController {
         let doneButton = UIBarButtonItem(barButtonSystemItem: .Done, target:self, action: "applyFilter:")
         self.navigationItem.rightBarButtonItem = doneButton
         self.currFilters = employeeList?.getFilters()
+
+        
         NSNotificationCenter.defaultCenter().addObserver(self,selector:"refresh:", name:"FilterUpdated", object:nil)
 
     }
@@ -43,11 +49,12 @@ class FilterViewController : UITableViewController {
     }
     
     func applyFilter(sender:AnyObject) {
+        
         employeeList?.applyFilters(currFilters!)
         NSNotificationCenter.defaultCenter().postNotificationName("EmployeeListDidComplete", object: nil)
         
-        self.navigationController?.popViewControllerAnimated(true)
-        
+        self.navigationController?.popToRootViewControllerAnimated(true)
+        //self.navigationItem.backBarButtonItem.sendActionsForControlEvents(UIControlEvents.TouchDown)
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,8 +66,15 @@ class FilterViewController : UITableViewController {
         var title = filterTitles[indexPath.row]
         (cell.viewWithTag(1) as UILabel).text = title
         var criteria = filterKeys[indexPath.row]
+        
+
         if currFilters![criteria] != nil {
-            (cell.viewWithTag(2) as UILabel).text = currFilters![criteria]
+            
+            if title == "Availability" {
+                 (cell.viewWithTag(2) as UILabel).text = reverseAvailKeys[currFilters!["availWks"]!]
+            } else {
+                (cell.viewWithTag(2) as UILabel).text = currFilters![criteria]
+            }
         } else {
             (cell.viewWithTag(2) as UILabel).text = "All"
         }

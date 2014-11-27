@@ -88,11 +88,43 @@ public class CSV {
         return count
     }
     
-    public func applyFilters([String:String]) {
+    public func applyFilters(filter:[String:String]) {
+        var filterSql = "SELECT * FROM practitioners"
+        if (filter.count > 0) {
+            filterSql += " WHERE "
+            for (key,val) in filter {
+                if key != "availWks" || key != "band" {
+                    filterSql+="\(key)='\(val)'"
+                    filterSql+=" AND "
+                } else {
+                    filterSql+="\(key)=\(val)"
+                    filterSql+=" AND "
+                }
+            }
+
+            filterSql = filterSql.substringToIndex(advance(filterSql.startIndex, countElements(filterSql)-5))
+
+        }
         
+        filterSql += " ORDER BY name"
+        let results = db.executeQuery(filterSql, withArgumentsInArray:nil)
+        self.processedRows = [[NSObject:AnyObject]]()
+        if results != nil {
+            while results!.next() {
+                processedRows!.append(results!.resultDictionary())
+            }
+        }
+        currFilters = filter
+
     }
     
     public func update(string:String) {
+
+        db.executeUpdate("DROP TABLE practitioners IF EXISTS",withArgumentsInArray:nil)
+        if !db.executeUpdate("CREATE TABLE practitioners\(schema)", withArgumentsInArray: nil) {
+            println("create table failed: \(db.lastErrorMessage())")
+        }
+
         parse(String: string, headers:nil, separator:",")
     }
     
@@ -100,6 +132,18 @@ public class CSV {
         return self.currFilters
     }
     
+    public func search(search:String) {
+        
+        let results = db.executeQuery("SELECT * FROM practitioners WHERE name LIKE '%\(search)%'",withArgumentsInArray:nil)
+        self.processedRows = [[NSObject:AnyObject]]()
+        if results != nil {
+            while results!.next() {
+                processedRows!.append(results!.resultDictionary())
+            }
+        }
+
+    }
+
     private func parse(String string: String, headers:[String]?, separator:String) {
         let lines : [String] = includeQuotedStringInFields(Fields:string.splitOnNewLine().filter{(includeElement: String) -> Bool in
             return !includeElement.isEmpty;

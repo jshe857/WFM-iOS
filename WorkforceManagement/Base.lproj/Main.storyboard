@@ -41,14 +41,6 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5NY-SX-ltt">
-                                        <rect key="frame" x="495" y="-11" width="45" height="45"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="45" id="Ffs-gw-MqF"/>
-                                            <constraint firstAttribute="height" constant="45" id="m0A-zT-b6o"/>
-                                        </constraints>
-                                        <state key="normal" image="phone"/>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Availability" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UX8-h2-Zk6">
                                         <rect key="frame" x="25" y="62" width="130" height="21"/>
                                         <constraints>
@@ -139,6 +131,7 @@
                                             <constraint firstAttribute="width" constant="45" id="AJe-d3-N8A"/>
                                             <constraint firstAttribute="height" constant="45" id="rBz-gh-a4u"/>
                                         </constraints>
+                                        <color key="tintColor" red="0.77212213009999997" green="0.77212213009999997" blue="0.77212213009999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="email">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -271,7 +264,6 @@
                                     <constraint firstItem="4Rm-g9-ksq" firstAttribute="leading" secondItem="l5K-9i-uoi" secondAttribute="leading" constant="20" id="eU5-ec-lyX"/>
                                     <constraint firstItem="CqS-qM-xKs" firstAttribute="leading" secondItem="Pkq-zt-vpr" secondAttribute="trailing" constant="20" id="eg0-Rn-v2C"/>
                                     <constraint firstItem="JRn-YN-jva" firstAttribute="top" secondItem="IP8-7T-1wZ" secondAttribute="bottom" constant="8" symbolic="YES" id="fGz-08-NLc"/>
-                                    <constraint firstItem="5NY-SX-ltt" firstAttribute="centerY" secondItem="VAr-sQ-K33" secondAttribute="centerY" id="fTJ-IQ-DiS"/>
                                     <constraint firstAttribute="trailing" secondItem="9SG-ot-9a2" secondAttribute="trailing" constant="25" id="fgh-Hn-FJb"/>
                                     <constraint firstItem="gur-Wd-P3f" firstAttribute="top" secondItem="hSY-Dy-429" secondAttribute="bottom" constant="15" id="gxJ-Ao-G0I"/>
                                     <constraint firstAttribute="trailing" secondItem="CqS-qM-xKs" secondAttribute="trailing" constant="25" id="h2E-zo-GMe"/>
@@ -279,7 +271,6 @@
                                     <constraint firstItem="gur-Wd-P3f" firstAttribute="width" secondItem="W26-gM-8kI" secondAttribute="width" id="j3Y-7B-ZVK"/>
                                     <constraint firstAttribute="centerX" secondItem="Pao-Mz-P5M" secondAttribute="centerX" id="jFO-eE-HiX"/>
                                     <constraint firstItem="mGT-vH-DMu" firstAttribute="leading" secondItem="l5K-9i-uoi" secondAttribute="leading" constant="25" id="jgB-EQ-1wk"/>
-                                    <constraint firstItem="Pxf-3m-teu" firstAttribute="leading" secondItem="5NY-SX-ltt" secondAttribute="trailing" constant="5" id="kIi-Hd-41m"/>
                                     <constraint firstItem="BnR-Y6-Jax" firstAttribute="top" secondItem="iIJ-4g-LGi" secondAttribute="bottom" constant="15" id="kdV-qm-aFa"/>
                                     <constraint firstItem="BnR-Y6-Jax" firstAttribute="leading" secondItem="l5K-9i-uoi" secondAttribute="leading" constant="25" id="lCq-jE-svx"/>
                                     <constraint firstItem="pCV-2Y-WE6" firstAttribute="leading" secondItem="l5K-9i-uoi" secondAttribute="leading" constant="20" id="lYE-ah-fnF"/>
@@ -577,12 +568,12 @@
         <scene sceneID="4Ed-zP-Ih8">
             <objects>
                 <tableViewController id="tlo-wl-bzk" customClass="ListViewController" customModule="WFM" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="QRK-YX-ssW">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="62" sectionHeaderHeight="22" sectionFooterHeight="22" id="QRK-YX-ssW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="item" textLabel="aI0-TJ-meW" style="IBUITableViewCellStyleDefault" id="68q-ES-xM3">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="item" textLabel="aI0-TJ-meW" rowHeight="62" style="IBUITableViewCellStyleDefault" id="68q-ES-xM3">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="68q-ES-xM3" id="zfD-GJ-oLe">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -643,6 +634,5 @@
     <resources>
         <image name="connections" width="65" height="65"/>
         <image name="email" width="80" height="80"/>
-        <image name="phone" width="80" height="80"/>
     </resources>
 </document>

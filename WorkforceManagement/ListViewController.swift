@@ -40,7 +40,7 @@ class ListViewController : UITableViewController {
        
         if list[indexPath.row] != "All" {
             if selectedKey == "availWks" {
-                selectedVal = String(indexPath.row-1)
+                selectedVal = String(indexPath.row - 1)
             } else {
                 selectedVal = list[indexPath.row]
             }
