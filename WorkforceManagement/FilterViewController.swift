@@ -18,6 +18,11 @@ class FilterViewController : UITableViewController {
 
     var currFilters:[String:String]?
     
+    @IBAction func unwindToThisViewController(segue: UIStoryboardSegue) {
+        println("hello")
+    }
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
@@ -43,8 +48,9 @@ class FilterViewController : UITableViewController {
         
         if let list = sender.object as? ListViewController {
             currFilters![list.selectedKey] = list.selectedVal
+        } else {
+            currFilters = employeeList?.getFilters()
         }
-        println(currFilters)
         self.tableView.reloadData()
     }
     
@@ -52,9 +58,8 @@ class FilterViewController : UITableViewController {
         
         employeeList?.applyFilters(currFilters!)
         NSNotificationCenter.defaultCenter().postNotificationName("EmployeeListDidComplete", object: nil)
-        
-        self.navigationController?.popToRootViewControllerAnimated(true)
-        //self.navigationItem.backBarButtonItem.sendActionsForControlEvents(UIControlEvents.TouchDown)
+        self.navigationController?.popViewControllerAnimated(true)
+
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

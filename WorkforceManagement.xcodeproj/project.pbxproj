@@ -15,7 +15,6 @@
 		184839AA19E5FAE100527B74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184839A819E5FAE100527B74 /* Main.storyboard */; };
 		184839AC19E5FAE100527B74 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 184839AB19E5FAE100527B74 /* Images.xcassets */; };
 		184839AF19E5FAE100527B74 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184839AD19E5FAE100527B74 /* LaunchScreen.xib */; };
-		184839BB19E5FAE200527B74 /* WorkforceManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839BA19E5FAE200527B74 /* WorkforceManagementTests.swift */; };
 		184839C819E7877900527B74 /* EmployeeListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839C719E7877900527B74 /* EmployeeListProvider.swift */; };
 		184839CB19EC91BE00527B74 /* EmployeeURLDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839CA19EC91BE00527B74 /* EmployeeURLDelegate.swift */; };
 		184839CD19ECDD6700527B74 /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839CC19ECDD6700527B74 /* CSV.swift */; };
@@ -26,18 +25,9 @@
 		1879BE2A1A242228002D7E31 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879BE221A242228002D7E31 /* FMDatabasePool.m */; };
 		1879BE2B1A242228002D7E31 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879BE241A242228002D7E31 /* FMDatabaseQueue.m */; };
 		1879BE2C1A242228002D7E31 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879BE271A242228002D7E31 /* FMResultSet.m */; };
+		18A5E7EF1A2C7050007AF840 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A5E7ED1A2C7050007AF840 /* iPhone.storyboard */; };
 		18D9ACB71A1C9A0F0098D3EC /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9ACB61A1C9A0F0098D3EC /* ListViewController.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		184839B519E5FAE200527B74 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1848399519E5FAE100527B74 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1848399C19E5FAE100527B74;
-			remoteInfo = WorkforceManagement;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		1879BE191A23E0EC002D7E31 /* CopyFiles */ = {
@@ -62,7 +52,6 @@
 		184839A919E5FAE100527B74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		184839AB19E5FAE100527B74 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		184839AE19E5FAE100527B74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		184839B419E5FAE100527B74 /* WorkforceManagementTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorkforceManagementTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		184839B919E5FAE200527B74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		184839BA19E5FAE200527B74 /* WorkforceManagementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkforceManagementTests.swift; sourceTree = "<group>"; };
 		184839C719E7877900527B74 /* EmployeeListProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeListProvider.swift; sourceTree = "<group>"; };
@@ -82,6 +71,7 @@
 		1879BE251A242228002D7E31 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
 		1879BE261A242228002D7E31 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		1879BE271A242228002D7E31 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		18A5E7EE1A2C7050007AF840 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/iPhone.storyboard; sourceTree = "<group>"; };
 		18D9ACB61A1C9A0F0098D3EC /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,13 +82,6 @@
 			files = (
 				1879BDEA1A1DA1E3002D7E31 /* libsqlite3.dylib in Frameworks */,
 				183987461A1BF7400063BEF6 /* CoreData.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		184839B119E5FAE100527B74 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,7 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				1848399D19E5FAE100527B74 /* WFM.app */,
-				184839B419E5FAE100527B74 /* WorkforceManagementTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -153,6 +135,7 @@
 				1879BE261A242228002D7E31 /* FMResultSet.h */,
 				1879BE271A242228002D7E31 /* FMResultSet.m */,
 				1879BE1B1A23EF15002D7E31 /* Bridging-Header.h */,
+				18A5E7ED1A2C7050007AF840 /* iPhone.storyboard */,
 			);
 			path = WorkforceManagement;
 			sourceTree = "<group>";
@@ -203,24 +186,6 @@
 			productReference = 1848399D19E5FAE100527B74 /* WFM.app */;
 			productType = "com.apple.product-type.application";
 		};
-		184839B319E5FAE100527B74 /* WorkforceManagementTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 184839C119E5FAE200527B74 /* Build configuration list for PBXNativeTarget "WorkforceManagementTests" */;
-			buildPhases = (
-				184839B019E5FAE100527B74 /* Sources */,
-				184839B119E5FAE100527B74 /* Frameworks */,
-				184839B219E5FAE100527B74 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				184839B619E5FAE200527B74 /* PBXTargetDependency */,
-			);
-			name = WorkforceManagementTests;
-			productName = WorkforceManagementTests;
-			productReference = 184839B419E5FAE100527B74 /* WorkforceManagementTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -232,10 +197,6 @@
 				TargetAttributes = {
 					1848399C19E5FAE100527B74 = {
 						CreatedOnToolsVersion = 6.0.1;
-					};
-					184839B319E5FAE100527B74 = {
-						CreatedOnToolsVersion = 6.0.1;
-						TestTargetID = 1848399C19E5FAE100527B74;
 					};
 				};
 			};
@@ -253,7 +214,6 @@
 			projectRoot = "";
 			targets = (
 				1848399C19E5FAE100527B74 /* WorkforceManagement */,
-				184839B319E5FAE100527B74 /* WorkforceManagementTests */,
 			);
 		};
 /* End PBXProject section */
@@ -267,13 +227,7 @@
 				184839AF19E5FAE100527B74 /* LaunchScreen.xib in Resources */,
 				1879BE051A22FA20002D7E31 /* GBS Bench Report.csv in Resources */,
 				184839AC19E5FAE100527B74 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		184839B219E5FAE100527B74 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				18A5E7EF1A2C7050007AF840 /* iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,23 +254,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		184839B019E5FAE100527B74 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				184839BB19E5FAE200527B74 /* WorkforceManagementTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		184839B619E5FAE200527B74 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1848399C19E5FAE100527B74 /* WorkforceManagement */;
-			targetProxy = 184839B519E5FAE200527B74 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		184839A819E5FAE100527B74 /* Main.storyboard */ = {
@@ -333,6 +271,14 @@
 				184839AE19E5FAE100527B74 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		18A5E7ED1A2C7050007AF840 /* iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				18A5E7EE1A2C7050007AF840 /* Base */,
+			);
+			name = iPhone.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -446,40 +392,6 @@
 			};
 			name = Release;
 		};
-		184839C219E5FAE200527B74 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = WorkforceManagementTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WorkforceManagement.app/WorkforceManagement";
-			};
-			name = Debug;
-		};
-		184839C319E5FAE200527B74 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = WorkforceManagementTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WorkforceManagement.app/WorkforceManagement";
-			};
-			name = Release;
-		};
 		184839CE19F714AF00527B74 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -530,21 +442,6 @@
 			};
 			name = Distribution;
 		};
-		184839D019F714AF00527B74 /* Distribution */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = WorkforceManagementTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WorkforceManagement.app/WorkforceManagement";
-			};
-			name = Distribution;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -564,16 +461,6 @@
 				184839BF19E5FAE200527B74 /* Debug */,
 				184839C019E5FAE200527B74 /* Release */,
 				184839CF19F714AF00527B74 /* Distribution */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		184839C119E5FAE200527B74 /* Build configuration list for PBXNativeTarget "WorkforceManagementTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				184839C219E5FAE200527B74 /* Debug */,
-				184839C319E5FAE200527B74 /* Release */,
-				184839D019F714AF00527B74 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

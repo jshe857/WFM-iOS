@@ -7,20 +7,22 @@
 //
 
 import UIKit
-class MasterViewController: UITableViewController {
+class MasterViewController: UIViewController,UITableViewDataSource, UITableViewDelegate {
     let filterTitles = ["availWks":"Availability","home":"Home Location","band":"Band","business":"Business Unit","jrss":"JRSS"]
-
+    let filterBarShowHeight:CGFloat = 30.0
+    
     var detailViewController: DetailViewController? = nil
     let employeeListProvider = EmployeeListProvider()
     var employeeList:CSV?
     var alert:UIAlertView?
     var updateDate = UILabel()
     
-    //header
-    var sectionHeader = UIView()
-    var filterNames = UILabel()
-    var clear = UIButton()
-    
+    @IBOutlet weak var filterBarHeight: NSLayoutConstraint!
+    @IBOutlet weak var filterBar: UIView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var filterNames: UILabel!
+    @IBOutlet weak var clear: UIButton!
     
 
     var lastHeight:CGFloat = 0
@@ -28,16 +30,20 @@ class MasterViewController: UITableViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-            self.clearsSelectionOnViewWillAppear = false
             self.preferredContentSize = CGSize(width: 320.0, height: 600.0)
         }
-    }
 
+
+    }
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let addButton = UIBarButtonItem(title:"Filter",style:UIBarButtonItemStyle.Plain, target:self, action: "showFilter:")
-        self.navigationItem.rightBarButtonItem = addButton
+        let filterButton = UIBarButtonItem(title:"Filter",style:UIBarButtonItemStyle.Plain, target:self, action: "showFilter:")
+        self.navigationItem.rightBarButtonItem = filterButton
+        
+        let refreshButton = UIBarButtonItem(barButtonSystemItem:.Refresh,target:self,action:"downloadCSV:")
+        self.navigationItem.leftBarButtonItem = refreshButton
     
         
         if let split = self.splitViewController {
@@ -49,11 +55,13 @@ class MasterViewController: UITableViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable:", name: "EmployeeListDidComplete", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable:", name: "EmployeeListDidFail", object: nil)
         
-        //refresh control set up
-        self.refreshControl = UIRefreshControl()
-        self.refreshControl!.tintColor = UIColor.whiteColor()
-        self.refreshControl!.addTarget(self, action:"downloadCSV",forControlEvents:.ValueChanged)
-        self.refreshControl!.backgroundColor = UIColor(red: 0.227, green: 0.588, blue: 0.988, alpha: 1.0)
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+
+        self.activityIndicator.layer.cornerRadius = 10
+        self.activityIndicator.stopAnimating()
+        
+        
         // Display a message when the table is empty
         var messageLabel = UILabel(frame: CGRect(x: 0,y: 0, width: self.view.bounds.size.width,height: self.view.bounds.size.height))
         messageLabel.text = "";
@@ -68,33 +76,13 @@ class MasterViewController: UITableViewController {
         
         //header view
         
-        sectionHeader.frame = CGRect(x: 0,y: 0, width: self.view.bounds.width,height:30)
         
-        
-        filterNames = UILabel(frame: CGRect(x: 0,y: 0, width: 270,height:30))
-        filterNames.backgroundColor = UIColor.lightGrayColor()
-        filterNames.numberOfLines=2
-        
-        
-        
-        
-        clear.setTitle("Clear",forState:UIControlState.Normal)
-        clear.backgroundColor = UIColor.redColor()
-        
-        clear.frame = CGRect(x:270,y: 0, width: 50,height:30)
+      
         clear.addTarget(self,action:"clearFilter:",forControlEvents: UIControlEvents.TouchDown)
         
-        sectionHeader.addSubview(filterNames)
-        sectionHeader.addSubview(clear)
+        filterBarHeight.constant = 0
+        filterBar.hidden = true
 
-        sectionHeader.hidden = true
-
-
-    }
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-    
     }
     
     override func didReceiveMemoryWarning() {
@@ -103,75 +91,81 @@ class MasterViewController: UITableViewController {
     }
 
     func showFilter(sender: AnyObject) {
-        if !self.refreshControl!.refreshing && employeeList != nil {
+        if employeeList != nil {
             self.performSegueWithIdentifier("showFilter",sender:nil)
         }
     }
     func clearFilter(sender: AnyObject) {
         employeeList?.applyFilters([String:String]())
-        sectionHeader.hidden = true
+        filterBarHeight.constant = 0
+        filterBar.hidden = true
         NSNotificationCenter.defaultCenter().postNotificationName("EmployeeListDidComplete", object: nil)
-        //self.tableView.reloadData()
+        NSNotificationCenter.defaultCenter().postNotificationName("FilterUpdated",object: nil)
     }
     
-    func downloadCSV(){
-        employeeListProvider.refreshDB()
+    func downloadCSV(sender: AnyObject){
+        if !activityIndicator.isAnimating() {
+            self.activityIndicator.startAnimating()
+            self.activityIndicator.hidesWhenStopped = true
+            self.tableView.userInteractionEnabled = false
+            employeeListProvider.refreshDB()
+            
+        } else {
+            
+            
+        }
     }
     
     func refreshTable(sender: AnyObject) {
+        
+
         employeeList = employeeListProvider.EmployeeList
         let notification = sender as NSNotification
         if (notification.name == "EmployeeListDidComplete") {
             let filters = employeeList!.getFilters()
-            println(filters)
             if filters?.count > 0 {
-                var applied = "  Filters Applied: "
+                
+                var applied = "Filters: "
                 for (key,val) in filters! {
                     applied += "\(filterTitles[key]!), "
                 }
                 applied = applied.substringToIndex(advance(applied.startIndex, countElements(applied)-2))
-                let font = UIFont(name: "Helvetica Bold", size:14.0)
-                let attr = NSDictionary(objects:[font!,UIColor.whiteColor()],forKeys:[NSFontAttributeName,NSForegroundColorAttributeName])
-                let attributedTitle = NSAttributedString(string: applied, attributes: attr)
-                filterNames.attributedText = attributedTitle
-                sectionHeader.hidden = false
+                filterNames.text = applied
+                if filters?.count > 3 {
+                    filterNames.font = UIFont.systemFontOfSize(12)
+                }
+                filterBarHeight.constant = filterBarShowHeight
+                filterBar.hidden = false
             } else {
-                filterNames.text = nil
-                sectionHeader.hidden = true
+                filterBar.hidden = true
+                filterBarHeight.constant = 0
             }
-            self.tableView.reloadData()
-            if (self.refreshControl != nil) {
-                
-                //Code to add date to refresh control
-                let formatter = NSDateFormatter()
-                formatter.dateFormat = "MMM d, h:mm a"
-                let date = formatter.stringFromDate(NSDate())
-                let title = "Last update: \(date)"
-                let attrsDictionary = NSDictionary(object: (UIColor.whiteColor()),forKey: NSForegroundColorAttributeName)
-                let attributedTitle = NSMutableAttributedString(string: title )
-                attributedTitle.addAttribute(NSForegroundColorAttributeName,
-                    value: UIColor.whiteColor(),
-                    range: NSMakeRange(0, countElements(title)))
-                self.refreshControl!.attributedTitle = attributedTitle
-
-                //Update table header
-//                updateDate = UILabel(frame: CGRect(x: 0,y: 20, width: self.view.bounds.size.width,height: 15))
-//                updateDate.backgroundColor = UIColor.lightGrayColor()
-//                let formatter = NSDateFormatter()
-//                formatter.dateFormat = "MMM d, h:mm a"
-//                let date = formatter.stringFromDate(NSDate())
-//                let title = "  Last update: \(date)"
-//                let font = UIFont(name: "Helvetica Bold", size:12.0)
-//                let attr = NSDictionary(objects:[font!,UIColor.whiteColor()],forKeys:[NSFontAttributeName,NSForegroundColorAttributeName])
-//                
-//                let attributedTitle = NSAttributedString(string: title, attributes: attr)
-//                
-//                updateDate.attributedText = attributedTitle
-                self.refreshControl!.endRefreshing()
-            }
+            
+            //Code to add date to refresh control
+            let formatter = NSDateFormatter()
+            formatter.dateFormat = "MMM d, h:mm a"
+            let date = formatter.stringFromDate(NSDate())
+            let title = "Last update: \(date)"
+            let attrsDictionary = NSDictionary(object: (UIColor.whiteColor()),forKey: NSForegroundColorAttributeName)
+            let attributedTitle = NSMutableAttributedString(string: title )
+            attributedTitle.addAttribute(NSForegroundColorAttributeName,
+                value: UIColor.whiteColor(),
+                range: NSMakeRange(0, countElements(title)))
+            updateDate.attributedText = attributedTitle
+            tableView.tableHeaderView = updateDate
+            
+            
+            
+            dispatch_async(dispatch_get_main_queue(), { self.tableView.reloadData()})
+            dispatch_async(dispatch_get_main_queue(), { self.activityIndicator.stopAnimating()})
+            self.tableView.userInteractionEnabled = true
+            
+            
+            
         } else  if (notification.name == "EmployeeListDidFail"){
             dispatch_async(dispatch_get_main_queue(), {self.alert!.show()})
-            self.refreshControl!.endRefreshing()
+            dispatch_async(dispatch_get_main_queue(), {self.activityIndicator.stopAnimating()})
+
         }
     }
     // MARK: - Segues
@@ -181,7 +175,8 @@ class MasterViewController: UITableViewController {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
                 if let object = employeeList?.getRow(indexPath.row) {
                     var controller : DetailViewController
-                    if UIDevice.currentDevice().systemVersion.hasPrefix("7.") && UIDevice.currentDevice().localizedModel.hasPrefix("iPhone")    {
+                    let idiom = UIDevice.currentDevice().userInterfaceIdiom
+                    if idiom == UIUserInterfaceIdiom.Phone {
                         controller = segue.destinationViewController as DetailViewController
                     } else {
                         controller = (segue.destinationViewController as UINavigationController).topViewController as DetailViewController
@@ -190,7 +185,7 @@ class MasterViewController: UITableViewController {
                     controller.detailItem = object
                     if let split = self.splitViewController {
                         if split.respondsToSelector(Selector("displayModeButtonItem")){
-                    
+                            
                             controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
                             controller.navigationItem.leftItemsSupplementBackButton = true
                         }
@@ -199,7 +194,9 @@ class MasterViewController: UITableViewController {
             }
         } else if segue.identifier == "showFilter" {
             var controller: FilterViewController
-            if UIDevice.currentDevice().systemVersion.hasPrefix("7.") && UIDevice.currentDevice().localizedModel.hasPrefix("iPhone") {
+
+            let idiom = UIDevice.currentDevice().userInterfaceIdiom
+            if idiom == UIUserInterfaceIdiom.Phone {
                 controller = segue.destinationViewController as FilterViewController
             } else {
                 controller = (segue.destinationViewController as UINavigationController).topViewController as FilterViewController
@@ -213,11 +210,7 @@ class MasterViewController: UITableViewController {
 
     // MARK: - Table View
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let list = employeeList
         var background = (self.tableView.backgroundView as UILabel)
         if let length = list?.getCount() {
@@ -233,7 +226,7 @@ class MasterViewController: UITableViewController {
         return 0
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         let object = employeeList?.getRow(indexPath.row)
         //cell.textLabel?.text = object?.description
@@ -252,7 +245,6 @@ class MasterViewController: UITableViewController {
         
         locationText.text=object?["home"]
         jobText.text=object?["jrss"]
-        
         if object?["availWks"] == "0" {
             availDate.text = "Now"
             let highlight = UIColor(red: 0.114, green: 0.467, blue: 0.937, alpha: 1.0)
@@ -264,36 +256,10 @@ class MasterViewController: UITableViewController {
             availDate.textColor = UIColor.darkGrayColor()
             availDate.font = UIFont.systemFontOfSize(12)
             availText.textColor = UIColor.darkGrayColor()
+            
         }
         
         return cell
-    }
-
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return false
-    }
-
-
-    
-//    override func scrollViewDidScroll(scrollView: UIScrollView) {
-//        
-//        if scrollView.contentOffset.y < self.lastHeight || scrollView.contentOffset.y < 5{
-//            if filterNames.text != nil {
-//                sectionHeader.hidden=false
-//            }
-//        } else {
-//            sectionHeader.hidden=true
-//        }
-//        self.tableView.reloadData()
-//        self.lastHeight = scrollView.contentOffset.y
-//    }
-
-
-
-    
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return sectionHeader
     }
 
 

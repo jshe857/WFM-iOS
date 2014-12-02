@@ -12,9 +12,24 @@ import Foundation
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate{
 
     var window: UIWindow?
-    private var collapseDetailViewController = false
+    private var collapseDetailViewController = true
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        
+        // step 1. check the device
+        var idiom = UIDevice.currentDevice().userInterfaceIdiom
+        
+        // step 2. take a storyboard variable
+        var storyBoard:UIStoryboard? = nil
+        
+        // step 3. load appropriate storyboard file
+        if idiom == UIUserInterfaceIdiom.Phone {
+            storyBoard = UIStoryboard(name: "iPhone", bundle: nil)
+            self.window!.rootViewController = storyBoard!.instantiateInitialViewController() as UINavigationController
 
+        }
+        
+        
         // Override point for customization after application launch.
         if let splitViewController = self.window!.rootViewController as? UISplitViewController {
             
@@ -32,6 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         }
         return true
     }
+
+    
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -57,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     // MARK: - Split view
     func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController!, ontoPrimaryViewController primaryViewController: UIViewController!) -> Bool {
-        return true
+        return collapseDetailViewController
     }
 
 }

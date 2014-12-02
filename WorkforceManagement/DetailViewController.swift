@@ -7,9 +7,7 @@
 //
 
 import UIKit
-
 class DetailViewController: UIViewController {
-
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var availability: UILabel!
     @IBOutlet weak var band: UILabel!
@@ -19,6 +17,9 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var manager: UILabel!
     @IBOutlet weak var project: UILabel!
     
+    var email:String?
+
+
     var detailItem: AnyObject? {
         didSet {
             // Update the view.
@@ -38,7 +39,7 @@ class DetailViewController: UIViewController {
         if let detail = self.detailItem as? [String:String]{
             self.navigationItem.title = "Details"
             name.text = detail["name"]
-                availability.text = detail["availability"]
+            availability.text = detail["availability"]
             jrss.text = detail["jrss"]
             band.text = detail["band"]
             home.text = detail["home"]
@@ -47,13 +48,37 @@ class DetailViewController: UIViewController {
             project.text = detail["project"]
             
             
+            if let serial = detail["serial"] {
+                let faceUrl = NSURL(string:"http://faces.tap.ibm.com/api/find/?q=uid:"+serial+"&location:AU&limit=1")!
+                NSURLConnection.sendAsynchronousRequest(NSURLRequest(URL:faceUrl),queue:NSOperationQueue(),
+                    completionHandler: {response,data, error in
+                        if (error != nil) {
+                        } else {
+                            var jsonError:NSError?
+                           if let json = NSJSONSerialization.JSONObjectWithData(data,options:NSJSONReadingOptions.MutableContainers,error:&jsonError) as? NSArray {
+                                self.email = (json[0] as NSDictionary)["email"] as String?
+                                println(email)
+                            }
+                        }
+                })
+
+            }
+            let emailBtn = self.view.viewWithTag(1) as UIButton
+            emailBtn.addTarget(self, action:"sendEmail:", forControlEvents:UIControlEvents.TouchDown)
+            
         }
     }
-
+    
+    func sendEmail(sender:AnyObject) {
+        println(email)
+        UIApplication.sharedApplication().openURL(NSURL(string:email!)!)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.configureView()
+        //self.configureView()
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
