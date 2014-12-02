@@ -57,7 +57,6 @@ class DetailViewController: UIViewController {
                             var jsonError:NSError?
                            if let json = NSJSONSerialization.JSONObjectWithData(data,options:NSJSONReadingOptions.MutableContainers,error:&jsonError) as? NSArray {
                                 self.email = (json[0] as NSDictionary)["email"] as String?
-                                println(email)
                             }
                         }
                 })
@@ -65,13 +64,24 @@ class DetailViewController: UIViewController {
             }
             let emailBtn = self.view.viewWithTag(1) as UIButton
             emailBtn.addTarget(self, action:"sendEmail:", forControlEvents:UIControlEvents.TouchDown)
-            
+            let connections = self.view.viewWithTag(2)
+            let gesture = UITapGestureRecognizer(target:self, action:"openConnections:")
+            connections?.addGestureRecognizer(gesture)
         }
     }
     
     func sendEmail(sender:AnyObject) {
+        println("mailto:"+email!)
+        if self.email != nil {
+            UIApplication.sharedApplication().openURL(NSURL(string:"mailto:"+email!)!)
+        }
+    }
+    
+    func openConnections(sender:AnyObject) {
         println(email)
-        UIApplication.sharedApplication().openURL(NSURL(string:email!)!)
+        if self.email != nil {
+            UIApplication.sharedApplication().openURL(NSURL(string:"https://w3-connections.ibm.com/profiles/html/profileView.do?email=\(email!)")!)
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
