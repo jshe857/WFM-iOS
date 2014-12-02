@@ -8,6 +8,8 @@
 
 import UIKit
 class DetailViewController: UIViewController {
+
+    //Storyboard labels
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var availability: UILabel!
     @IBOutlet weak var band: UILabel!
@@ -22,15 +24,13 @@ class DetailViewController: UIViewController {
 
     var detailItem: AnyObject? {
         didSet {
-            // Update the view.
+            // Update the view on storyboard segue
             self.configureView()
         }
     }
 
     func configureView() {
         // Update the user interface for the detail item.
-        
-        
         let scroll = self.view.subviews[0] as UIScrollView
         scroll.center = CGPointMake(0,-100)
         scroll.contentSize = CGSize(width: self.view.bounds.width,height: self.view.bounds.height)
@@ -49,7 +49,7 @@ class DetailViewController: UIViewController {
             
             
             if let serial = detail["serial"] {
-                let faceUrl = NSURL(string:"http://faces.tap.ibm.com/api/find/?q=uid:"+serial+"&location:AU&limit=1")!
+                let faceUrl = NSURL(string:"http://faces.tap.ibm.com/api/find/?q=uid:"+serial+"&limit=1")!
                 NSURLConnection.sendAsynchronousRequest(NSURLRequest(URL:faceUrl),queue:NSOperationQueue(),
                     completionHandler: {response,data, error in
                         if (error != nil) {

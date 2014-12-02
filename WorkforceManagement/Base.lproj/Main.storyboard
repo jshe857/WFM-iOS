@@ -125,16 +125,14 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUc-JY-rxw">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUc-JY-rxw">
                                         <rect key="frame" x="545" y="-11" width="45" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="45" id="5Ab-99-GTz"/>
                                             <constraint firstAttribute="height" constant="45" id="gwI-On-0jI"/>
                                         </constraints>
                                         <color key="tintColor" red="0.77212213009999997" green="0.77212213009999997" blue="0.77212213009999997" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" image="email">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
+                                        <state key="normal" image="email"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDa-2u-043">
                                         <rect key="frame" x="175" y="114" width="400" height="18"/>
@@ -373,15 +371,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="8Zc-3D-BAq">
+                            <searchBar contentMode="redraw" searchBarStyle="prominent" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Zc-3D-BAq">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Ixd-9b-jrO"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="m40-Il-pCQ" id="1Ph-Ey-TNS"/>
-                                </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="99" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SGM-rT-t3S">
                                 <rect key="frame" x="0.0" y="138" width="600" height="462"/>
@@ -606,20 +601,11 @@
                         <outlet property="filterBar" destination="D2U-AC-bZz" id="VDI-Xj-kKi"/>
                         <outlet property="filterBarHeight" destination="sKu-v8-oI8" id="QOA-nZ-0Ts"/>
                         <outlet property="filterNames" destination="h03-WY-wje" id="cCy-Ld-fwT"/>
-                        <outlet property="searchDisplayController" destination="m40-Il-pCQ" id="eKF-5K-qWn"/>
                         <outlet property="tableView" destination="SGM-rT-t3S" id="uoL-YA-oDy"/>
                         <segue destination="BzP-y9-64b" kind="showDetail" identifier="showFilter" id="HBa-dB-wV1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x9C-WR-IWb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="m40-Il-pCQ">
-                    <connections>
-                        <outlet property="delegate" destination="utG-zn-ev9" id="mTs-i6-H9z"/>
-                        <outlet property="searchContentsController" destination="utG-zn-ev9" id="CbR-ed-RSi"/>
-                        <outlet property="searchResultsDataSource" destination="utG-zn-ev9" id="9Mb-db-nrz"/>
-                        <outlet property="searchResultsDelegate" destination="utG-zn-ev9" id="Mdw-Np-CTi"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="674" y="-630"/>
         </scene>

@@ -10,17 +10,16 @@ import UIKit
 import Foundation
 class FilterViewController : UITableViewController {
     var employeeList:CSV?
+    
+    //translate filter fields to db column keys
     let filterTitles = ["Availability","Home Location","Band","Business Unit","JRSS"]
     let filterKeys = ["availWks","home","band","business","jrss"]
     
+    //translate db values to displayable text
     let availKeys = ["Now":"0","1 Week":"1","2 Weeks":"2", "3 Weeks":"3","4 Weeks":"4"]
     let reverseAvailKeys = ["0":"Now","1":"1 Week","2":"2 Weeks","3": "3 Weeks","4":"4 Weeks"]
 
     var currFilters:[String:String]?
-    
-    @IBAction func unwindToThisViewController(segue: UIStoryboardSegue) {
-        println("hello")
-    }
     
     
     override func awakeFromNib() {

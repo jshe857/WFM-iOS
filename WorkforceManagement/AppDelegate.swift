@@ -2,9 +2,29 @@
 //  AppDelegate.swift
 //  WorkforceManagement
 //
-//  Created by IBM on 9/10/2014.
+//  Created by Jeffrey Shen on 9/10/2014.
+//  Contact jeshen@au1.ibm.com for more information
 //  Copyright (c) 2014 IBM. All rights reserved.
 //
+
+
+//  WFM Native iOS app
+//
+//
+//  Flow
+//  1.downloads a csv file from sydgsa server (EmployeeListProvider.swift)
+//  2.parses and stores the data into a local sqlite3 db using 3rd party
+//  opensource FMDB wrapper functions(CSV.swift)
+//  3.displays data into a table view(MasterViewController.swift)
+//  4.displays detail view on cell tap (DetailViewController.swift)
+//
+//  Features
+//  App contains filter functionality
+//  filter screen interacts with sqldb to filter on given criteria (FilterViewController.swift)
+
+
+
+
 
 import UIKit
 import Foundation
@@ -31,9 +51,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         
         // Override point for customization after application launch.
+        
+        //check if rootview is splitview - not supported on ios 7 iphones
         if let splitViewController = self.window!.rootViewController as? UISplitViewController {
-            
-            
+
             let navigationController = splitViewController.viewControllers[0] as UINavigationController
             
             if (splitViewController.respondsToSelector(Selector("displayModeButtonItem"))){

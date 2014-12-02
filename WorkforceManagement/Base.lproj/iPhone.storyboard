@@ -332,9 +332,6 @@
                                     <constraint firstAttribute="height" constant="44" id="8iy-gG-cDz"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="vNO-1J-o7L" id="xVG-ji-6D3"/>
-                                </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="99" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="tWL-JK-nPD">
                                 <rect key="frame" x="6" y="138" width="588" height="462"/>
@@ -559,20 +556,11 @@
                         <outlet property="filterBar" destination="5AX-1l-4C3" id="6Tf-mR-mTs"/>
                         <outlet property="filterBarHeight" destination="acZ-Pl-a2v" id="5ct-qP-Eoa"/>
                         <outlet property="filterNames" destination="1nO-ST-Aek" id="Hq6-EV-Foz"/>
-                        <outlet property="searchDisplayController" destination="vNO-1J-o7L" id="P3q-jd-I9m"/>
                         <outlet property="tableView" destination="tWL-JK-nPD" id="E04-wn-LTG"/>
                         <segue destination="RnB-7O-ujp" kind="show" identifier="showFilter" id="3OV-gY-kyG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vyA-rJ-zjm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="vNO-1J-o7L">
-                    <connections>
-                        <outlet property="delegate" destination="kVh-zc-qO6" id="FbU-Kc-wgi"/>
-                        <outlet property="searchContentsController" destination="kVh-zc-qO6" id="Gv5-fp-VPd"/>
-                        <outlet property="searchResultsDataSource" destination="kVh-zc-qO6" id="7Nz-oB-GGR"/>
-                        <outlet property="searchResultsDelegate" destination="kVh-zc-qO6" id="XLX-Ce-8HT"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="674" y="-630"/>
         </scene>

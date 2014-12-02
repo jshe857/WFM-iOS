@@ -45,13 +45,13 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
         let refreshButton = UIBarButtonItem(barButtonSystemItem:.Refresh,target:self,action:"downloadCSV:")
         self.navigationItem.leftBarButtonItem = refreshButton
     
-        
+        //ios 7 iphones do not support splitview controllers
         if let split = self.splitViewController {
             let controllers = split.viewControllers
             self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
         }
 
-        //Add observer
+        //Add observer to recieve notifications
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable:", name: "EmployeeListDidComplete", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable:", name: "EmployeeListDidFail", object: nil)
         
@@ -82,6 +82,9 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
         
         filterBarHeight.constant = 0
         filterBar.hidden = true
+        
+        //start downloading data
+        downloadCSV(self)
 
     }
     
@@ -141,22 +144,19 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
                 filterBarHeight.constant = 0
             }
             
-            //Code to add date to refresh control
+            //Code to add date to refresh display
             let formatter = NSDateFormatter()
             formatter.dateFormat = "MMM d, h:mm a"
             let date = formatter.stringFromDate(NSDate())
-            let title = "Last update: \(date)"
-            let attrsDictionary = NSDictionary(object: (UIColor.whiteColor()),forKey: NSForegroundColorAttributeName)
-            let attributedTitle = NSMutableAttributedString(string: title )
-            attributedTitle.addAttribute(NSForegroundColorAttributeName,
-                value: UIColor.whiteColor(),
-                range: NSMakeRange(0, countElements(title)))
-            updateDate.attributedText = attributedTitle
+            updateDate.text = "  Last update: \(date)"
+            updateDate.textColor = UIColor.whiteColor()
+            updateDate.backgroundColor = UIColor(red: 0.114, green: 0.467, blue: 0.937, alpha: 1.0)
+            updateDate.frame = CGRectMake(0,0,self.view.bounds.size.width,22)
+            updateDate.font = UIFont.boldSystemFontOfSize(14)
             tableView.tableHeaderView = updateDate
             
             
-            
-            dispatch_async(dispatch_get_main_queue(), { self.tableView.reloadData()})
+            self.tableView.reloadData()
             dispatch_async(dispatch_get_main_queue(), { self.activityIndicator.stopAnimating()})
             self.tableView.userInteractionEnabled = true
             
