@@ -7,7 +7,7 @@
 //
 
 import UIKit
-class MasterViewController: UIViewController,UITableViewDataSource, UITableViewDelegate {
+class MasterViewController: UIViewController,UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     let filterTitles = ["availWks":"Availability","home":"Home Location","band":"Band","business":"Business Unit","jrss":"JRSS"]
     let filterBarShowHeight:CGFloat = 30.0
     
@@ -75,9 +75,6 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
         self.alert = UIAlertView(title:"Could not reach server", message: "Please check your \n connection and try again.", delegate:nil ,cancelButtonTitle: "OK")
         
         //header view
-        
-        
-      
         clear.addTarget(self,action:"clearFilter:",forControlEvents: UIControlEvents.TouchDown)
         
         filterBarHeight.constant = 0
@@ -85,7 +82,8 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
         
         //start downloading data
         downloadCSV(self)
-
+        let searchBar = self.view.viewWithTag(1) as UISearchBar
+        searchBar.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -112,9 +110,6 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
             self.activityIndicator.hidesWhenStopped = true
             self.tableView.userInteractionEnabled = false
             employeeListProvider.refreshDB()
-            
-        } else {
-            
             
         }
     }
@@ -161,7 +156,8 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
             self.activityIndicator.stopAnimating()//})
             self.tableView.userInteractionEnabled = true
             
-            
+            //searchDisplayController.setActive(true,animated:true)
+
             
         } else  if (notification.name == "EmployeeListDidFail"){
             dispatch_async(dispatch_get_main_queue(), {self.alert!.show()})
@@ -261,6 +257,16 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
         }
         
         return cell
+    }
+    
+    
+
+    func searchBar(searchBar: UISearchBar,
+        textDidChange searchText: String) {
+            employeeList?.applySearch(searchText)
+            NSNotificationCenter.defaultCenter().postNotificationName("EmployeeListDidComplete", object: nil)
+
+
     }
 
 

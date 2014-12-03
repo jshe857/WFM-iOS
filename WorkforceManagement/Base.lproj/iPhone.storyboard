@@ -326,8 +326,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="OoM-37-hT6">
-                                <rect key="frame" x="4" y="64" width="592" height="44"/>
+                            <searchBar tag="1" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="OoM-37-hT6">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="8iy-gG-cDz"/>
                                 </constraints>
@@ -540,9 +540,9 @@
                             <constraint firstItem="OoM-37-hT6" firstAttribute="top" secondItem="hq0-f9-031" secondAttribute="bottom" id="8nq-oZ-YJs"/>
                             <constraint firstItem="5AX-1l-4C3" firstAttribute="top" secondItem="OoM-37-hT6" secondAttribute="bottom" id="AFA-Pe-vPM"/>
                             <constraint firstAttribute="centerX" secondItem="exZ-r5-uuu" secondAttribute="centerX" id="CKt-cw-8lB"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="OoM-37-hT6" secondAttribute="trailing" constant="-12" id="Hda-pa-vbh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OoM-37-hT6" secondAttribute="trailing" constant="-16" id="Hda-pa-vbh"/>
                             <constraint firstItem="7a0-dV-iRI" firstAttribute="top" secondItem="tWL-JK-nPD" secondAttribute="bottom" id="UqG-lM-HzR"/>
-                            <constraint firstItem="OoM-37-hT6" firstAttribute="leading" secondItem="wif-WD-ged" secondAttribute="leadingMargin" constant="-12" id="WfO-SK-ylO"/>
+                            <constraint firstItem="OoM-37-hT6" firstAttribute="leading" secondItem="wif-WD-ged" secondAttribute="leadingMargin" constant="-16" id="WfO-SK-ylO"/>
                             <constraint firstItem="tWL-JK-nPD" firstAttribute="top" secondItem="5AX-1l-4C3" secondAttribute="bottom" id="b4G-lz-fBL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5AX-1l-4C3" secondAttribute="trailing" constant="-16" id="bEA-BE-hfx"/>
                             <constraint firstItem="5AX-1l-4C3" firstAttribute="leading" secondItem="wif-WD-ged" secondAttribute="leadingMargin" constant="-16" id="hXU-tJ-PP2"/>

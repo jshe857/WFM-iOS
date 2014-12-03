@@ -17,7 +17,7 @@ public class CSV {
     private var columnKeys = [String:[String:Int]]()
     private var currFilters = [String:String]()
     private var processedRows:[[NSObject:AnyObject]]?
-   
+    private var searchStr=""
     let db = FMDatabase(path: nil)
     let schema = "(serial TEXT PRIMARY KEY, name TEXT, band INTEGER, home TEXT, jrss TEXT, project TEXT, availability TEXT, business TEXT, availWks INTEGER, manager TEXT)"
 
@@ -103,11 +103,26 @@ public class CSV {
             }
 
             filterSql = filterSql.substringToIndex(advance(filterSql.startIndex, countElements(filterSql)-5))
+            
+            if countElements(searchStr) > 0 {
+                
+                filterSql += "AND name LIKE '%\(searchStr)%'"
+                
+            }
 
+        } else if countElements(searchStr) > 0 {
+            filterSql += " WHERE name LIKE '%\(searchStr)%'"
         }
         
+        
+
         filterSql += " ORDER BY name"
+
         let results = db.executeQuery(filterSql, withArgumentsInArray:nil)
+        
+        
+        
+        
         self.processedRows = [[NSObject:AnyObject]]()
         if results != nil {
             while results!.next() {
@@ -132,16 +147,10 @@ public class CSV {
         return self.currFilters
     }
     
-    public func search(search:String) {
+    public func applySearch(search:String) {
+        searchStr = search
+        applyFilters(currFilters)
         
-        let results = db.executeQuery("SELECT * FROM practitioners WHERE name LIKE '%\(search)%'",withArgumentsInArray:nil)
-        self.processedRows = [[NSObject:AnyObject]]()
-        if results != nil {
-            while results!.next() {
-                processedRows!.append(results!.resultDictionary())
-            }
-        }
-
     }
 
     private func parse(String string: String, headers:[String]?, separator:String) {
