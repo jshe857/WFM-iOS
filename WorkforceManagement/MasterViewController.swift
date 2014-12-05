@@ -150,18 +150,21 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
             updateDate.font = UIFont.boldSystemFontOfSize(14)
             tableView.tableHeaderView = updateDate
             
-            
-            self.tableView.reloadData()
-            //dispatch_async(dispatch_get_main_queue(), {
-            self.activityIndicator.stopAnimating()//})
-            self.tableView.userInteractionEnabled = true
-            
-            //searchDisplayController.setActive(true,animated:true)
+            NSNotificationCenter.defaultCenter().postNotificationName("FilterUpdated",object: nil)
 
             
-        } else  if (notification.name == "EmployeeListDidFail"){
+            
+            self.tableView.reloadData()
+            self.activityIndicator.stopAnimating()
+            //self.tableView.userInteractionEnabled = true
+            
+        } else if (notification.name == "EmployeeListDidFail"){
             dispatch_async(dispatch_get_main_queue(), {self.alert!.show()})
             dispatch_async(dispatch_get_main_queue(), {self.activityIndicator.stopAnimating()})
+
+        } else if notification.name == "SearchDidComplete" {
+            NSNotificationCenter.defaultCenter().postNotificationName("FilterUpdated",object: nil)
+            tableView.reloadData()
 
         }
     }
@@ -263,12 +266,49 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
 
     func searchBar(searchBar: UISearchBar,
         textDidChange searchText: String) {
-            employeeList?.applySearch(searchText)
-            NSNotificationCenter.defaultCenter().postNotificationName("EmployeeListDidComplete", object: nil)
-
-
+        
+        let splitStr = searchText.componentsSeparatedByCharactersInSet(NSCharacterSet.punctuationCharacterSet())
+        var sanitized = ""
+        
+        for substr in splitStr {
+            sanitized += (substr + "_")
+        }
+    
+        employeeList?.applySearch(sanitized)
+        NSNotificationCenter.defaultCenter().postNotificationName("EmployeeListDidComplete", object: nil)
+        
+        if countElements(searchText) == 0 {
+            searchBar.resignFirstResponder()
+        }
+            
+        
     }
 
 
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+
+
+    func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
+        self.tableView.userInteractionEnabled  = false
+        return true;
+    }
+    
+    override func touchesBegan(touches:NSSet, withEvent event:UIEvent) {
+        let touch = event.allTouches()!.anyObject() as UITouch
+        let searchBar = self.view.viewWithTag(1) as UISearchBar
+        if (searchBar.isFirstResponder() && touch.view != searchBar) {
+            searchBar.resignFirstResponder()
+            self.tableView.userInteractionEnabled = true
+      }
+
+        super.touchesBegan(touches, withEvent:event)
+    }
 }
+
+
 

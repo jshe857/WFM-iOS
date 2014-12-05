@@ -78,7 +78,6 @@ class DetailViewController: UIViewController {
     }
     
     func openConnections(sender:AnyObject) {
-        println(email)
         if self.email != nil {
             UIApplication.sharedApplication().openURL(NSURL(string:"https://w3-connections.ibm.com/profiles/html/profileView.do?email=\(email!)")!)
         }
