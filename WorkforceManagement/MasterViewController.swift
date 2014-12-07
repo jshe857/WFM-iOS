@@ -54,6 +54,7 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
         //Add observer to recieve notifications
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable:", name: "EmployeeListDidComplete", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable:", name: "EmployeeListDidFail", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable:", name: "SearchDidComplete", object: nil)
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -156,15 +157,16 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
             
             self.tableView.reloadData()
             self.activityIndicator.stopAnimating()
-            //self.tableView.userInteractionEnabled = true
+            self.tableView.userInteractionEnabled = true
             
         } else if (notification.name == "EmployeeListDidFail"){
             dispatch_async(dispatch_get_main_queue(), {self.alert!.show()})
             dispatch_async(dispatch_get_main_queue(), {self.activityIndicator.stopAnimating()})
 
-        } else if notification.name == "SearchDidComplete" {
+        } else if (notification.name == "SearchDidComplete"){
+            
             NSNotificationCenter.defaultCenter().postNotificationName("FilterUpdated",object: nil)
-            tableView.reloadData()
+            self.tableView.reloadData()
 
         }
     }
@@ -267,7 +269,8 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
     func searchBar(searchBar: UISearchBar,
         textDidChange searchText: String) {
         
-        let splitStr = searchText.componentsSeparatedByCharactersInSet(NSCharacterSet.punctuationCharacterSet())
+
+        let splitStr = searchText.componentsSeparatedByCharactersInSet(NSCharacterSet(charactersInString:"!@#$%^&*(),-' "))
         var sanitized = ""
         
         for substr in splitStr {
@@ -275,7 +278,7 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
         }
     
         employeeList?.applySearch(sanitized)
-        NSNotificationCenter.defaultCenter().postNotificationName("EmployeeListDidComplete", object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("SearchDidComplete", object: nil)
         
         if countElements(searchText) == 0 {
             searchBar.resignFirstResponder()
