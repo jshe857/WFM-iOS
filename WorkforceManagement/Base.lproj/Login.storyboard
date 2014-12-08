@@ -126,6 +126,11 @@
                             <constraint firstAttribute="trailing" secondItem="3lG-hv-At2" secondAttribute="trailing" id="nC0-VN-6U6"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="email" destination="OHW-Hu-nfw" id="d6t-2X-J1l"/>
+                        <outlet property="loginBox" destination="wr1-Lx-BDa" id="bLs-l0-37d"/>
+                        <outlet property="password" destination="GH3-Er-tYn" id="fSd-va-i2i"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eis-Ou-3kX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
