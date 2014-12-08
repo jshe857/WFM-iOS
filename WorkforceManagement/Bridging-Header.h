@@ -7,3 +7,4 @@
 //
 
 #import "FMDB.h"
+#import <GT_Sdk_Bundle/GradedTrustSDK.h>

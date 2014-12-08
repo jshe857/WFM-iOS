@@ -7,8 +7,8 @@
 //
 
 import Foundation
-
 import UIKit
+
 class LoginViewController: UIViewController {
     var connectionAlert = UIAlertView(title:"Could not reach server", message: "Please check your \n connection and try again.", delegate:nil ,cancelButtonTitle: "OK")
     var invalidAlert = UIAlertView(title:"Invalid Email or Password", message: "Please check your details and try again", delegate:nil ,cancelButtonTitle: "OK")
