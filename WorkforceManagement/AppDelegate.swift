@@ -29,43 +29,11 @@
 import UIKit
 import Foundation
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate{
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     private var collapseDetailViewController = true
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
-        
-        // step 1. check the device
-        var idiom = UIDevice.currentDevice().userInterfaceIdiom
-        
-        // step 2. take a storyboard variable
-        var storyBoard:UIStoryboard? = nil
-        
-        // step 3. load appropriate storyboard file
-        if idiom == UIUserInterfaceIdiom.Phone {
-            storyBoard = UIStoryboard(name: "iPhone", bundle: nil)
-            self.window!.rootViewController = storyBoard!.instantiateInitialViewController() as UINavigationController
-
-        }
-        
-        
-        // Override point for customization after application launch.
-        
-        //check if rootview is splitview - not supported on ios 7 iphones
-        if let splitViewController = self.window!.rootViewController as? UISplitViewController {
-
-            let navigationController = splitViewController.viewControllers[0] as UINavigationController
-            
-            if (splitViewController.respondsToSelector(Selector("displayModeButtonItem"))){
-                splitViewController.preferredDisplayMode = UISplitViewControllerDisplayMode.AllVisible
-            } else {
-            
-            
-            }
-            splitViewController.delegate = self
-
-        }
         return true
     }
 
@@ -93,10 +61,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    // MARK: - Split view
-    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController!, ontoPrimaryViewController primaryViewController: UIViewController!) -> Bool {
-        return collapseDetailViewController
-    }
 
 }
 

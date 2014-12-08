@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		1800688D1A3530DF0027DC99 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1800688B1A3530DF0027DC99 /* Login.storyboard */; };
-		183987461A1BF7400063BEF6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 183987451A1BF7400063BEF6 /* CoreData.framework */; };
+		180068921A353C410027DC99 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180068911A353C410027DC99 /* LoginViewController.swift */; };
+		180068961A3561790027DC99 /* GT_Sdk_Bundle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180068951A3561790027DC99 /* GT_Sdk_Bundle.framework */; };
 		183AE53C1A15686500E86FBA /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183AE53B1A15686500E86FBA /* FilterViewController.swift */; };
 		184839A319E5FAE100527B74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839A219E5FAE100527B74 /* AppDelegate.swift */; };
 		184839A519E5FAE100527B74 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839A419E5FAE100527B74 /* MasterViewController.swift */; };
 		184839A719E5FAE100527B74 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839A619E5FAE100527B74 /* DetailViewController.swift */; };
-		184839AA19E5FAE100527B74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184839A819E5FAE100527B74 /* Main.storyboard */; };
+		184839AA19E5FAE100527B74 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184839A819E5FAE100527B74 /* iPad.storyboard */; };
 		184839AC19E5FAE100527B74 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 184839AB19E5FAE100527B74 /* Images.xcassets */; };
 		184839AF19E5FAE100527B74 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184839AD19E5FAE100527B74 /* LaunchScreen.xib */; };
 		184839C819E7877900527B74 /* EmployeeListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839C719E7877900527B74 /* EmployeeListProvider.swift */; };
@@ -44,6 +45,8 @@
 
 /* Begin PBXFileReference section */
 		1800688C1A3530DF0027DC99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
+		180068911A353C410027DC99 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		180068951A3561790027DC99 /* GT_Sdk_Bundle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GT_Sdk_Bundle.framework; sourceTree = "<group>"; };
 		183987451A1BF7400063BEF6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		183AE53B1A15686500E86FBA /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		1848399D19E5FAE100527B74 /* WFM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WFM.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,7 +54,7 @@
 		184839A219E5FAE100527B74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		184839A419E5FAE100527B74 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		184839A619E5FAE100527B74 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		184839A919E5FAE100527B74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		184839A919E5FAE100527B74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/iPad.storyboard; sourceTree = "<group>"; };
 		184839AB19E5FAE100527B74 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		184839AE19E5FAE100527B74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		184839B919E5FAE200527B74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,16 +86,57 @@
 			buildActionMask = 2147483647;
 			files = (
 				1879BDEA1A1DA1E3002D7E31 /* libsqlite3.dylib in Frameworks */,
-				183987461A1BF7400063BEF6 /* CoreData.framework in Frameworks */,
+				180068961A3561790027DC99 /* GT_Sdk_Bundle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1800688E1A35378E0027DC99 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				1879BE1D1A242228002D7E31 /* FMDatabase.h */,
+				1879BE1E1A242228002D7E31 /* FMDatabase.m */,
+				1879BE1F1A242228002D7E31 /* FMDatabaseAdditions.h */,
+				1879BE201A242228002D7E31 /* FMDatabaseAdditions.m */,
+				1879BE211A242228002D7E31 /* FMDatabasePool.h */,
+				1879BE221A242228002D7E31 /* FMDatabasePool.m */,
+				1879BE231A242228002D7E31 /* FMDatabaseQueue.h */,
+				1879BE241A242228002D7E31 /* FMDatabaseQueue.m */,
+				1879BE251A242228002D7E31 /* FMDB.h */,
+				1879BE261A242228002D7E31 /* FMResultSet.h */,
+				1879BE271A242228002D7E31 /* FMResultSet.m */,
+			);
+			name = FMDB;
+			sourceTree = "<group>";
+		};
+		1800688F1A3537AE0027DC99 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				18D9ACB61A1C9A0F0098D3EC /* ListViewController.swift */,
+				183AE53B1A15686500E86FBA /* FilterViewController.swift */,
+				184839A419E5FAE100527B74 /* MasterViewController.swift */,
+				184839A619E5FAE100527B74 /* DetailViewController.swift */,
+				180068911A353C410027DC99 /* LoginViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		180068901A353A100027DC99 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				184839A819E5FAE100527B74 /* iPad.storyboard */,
+				18A5E7ED1A2C7050007AF840 /* iPhone.storyboard */,
+				1800688B1A3530DF0027DC99 /* Login.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
 		1848399419E5FAE100527B74 = {
 			isa = PBXGroup;
 			children = (
+				180068951A3561790027DC99 /* GT_Sdk_Bundle.framework */,
 				1879BDE91A1DA1E3002D7E31 /* libsqlite3.dylib */,
 				183987451A1BF7400063BEF6 /* CoreData.framework */,
 				1848399F19E5FAE100527B74 /* WorkforceManagement */,
@@ -112,33 +156,18 @@
 		1848399F19E5FAE100527B74 /* WorkforceManagement */ = {
 			isa = PBXGroup;
 			children = (
+				180068901A353A100027DC99 /* Storyboards */,
+				1800688F1A3537AE0027DC99 /* Controllers */,
+				1800688E1A35378E0027DC99 /* FMDB */,
 				1879BE041A22FA20002D7E31 /* GBS Bench Report.csv */,
-				18D9ACB61A1C9A0F0098D3EC /* ListViewController.swift */,
-				183AE53B1A15686500E86FBA /* FilterViewController.swift */,
 				184839A219E5FAE100527B74 /* AppDelegate.swift */,
-				184839A419E5FAE100527B74 /* MasterViewController.swift */,
-				184839A619E5FAE100527B74 /* DetailViewController.swift */,
-				184839A819E5FAE100527B74 /* Main.storyboard */,
 				184839AB19E5FAE100527B74 /* Images.xcassets */,
 				184839AD19E5FAE100527B74 /* LaunchScreen.xib */,
 				184839A019E5FAE100527B74 /* Supporting Files */,
 				184839C719E7877900527B74 /* EmployeeListProvider.swift */,
 				184839CA19EC91BE00527B74 /* EmployeeURLDelegate.swift */,
 				184839CC19ECDD6700527B74 /* CSV.swift */,
-				1879BE1D1A242228002D7E31 /* FMDatabase.h */,
-				1879BE1E1A242228002D7E31 /* FMDatabase.m */,
-				1879BE1F1A242228002D7E31 /* FMDatabaseAdditions.h */,
-				1879BE201A242228002D7E31 /* FMDatabaseAdditions.m */,
-				1879BE211A242228002D7E31 /* FMDatabasePool.h */,
-				1879BE221A242228002D7E31 /* FMDatabasePool.m */,
-				1879BE231A242228002D7E31 /* FMDatabaseQueue.h */,
-				1879BE241A242228002D7E31 /* FMDatabaseQueue.m */,
-				1879BE251A242228002D7E31 /* FMDB.h */,
-				1879BE261A242228002D7E31 /* FMResultSet.h */,
-				1879BE271A242228002D7E31 /* FMResultSet.m */,
 				1879BE1B1A23EF15002D7E31 /* Bridging-Header.h */,
-				18A5E7ED1A2C7050007AF840 /* iPhone.storyboard */,
-				1800688B1A3530DF0027DC99 /* Login.storyboard */,
 			);
 			path = WorkforceManagement;
 			sourceTree = "<group>";
@@ -226,7 +255,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				184839AA19E5FAE100527B74 /* Main.storyboard in Resources */,
+				184839AA19E5FAE100527B74 /* iPad.storyboard in Resources */,
 				184839AF19E5FAE100527B74 /* LaunchScreen.xib in Resources */,
 				1800688D1A3530DF0027DC99 /* Login.storyboard in Resources */,
 				1879BE051A22FA20002D7E31 /* GBS Bench Report.csv in Resources */,
@@ -242,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				180068921A353C410027DC99 /* LoginViewController.swift in Sources */,
 				183AE53C1A15686500E86FBA /* FilterViewController.swift in Sources */,
 				184839C819E7877900527B74 /* EmployeeListProvider.swift in Sources */,
 				184839A719E5FAE100527B74 /* DetailViewController.swift in Sources */,
@@ -269,12 +299,12 @@
 			name = Login.storyboard;
 			sourceTree = "<group>";
 		};
-		184839A819E5FAE100527B74 /* Main.storyboard */ = {
+		184839A819E5FAE100527B74 /* iPad.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				184839A919E5FAE100527B74 /* Base */,
 			);
-			name = Main.storyboard;
+			name = iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		184839AD19E5FAE100527B74 /* LaunchScreen.xib */ = {
@@ -383,6 +413,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: International Business Machines";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = WorkforceManagement/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = WFM;
@@ -397,6 +431,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: International Business Machines";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = WorkforceManagement/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = WFM;
@@ -447,6 +485,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: International Business Machines";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = WorkforceManagement/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = WFM;

@@ -38,6 +38,8 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
         // Do any additional setup after loading the view, typically from a nib.
         let filterButton = UIBarButtonItem(title:"Filter",style:UIBarButtonItemStyle.Plain, target:self, action: "showFilter:")
         self.navigationItem.rightBarButtonItem = filterButton
