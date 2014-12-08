@@ -157,8 +157,8 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
 
             
             
-            self.tableView.reloadData()
-            self.activityIndicator.stopAnimating()
+            dispatch_async(dispatch_get_main_queue(), {self.tableView.reloadData()})
+            dispatch_async(dispatch_get_main_queue(), {self.activityIndicator.stopAnimating()})
             self.tableView.userInteractionEnabled = true
             
         } else if (notification.name == "EmployeeListDidFail"){

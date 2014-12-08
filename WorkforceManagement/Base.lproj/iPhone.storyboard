@@ -33,7 +33,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UIp-bS-xa6">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UIp-bS-xa6">
                                 <rect key="frame" x="0.0" y="50" width="600" height="550"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u2F-Ym-6OY">
@@ -266,6 +266,7 @@
                                     <constraint firstAttribute="trailing" secondItem="Cd2-fl-Ryo" secondAttribute="trailing" constant="20" id="dH1-8t-mjk"/>
                                     <constraint firstItem="Hcr-6j-fCA" firstAttribute="leading" secondItem="yVg-HJ-S5Y" secondAttribute="trailing" constant="20" id="dIk-UT-qkJ"/>
                                     <constraint firstItem="Cd2-fl-Ryo" firstAttribute="leading" secondItem="UIp-bS-xa6" secondAttribute="leading" constant="20" id="dVE-b0-Sa1"/>
+                                    <constraint firstAttribute="bottom" secondItem="VHO-uT-DNx" secondAttribute="bottom" priority="250" constant="20" id="deA-fp-RQj"/>
                                     <constraint firstItem="Ix2-Od-gR0" firstAttribute="leading" secondItem="ek5-em-efy" secondAttribute="trailing" constant="20" id="ela-NY-g5Y"/>
                                     <constraint firstItem="u2F-Ym-6OY" firstAttribute="leading" secondItem="UIp-bS-xa6" secondAttribute="leading" id="fbH-0b-qz7"/>
                                     <constraint firstItem="zvV-ky-3ql" firstAttribute="baseline" secondItem="EDg-8a-ssd" secondAttribute="baseline" id="g76-RW-Rzz"/>
@@ -292,18 +293,9 @@
                         <constraints>
                             <constraint firstItem="UIp-bS-xa6" firstAttribute="top" secondItem="1x0-LG-jlT" secondAttribute="top" constant="50" id="2XF-xx-cxk"/>
                             <constraint firstItem="UIp-bS-xa6" firstAttribute="leading" secondItem="1x0-LG-jlT" secondAttribute="leading" id="JLj-XS-v1z"/>
-                            <constraint firstItem="UIp-bS-xa6" firstAttribute="top" secondItem="cez-jc-jyQ" secondAttribute="bottom" constant="-15" id="JvX-Fx-Kzd"/>
-                            <constraint firstItem="UIp-bS-xa6" firstAttribute="top" secondItem="1x0-LG-jlT" secondAttribute="topMargin" constant="25" id="SUw-aW-cBC"/>
                             <constraint firstAttribute="bottom" secondItem="UIp-bS-xa6" secondAttribute="bottom" id="b7i-Se-V1s"/>
-                            <constraint firstItem="UIp-bS-xa6" firstAttribute="bottom" secondItem="1x0-LG-jlT" secondAttribute="bottomMargin" id="bZW-UV-vNG"/>
                             <constraint firstAttribute="trailing" secondItem="UIp-bS-xa6" secondAttribute="trailing" id="ngI-6g-Vqk"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="JvX-Fx-Kzd"/>
-                                <exclude reference="SUw-aW-cBC"/>
-                            </mask>
-                        </variation>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Profile" id="zFS-gI-Z6N"/>
