@@ -9,8 +9,24 @@
 /* Begin PBXBuildFile section */
 		1800688D1A3530DF0027DC99 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1800688B1A3530DF0027DC99 /* Login.storyboard */; };
 		180068921A353C410027DC99 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180068911A353C410027DC99 /* LoginViewController.swift */; };
-		180068961A3561790027DC99 /* GT_Sdk_Bundle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180068951A3561790027DC99 /* GT_Sdk_Bundle.framework */; };
 		183AE53C1A15686500E86FBA /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183AE53B1A15686500E86FBA /* FilterViewController.swift */; };
+		18467F921A36D69F0093BF19 /* worklight.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18467F911A36D69F0093BF19 /* worklight.plist */; };
+		18467F941A36D6EB0093BF19 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18467F931A36D6EB0093BF19 /* SystemConfiguration.framework */; };
+		18467F961A36D6FB0093BF19 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18467F951A36D6FB0093BF19 /* MobileCoreServices.framework */; };
+		18467F971A36D7030093BF19 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 183987451A1BF7400063BEF6 /* CoreData.framework */; };
+		18467F991A36D70B0093BF19 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18467F981A36D70B0093BF19 /* CoreLocation.framework */; };
+		18467F9B1A36D7120093BF19 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18467F9A1A36D7120093BF19 /* Security.framework */; };
+		18467F9D1A36D71A0093BF19 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18467F9C1A36D71A0093BF19 /* libz.dylib */; };
+		18467F9F1A36D7220093BF19 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18467F9E1A36D7220093BF19 /* libc++.dylib */; };
+		18467FA11A36D72F0093BF19 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18467FA01A36D72F0093BF19 /* libstdc++.6.dylib */; };
+		184680001A36DA7A0093BF19 /* sqlcipher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18467FA41A36DA7A0093BF19 /* sqlcipher.framework */; };
+		184680011A36DA7A0093BF19 /* libWorklightStaticLibProjectNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18467FF81A36DA7A0093BF19 /* libWorklightStaticLibProjectNative.a */; };
+		184680021A36DA7A0093BF19 /* Localizations.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18467FF91A36DA7A0093BF19 /* Localizations.bundle */; };
+		184680031A36DA7A0093BF19 /* Cookies.mom in Resources */ = {isa = PBXBuildFile; fileRef = 18467FFB1A36DA7A0093BF19 /* Cookies.mom */; };
+		184680041A36DA7A0093BF19 /* PleaseWaitViewController~iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18467FFC1A36DA7A0093BF19 /* PleaseWaitViewController~iPad.xib */; };
+		184680051A36DA7A0093BF19 /* PleaseWaitViewController~iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18467FFD1A36DA7A0093BF19 /* PleaseWaitViewController~iPhone.xib */; };
+		184680061A36DA7A0093BF19 /* SplashImageViewController-Landscape.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18467FFE1A36DA7A0093BF19 /* SplashImageViewController-Landscape.xib */; };
+		184680071A36DA7A0093BF19 /* SplashImageViewController-Portrait.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18467FFF1A36DA7A0093BF19 /* SplashImageViewController-Portrait.xib */; };
 		184839A319E5FAE100527B74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839A219E5FAE100527B74 /* AppDelegate.swift */; };
 		184839A519E5FAE100527B74 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839A419E5FAE100527B74 /* MasterViewController.swift */; };
 		184839A719E5FAE100527B74 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839A619E5FAE100527B74 /* DetailViewController.swift */; };
@@ -46,9 +62,106 @@
 /* Begin PBXFileReference section */
 		1800688C1A3530DF0027DC99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		180068911A353C410027DC99 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		180068951A3561790027DC99 /* GT_Sdk_Bundle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GT_Sdk_Bundle.framework; sourceTree = "<group>"; };
 		183987451A1BF7400063BEF6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		183AE53B1A15686500E86FBA /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		18467F911A36D69F0093BF19 /* worklight.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = worklight.plist; sourceTree = "<group>"; };
+		18467F931A36D6EB0093BF19 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		18467F951A36D6FB0093BF19 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		18467F981A36D70B0093BF19 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		18467F9A1A36D7120093BF19 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		18467F9C1A36D71A0093BF19 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		18467F9E1A36D7220093BF19 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		18467FA01A36D72F0093BF19 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
+		18467FA41A36DA7A0093BF19 /* sqlcipher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = sqlcipher.framework; sourceTree = "<group>"; };
+		18467FA61A36DA7A0093BF19 /* AbstractAcquisitionError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractAcquisitionError.h; sourceTree = "<group>"; };
+		18467FA71A36DA7A0093BF19 /* AbstractGeoAreaTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractGeoAreaTrigger.h; sourceTree = "<group>"; };
+		18467FA81A36DA7A0093BF19 /* AbstractGeoDwellTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractGeoDwellTrigger.h; sourceTree = "<group>"; };
+		18467FA91A36DA7A0093BF19 /* AbstractPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractPosition.h; sourceTree = "<group>"; };
+		18467FAA1A36DA7A0093BF19 /* AbstractTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractTrigger.h; sourceTree = "<group>"; };
+		18467FAB1A36DA7A0093BF19 /* AbstractWifiAreaTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractWifiAreaTrigger.h; sourceTree = "<group>"; };
+		18467FAC1A36DA7A0093BF19 /* AbstractWifiDwellTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractWifiDwellTrigger.h; sourceTree = "<group>"; };
+		18467FAD1A36DA7A0093BF19 /* AbstractWifiFilterTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractWifiFilterTrigger.h; sourceTree = "<group>"; };
+		18467FAE1A36DA7A0093BF19 /* AcquisitionCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcquisitionCallback.h; sourceTree = "<group>"; };
+		18467FAF1A36DA7A0093BF19 /* AcquisitionFailureCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcquisitionFailureCallback.h; sourceTree = "<group>"; };
+		18467FB01A36DA7A0093BF19 /* BaseChallengeHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseChallengeHandler.h; sourceTree = "<group>"; };
+		18467FB11A36DA7A0093BF19 /* BaseDeviceAuthChallengeHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDeviceAuthChallengeHandler.h; sourceTree = "<group>"; };
+		18467FB21A36DA7A0093BF19 /* BaseProvisioningChallengeHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseProvisioningChallengeHandler.h; sourceTree = "<group>"; };
+		18467FB31A36DA7A0093BF19 /* ChallengeHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeHandler.h; sourceTree = "<group>"; };
+		18467FB41A36DA7A0093BF19 /* JSONStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONStore.h; sourceTree = "<group>"; };
+		18467FB51A36DA7A0093BF19 /* JSONStoreAddOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONStoreAddOptions.h; sourceTree = "<group>"; };
+		18467FB61A36DA7A0093BF19 /* JSONStoreCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONStoreCollection.h; sourceTree = "<group>"; };
+		18467FB71A36DA7A0093BF19 /* JSONStoreOpenOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONStoreOpenOptions.h; sourceTree = "<group>"; };
+		18467FB81A36DA7A0093BF19 /* JSONStoreQueryOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONStoreQueryOptions.h; sourceTree = "<group>"; };
+		18467FB91A36DA7A0093BF19 /* JSONStoreQueryPart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONStoreQueryPart.h; sourceTree = "<group>"; };
+		18467FBA1A36DA7A0093BF19 /* OCLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCLogger.h; sourceTree = "<group>"; };
+		18467FBB1A36DA7A0093BF19 /* WLAcquisitionFailureCallbacksConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLAcquisitionFailureCallbacksConfiguration.h; sourceTree = "<group>"; };
+		18467FBC1A36DA7A0093BF19 /* WLAcquisitionPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLAcquisitionPolicy.h; sourceTree = "<group>"; };
+		18467FBD1A36DA7A0093BF19 /* WLAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLAnalytics.h; sourceTree = "<group>"; };
+		18467FBE1A36DA7A0093BF19 /* WLArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLArea.h; sourceTree = "<group>"; };
+		18467FBF1A36DA7A0093BF19 /* WLCallbackFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLCallbackFactory.h; sourceTree = "<group>"; };
+		18467FC01A36DA7A0093BF19 /* WLChallengeHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLChallengeHandler.h; sourceTree = "<group>"; };
+		18467FC11A36DA7A0093BF19 /* WLCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLCircle.h; sourceTree = "<group>"; };
+		18467FC21A36DA7A0093BF19 /* WLClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLClient.h; sourceTree = "<group>"; };
+		18467FC31A36DA7A0093BF19 /* WLConfidenceLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLConfidenceLevel.h; sourceTree = "<group>"; };
+		18467FC41A36DA7A0093BF19 /* WLCookieExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLCookieExtractor.h; sourceTree = "<group>"; };
+		18467FC51A36DA7A0093BF19 /* WLCoordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLCoordinate.h; sourceTree = "<group>"; };
+		18467FC61A36DA7A0093BF19 /* WLDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLDelegate.h; sourceTree = "<group>"; };
+		18467FC71A36DA7A0093BF19 /* WLDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLDevice.h; sourceTree = "<group>"; };
+		18467FC81A36DA7A0093BF19 /* WLDeviceAuthManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLDeviceAuthManager.h; sourceTree = "<group>"; };
+		18467FC91A36DA7A0093BF19 /* WLDeviceContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLDeviceContext.h; sourceTree = "<group>"; };
+		18467FCA1A36DA7A0093BF19 /* WLEventSourceListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLEventSourceListener.h; sourceTree = "<group>"; };
+		18467FCB1A36DA7A0093BF19 /* WLEventTransmissionPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLEventTransmissionPolicy.h; sourceTree = "<group>"; };
+		18467FCC1A36DA7A0093BF19 /* WLFailResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLFailResponse.h; sourceTree = "<group>"; };
+		18467FCD1A36DA7A0093BF19 /* WLGeoAcquisitionPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLGeoAcquisitionPolicy.h; sourceTree = "<group>"; };
+		18467FCE1A36DA7A0093BF19 /* WLGeoCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLGeoCallback.h; sourceTree = "<group>"; };
+		18467FCF1A36DA7A0093BF19 /* WLGeoDwellInsideTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLGeoDwellInsideTrigger.h; sourceTree = "<group>"; };
+		18467FD01A36DA7A0093BF19 /* WLGeoDwellOutsideTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLGeoDwellOutsideTrigger.h; sourceTree = "<group>"; };
+		18467FD11A36DA7A0093BF19 /* WLGeoEnterTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLGeoEnterTrigger.h; sourceTree = "<group>"; };
+		18467FD21A36DA7A0093BF19 /* WLGeoError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLGeoError.h; sourceTree = "<group>"; };
+		18467FD31A36DA7A0093BF19 /* WLGeoExitTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLGeoExitTrigger.h; sourceTree = "<group>"; };
+		18467FD41A36DA7A0093BF19 /* WLGeoFailureCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLGeoFailureCallback.h; sourceTree = "<group>"; };
+		18467FD51A36DA7A0093BF19 /* WLGeoPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLGeoPosition.h; sourceTree = "<group>"; };
+		18467FD61A36DA7A0093BF19 /* WLGeoPositionChangeTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLGeoPositionChangeTrigger.h; sourceTree = "<group>"; };
+		18467FD71A36DA7A0093BF19 /* WLGeoTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLGeoTrigger.h; sourceTree = "<group>"; };
+		18467FD81A36DA7A0093BF19 /* WLGeoUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLGeoUtils.h; sourceTree = "<group>"; };
+		18467FD91A36DA7A0093BF19 /* WLLocationServicesConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLLocationServicesConfiguration.h; sourceTree = "<group>"; };
+		18467FDA1A36DA7A0093BF19 /* WLOnReadyToSubscribeListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLOnReadyToSubscribeListener.h; sourceTree = "<group>"; };
+		18467FDB1A36DA7A0093BF19 /* WLPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLPolygon.h; sourceTree = "<group>"; };
+		18467FDC1A36DA7A0093BF19 /* WLProcedureInvocationData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLProcedureInvocationData.h; sourceTree = "<group>"; };
+		18467FDD1A36DA7A0093BF19 /* WLProcedureInvocationResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLProcedureInvocationResult.h; sourceTree = "<group>"; };
+		18467FDE1A36DA7A0093BF19 /* WLPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLPush.h; sourceTree = "<group>"; };
+		18467FDF1A36DA7A0093BF19 /* WLPushOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLPushOptions.h; sourceTree = "<group>"; };
+		18467FE01A36DA7A0093BF19 /* WLResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLResponse.h; sourceTree = "<group>"; };
+		18467FE11A36DA7A0093BF19 /* WLResponseListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLResponseListener.h; sourceTree = "<group>"; };
+		18467FE21A36DA7A0093BF19 /* WLSecurityUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLSecurityUtils.h; sourceTree = "<group>"; };
+		18467FE31A36DA7A0093BF19 /* WLSimpleDataSharing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLSimpleDataSharing.h; sourceTree = "<group>"; };
+		18467FE41A36DA7A0093BF19 /* WLSwiftBridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLSwiftBridgingHeader.h; sourceTree = "<group>"; };
+		18467FE51A36DA7A0093BF19 /* WLTriggerCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLTriggerCallback.h; sourceTree = "<group>"; };
+		18467FE61A36DA7A0093BF19 /* WLTriggersConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLTriggersConfiguration.h; sourceTree = "<group>"; };
+		18467FE71A36DA7A0093BF19 /* WLTrusteer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLTrusteer.h; sourceTree = "<group>"; };
+		18467FE81A36DA7A0093BF19 /* WLWifiAccessPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLWifiAccessPoint.h; sourceTree = "<group>"; };
+		18467FE91A36DA7A0093BF19 /* WLWifiAccessPointFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLWifiAccessPointFilter.h; sourceTree = "<group>"; };
+		18467FEA1A36DA7A0093BF19 /* WLWifiAcquisitionCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLWifiAcquisitionCallback.h; sourceTree = "<group>"; };
+		18467FEB1A36DA7A0093BF19 /* WLWifiAcquisitionPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLWifiAcquisitionPolicy.h; sourceTree = "<group>"; };
+		18467FEC1A36DA7A0093BF19 /* WLWifiConnectedCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLWifiConnectedCallback.h; sourceTree = "<group>"; };
+		18467FED1A36DA7A0093BF19 /* WLWifiConnectTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLWifiConnectTrigger.h; sourceTree = "<group>"; };
+		18467FEE1A36DA7A0093BF19 /* WLWifiDisconnectTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLWifiDisconnectTrigger.h; sourceTree = "<group>"; };
+		18467FEF1A36DA7A0093BF19 /* WLWifiDwellInsideTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLWifiDwellInsideTrigger.h; sourceTree = "<group>"; };
+		18467FF01A36DA7A0093BF19 /* WLWifiDwellOutsideTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLWifiDwellOutsideTrigger.h; sourceTree = "<group>"; };
+		18467FF11A36DA7A0093BF19 /* WLWifiEnterTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLWifiEnterTrigger.h; sourceTree = "<group>"; };
+		18467FF21A36DA7A0093BF19 /* WLWifiError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLWifiError.h; sourceTree = "<group>"; };
+		18467FF31A36DA7A0093BF19 /* WLWifiExitTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLWifiExitTrigger.h; sourceTree = "<group>"; };
+		18467FF41A36DA7A0093BF19 /* WLWifiFailureCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLWifiFailureCallback.h; sourceTree = "<group>"; };
+		18467FF51A36DA7A0093BF19 /* WLWifiLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLWifiLocation.h; sourceTree = "<group>"; };
+		18467FF61A36DA7A0093BF19 /* WLWifiTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLWifiTrigger.h; sourceTree = "<group>"; };
+		18467FF71A36DA7A0093BF19 /* WLWifiVisibleAccessPointsChangeTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLWifiVisibleAccessPointsChangeTrigger.h; sourceTree = "<group>"; };
+		18467FF81A36DA7A0093BF19 /* libWorklightStaticLibProjectNative.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWorklightStaticLibProjectNative.a; sourceTree = "<group>"; };
+		18467FF91A36DA7A0093BF19 /* Localizations.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Localizations.bundle; sourceTree = "<group>"; };
+		18467FFB1A36DA7A0093BF19 /* Cookies.mom */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Cookies.mom; sourceTree = "<group>"; };
+		18467FFC1A36DA7A0093BF19 /* PleaseWaitViewController~iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "PleaseWaitViewController~iPad.xib"; sourceTree = "<group>"; };
+		18467FFD1A36DA7A0093BF19 /* PleaseWaitViewController~iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "PleaseWaitViewController~iPhone.xib"; sourceTree = "<group>"; };
+		18467FFE1A36DA7A0093BF19 /* SplashImageViewController-Landscape.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "SplashImageViewController-Landscape.xib"; sourceTree = "<group>"; };
+		18467FFF1A36DA7A0093BF19 /* SplashImageViewController-Portrait.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "SplashImageViewController-Portrait.xib"; sourceTree = "<group>"; };
 		1848399D19E5FAE100527B74 /* WFM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WFM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		184839A119E5FAE100527B74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		184839A219E5FAE100527B74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,8 +198,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18467FA11A36D72F0093BF19 /* libstdc++.6.dylib in Frameworks */,
+				18467F9F1A36D7220093BF19 /* libc++.dylib in Frameworks */,
+				18467F9D1A36D71A0093BF19 /* libz.dylib in Frameworks */,
+				18467F9B1A36D7120093BF19 /* Security.framework in Frameworks */,
+				184680001A36DA7A0093BF19 /* sqlcipher.framework in Frameworks */,
+				18467F991A36D70B0093BF19 /* CoreLocation.framework in Frameworks */,
+				18467F971A36D7030093BF19 /* CoreData.framework in Frameworks */,
+				184680011A36DA7A0093BF19 /* libWorklightStaticLibProjectNative.a in Frameworks */,
+				18467F961A36D6FB0093BF19 /* MobileCoreServices.framework in Frameworks */,
+				18467F941A36D6EB0093BF19 /* SystemConfiguration.framework in Frameworks */,
 				1879BDEA1A1DA1E3002D7E31 /* libsqlite3.dylib in Frameworks */,
-				180068961A3561790027DC99 /* GT_Sdk_Bundle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,11 +255,140 @@
 			name = Storyboards;
 			sourceTree = "<group>";
 		};
+		18467FA21A36DA7A0093BF19 /* WorklightAPI */ = {
+			isa = PBXGroup;
+			children = (
+				18467FA31A36DA7A0093BF19 /* Frameworks */,
+				18467FA51A36DA7A0093BF19 /* include */,
+				18467FF81A36DA7A0093BF19 /* libWorklightStaticLibProjectNative.a */,
+				18467FF91A36DA7A0093BF19 /* Localizations.bundle */,
+				18467FFA1A36DA7A0093BF19 /* resources */,
+			);
+			path = WorklightAPI;
+			sourceTree = "<group>";
+		};
+		18467FA31A36DA7A0093BF19 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				18467FA41A36DA7A0093BF19 /* sqlcipher.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		18467FA51A36DA7A0093BF19 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				18467FA61A36DA7A0093BF19 /* AbstractAcquisitionError.h */,
+				18467FA71A36DA7A0093BF19 /* AbstractGeoAreaTrigger.h */,
+				18467FA81A36DA7A0093BF19 /* AbstractGeoDwellTrigger.h */,
+				18467FA91A36DA7A0093BF19 /* AbstractPosition.h */,
+				18467FAA1A36DA7A0093BF19 /* AbstractTrigger.h */,
+				18467FAB1A36DA7A0093BF19 /* AbstractWifiAreaTrigger.h */,
+				18467FAC1A36DA7A0093BF19 /* AbstractWifiDwellTrigger.h */,
+				18467FAD1A36DA7A0093BF19 /* AbstractWifiFilterTrigger.h */,
+				18467FAE1A36DA7A0093BF19 /* AcquisitionCallback.h */,
+				18467FAF1A36DA7A0093BF19 /* AcquisitionFailureCallback.h */,
+				18467FB01A36DA7A0093BF19 /* BaseChallengeHandler.h */,
+				18467FB11A36DA7A0093BF19 /* BaseDeviceAuthChallengeHandler.h */,
+				18467FB21A36DA7A0093BF19 /* BaseProvisioningChallengeHandler.h */,
+				18467FB31A36DA7A0093BF19 /* ChallengeHandler.h */,
+				18467FB41A36DA7A0093BF19 /* JSONStore.h */,
+				18467FB51A36DA7A0093BF19 /* JSONStoreAddOptions.h */,
+				18467FB61A36DA7A0093BF19 /* JSONStoreCollection.h */,
+				18467FB71A36DA7A0093BF19 /* JSONStoreOpenOptions.h */,
+				18467FB81A36DA7A0093BF19 /* JSONStoreQueryOptions.h */,
+				18467FB91A36DA7A0093BF19 /* JSONStoreQueryPart.h */,
+				18467FBA1A36DA7A0093BF19 /* OCLogger.h */,
+				18467FBB1A36DA7A0093BF19 /* WLAcquisitionFailureCallbacksConfiguration.h */,
+				18467FBC1A36DA7A0093BF19 /* WLAcquisitionPolicy.h */,
+				18467FBD1A36DA7A0093BF19 /* WLAnalytics.h */,
+				18467FBE1A36DA7A0093BF19 /* WLArea.h */,
+				18467FBF1A36DA7A0093BF19 /* WLCallbackFactory.h */,
+				18467FC01A36DA7A0093BF19 /* WLChallengeHandler.h */,
+				18467FC11A36DA7A0093BF19 /* WLCircle.h */,
+				18467FC21A36DA7A0093BF19 /* WLClient.h */,
+				18467FC31A36DA7A0093BF19 /* WLConfidenceLevel.h */,
+				18467FC41A36DA7A0093BF19 /* WLCookieExtractor.h */,
+				18467FC51A36DA7A0093BF19 /* WLCoordinate.h */,
+				18467FC61A36DA7A0093BF19 /* WLDelegate.h */,
+				18467FC71A36DA7A0093BF19 /* WLDevice.h */,
+				18467FC81A36DA7A0093BF19 /* WLDeviceAuthManager.h */,
+				18467FC91A36DA7A0093BF19 /* WLDeviceContext.h */,
+				18467FCA1A36DA7A0093BF19 /* WLEventSourceListener.h */,
+				18467FCB1A36DA7A0093BF19 /* WLEventTransmissionPolicy.h */,
+				18467FCC1A36DA7A0093BF19 /* WLFailResponse.h */,
+				18467FCD1A36DA7A0093BF19 /* WLGeoAcquisitionPolicy.h */,
+				18467FCE1A36DA7A0093BF19 /* WLGeoCallback.h */,
+				18467FCF1A36DA7A0093BF19 /* WLGeoDwellInsideTrigger.h */,
+				18467FD01A36DA7A0093BF19 /* WLGeoDwellOutsideTrigger.h */,
+				18467FD11A36DA7A0093BF19 /* WLGeoEnterTrigger.h */,
+				18467FD21A36DA7A0093BF19 /* WLGeoError.h */,
+				18467FD31A36DA7A0093BF19 /* WLGeoExitTrigger.h */,
+				18467FD41A36DA7A0093BF19 /* WLGeoFailureCallback.h */,
+				18467FD51A36DA7A0093BF19 /* WLGeoPosition.h */,
+				18467FD61A36DA7A0093BF19 /* WLGeoPositionChangeTrigger.h */,
+				18467FD71A36DA7A0093BF19 /* WLGeoTrigger.h */,
+				18467FD81A36DA7A0093BF19 /* WLGeoUtils.h */,
+				18467FD91A36DA7A0093BF19 /* WLLocationServicesConfiguration.h */,
+				18467FDA1A36DA7A0093BF19 /* WLOnReadyToSubscribeListener.h */,
+				18467FDB1A36DA7A0093BF19 /* WLPolygon.h */,
+				18467FDC1A36DA7A0093BF19 /* WLProcedureInvocationData.h */,
+				18467FDD1A36DA7A0093BF19 /* WLProcedureInvocationResult.h */,
+				18467FDE1A36DA7A0093BF19 /* WLPush.h */,
+				18467FDF1A36DA7A0093BF19 /* WLPushOptions.h */,
+				18467FE01A36DA7A0093BF19 /* WLResponse.h */,
+				18467FE11A36DA7A0093BF19 /* WLResponseListener.h */,
+				18467FE21A36DA7A0093BF19 /* WLSecurityUtils.h */,
+				18467FE31A36DA7A0093BF19 /* WLSimpleDataSharing.h */,
+				18467FE41A36DA7A0093BF19 /* WLSwiftBridgingHeader.h */,
+				18467FE51A36DA7A0093BF19 /* WLTriggerCallback.h */,
+				18467FE61A36DA7A0093BF19 /* WLTriggersConfiguration.h */,
+				18467FE71A36DA7A0093BF19 /* WLTrusteer.h */,
+				18467FE81A36DA7A0093BF19 /* WLWifiAccessPoint.h */,
+				18467FE91A36DA7A0093BF19 /* WLWifiAccessPointFilter.h */,
+				18467FEA1A36DA7A0093BF19 /* WLWifiAcquisitionCallback.h */,
+				18467FEB1A36DA7A0093BF19 /* WLWifiAcquisitionPolicy.h */,
+				18467FEC1A36DA7A0093BF19 /* WLWifiConnectedCallback.h */,
+				18467FED1A36DA7A0093BF19 /* WLWifiConnectTrigger.h */,
+				18467FEE1A36DA7A0093BF19 /* WLWifiDisconnectTrigger.h */,
+				18467FEF1A36DA7A0093BF19 /* WLWifiDwellInsideTrigger.h */,
+				18467FF01A36DA7A0093BF19 /* WLWifiDwellOutsideTrigger.h */,
+				18467FF11A36DA7A0093BF19 /* WLWifiEnterTrigger.h */,
+				18467FF21A36DA7A0093BF19 /* WLWifiError.h */,
+				18467FF31A36DA7A0093BF19 /* WLWifiExitTrigger.h */,
+				18467FF41A36DA7A0093BF19 /* WLWifiFailureCallback.h */,
+				18467FF51A36DA7A0093BF19 /* WLWifiLocation.h */,
+				18467FF61A36DA7A0093BF19 /* WLWifiTrigger.h */,
+				18467FF71A36DA7A0093BF19 /* WLWifiVisibleAccessPointsChangeTrigger.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		18467FFA1A36DA7A0093BF19 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				18467FFB1A36DA7A0093BF19 /* Cookies.mom */,
+				18467FFC1A36DA7A0093BF19 /* PleaseWaitViewController~iPad.xib */,
+				18467FFD1A36DA7A0093BF19 /* PleaseWaitViewController~iPhone.xib */,
+				18467FFE1A36DA7A0093BF19 /* SplashImageViewController-Landscape.xib */,
+				18467FFF1A36DA7A0093BF19 /* SplashImageViewController-Portrait.xib */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
 		1848399419E5FAE100527B74 = {
 			isa = PBXGroup;
 			children = (
-				180068951A3561790027DC99 /* GT_Sdk_Bundle.framework */,
+				18467FA01A36D72F0093BF19 /* libstdc++.6.dylib */,
+				18467F9E1A36D7220093BF19 /* libc++.dylib */,
+				18467F9C1A36D71A0093BF19 /* libz.dylib */,
+				18467F9A1A36D7120093BF19 /* Security.framework */,
+				18467F981A36D70B0093BF19 /* CoreLocation.framework */,
+				18467F951A36D6FB0093BF19 /* MobileCoreServices.framework */,
+				18467F931A36D6EB0093BF19 /* SystemConfiguration.framework */,
 				1879BDE91A1DA1E3002D7E31 /* libsqlite3.dylib */,
+				18467F911A36D69F0093BF19 /* worklight.plist */,
+				18467FA21A36DA7A0093BF19 /* WorklightAPI */,
 				183987451A1BF7400063BEF6 /* CoreData.framework */,
 				1848399F19E5FAE100527B74 /* WorkforceManagement */,
 				184839B719E5FAE200527B74 /* WorkforceManagementTests */,
@@ -255,10 +506,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				184680021A36DA7A0093BF19 /* Localizations.bundle in Resources */,
 				184839AA19E5FAE100527B74 /* iPad.storyboard in Resources */,
+				184680041A36DA7A0093BF19 /* PleaseWaitViewController~iPad.xib in Resources */,
+				184680051A36DA7A0093BF19 /* PleaseWaitViewController~iPhone.xib in Resources */,
+				184680071A36DA7A0093BF19 /* SplashImageViewController-Portrait.xib in Resources */,
 				184839AF19E5FAE100527B74 /* LaunchScreen.xib in Resources */,
 				1800688D1A3530DF0027DC99 /* Login.storyboard in Resources */,
+				184680031A36DA7A0093BF19 /* Cookies.mom in Resources */,
 				1879BE051A22FA20002D7E31 /* GBS Bench Report.csv in Resources */,
+				18467F921A36D69F0093BF19 /* worklight.plist in Resources */,
+				184680061A36DA7A0093BF19 /* SplashImageViewController-Landscape.xib in Resources */,
 				184839AC19E5FAE100527B74 /* Images.xcassets in Resources */,
 				18A5E7EF1A2C7050007AF840 /* iPhone.storyboard in Resources */,
 			);
@@ -416,9 +674,20 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/WorklightAPI/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/WorklightAPI/include\n$(SRCROOT)/WorklightAPI/include\n",
 				);
 				INFOPLIST_FILE = WorkforceManagement/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WorklightAPI",
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = WFM;
 				"SWIFT_INCLUDE_PATHS[arch=*]" = "";
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "WorkforceManagement/Bridging-Header.h";
@@ -434,9 +703,20 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/WorklightAPI/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/WorklightAPI/include\n$(SRCROOT)/WorklightAPI/include\n",
 				);
 				INFOPLIST_FILE = WorkforceManagement/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WorklightAPI",
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = WFM;
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "WorkforceManagement/Bridging-Header.h";
 			};
@@ -488,9 +768,20 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/WorklightAPI/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/WorklightAPI/include\n$(SRCROOT)/WorklightAPI/include\n",
 				);
 				INFOPLIST_FILE = WorkforceManagement/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WorklightAPI",
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = WFM;
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "WorkforceManagement/Bridging-Header.h";
 			};

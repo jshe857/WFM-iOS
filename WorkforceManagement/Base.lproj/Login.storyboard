@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="50" width="600" height="550"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wr1-Lx-BDa">
-                                        <rect key="frame" x="160" y="190" width="280" height="50"/>
+                                        <rect key="frame" x="160" y="180" width="280" height="50"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginEmail" translatesAutoresizingMaskIntoConstraints="NO" id="SPD-RD-G5Y">
                                                 <rect key="frame" x="0.0" y="10" width="35" height="35"/>
@@ -52,7 +52,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5e1-jd-e4o">
-                                        <rect key="frame" x="165" y="310" width="270" height="40"/>
+                                        <rect key="frame" x="165" y="300" width="270" height="40"/>
                                         <color key="backgroundColor" red="0.019607843137254902" green="0.46274509803921571" blue="0.65490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="hRb-1W-3oE"/>
@@ -67,7 +67,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2le-tU-aWn">
-                                        <rect key="frame" x="160" y="240" width="280" height="50"/>
+                                        <rect key="frame" x="160" y="230" width="280" height="50"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginPassword" translatesAutoresizingMaskIntoConstraints="NO" id="rbM-MX-ku3">
                                                 <rect key="frame" x="0.0" y="8" width="35" height="35"/>
@@ -95,7 +95,7 @@
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginIcon" translatesAutoresizingMaskIntoConstraints="NO" id="7cV-Qs-C9v">
-                                        <rect key="frame" x="220" y="40" width="160" height="150"/>
+                                        <rect key="frame" x="220" y="30" width="160" height="150"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="3OH-5Y-2Xw"/>
                                             <constraint firstAttribute="height" constant="150" id="iDW-Ka-Byi"/>
@@ -111,7 +111,7 @@
                                     <constraint firstAttribute="trailing" secondItem="wr1-Lx-BDa" secondAttribute="trailing" priority="250" constant="30" id="OzV-3z-7AC"/>
                                     <constraint firstAttribute="centerX" secondItem="5e1-jd-e4o" secondAttribute="centerX" id="cRU-o4-aEw"/>
                                     <constraint firstAttribute="centerX" secondItem="2le-tU-aWn" secondAttribute="centerX" id="dO3-EC-1dG"/>
-                                    <constraint firstItem="7cV-Qs-C9v" firstAttribute="top" secondItem="fgz-C3-Ate" secondAttribute="top" constant="40" id="eGW-LQ-c24"/>
+                                    <constraint firstItem="7cV-Qs-C9v" firstAttribute="top" secondItem="fgz-C3-Ate" secondAttribute="top" constant="30" id="eGW-LQ-c24"/>
                                     <constraint firstAttribute="centerX" secondItem="wr1-Lx-BDa" secondAttribute="centerX" id="esC-JB-JQO"/>
                                     <constraint firstItem="5e1-jd-e4o" firstAttribute="top" secondItem="2le-tU-aWn" secondAttribute="bottom" constant="20" id="hpp-5h-9gO"/>
                                     <constraint firstAttribute="centerX" secondItem="7cV-Qs-C9v" secondAttribute="centerX" id="imD-1J-wj1"/>

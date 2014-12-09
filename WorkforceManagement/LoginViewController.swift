@@ -21,6 +21,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        //set up textfield view
         let bottomBorder = CALayer()
         bottomBorder.frame = CGRectMake(0.0, email.frame.size.height - 1, email.frame.size.width, 0.7);
         
@@ -32,6 +34,12 @@ class LoginViewController: UIViewController {
         
         email.layer.addSublayer(bottomBorder)
         password.layer.addSublayer(passwordBorder)
+
+
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userAuthenticated:", name: "userAuthenticationSuccess", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userInvalid:", name: "userAuthenticationInvalid", object: nil)
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "userTimeout:", name: "userAuthenticationSuccess", object: nil)
+
 
     }
     
@@ -54,9 +62,17 @@ class LoginViewController: UIViewController {
     
     @IBAction func login(sender: UIButton) {
         
+        employeeListProvider.login(email.text,password:password.text)
         
         
         
+       
+    }
+    func userInvalid(sender: AnyObject) {
+        dispatch_async(dispatch_get_main_queue(), {self.invalidAlert.show()})
+
+    }
+    func userAuthenticated(sender: AnyObject) {
         // step 1. check the device
         var idiom = UIDevice.currentDevice().userInterfaceIdiom
         
@@ -85,14 +101,9 @@ class LoginViewController: UIViewController {
             if (splitViewController.respondsToSelector(Selector("displayModeButtonItem"))){
                 splitViewController.preferredDisplayMode = UISplitViewControllerDisplayMode.AllVisible
             }
-            
         } else {
             ((vc as  UINavigationController).topViewController as MasterViewController).employeeListProvider =  employeeListProvider
-
-
         }
-        
-        
         self.presentViewController(vc, animated:true, completion:nil)
 
     }

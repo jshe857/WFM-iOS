@@ -7,17 +7,14 @@
 //
 
 import Foundation
-class EmployeeListProvider {
+class EmployeeListProvider : NSObject, WLDelegate{
     var EmployeeList:CSV?
     var sessionToken:String?
     
     let url = NSURL(string:"https://sydgsa.ibm.com/projects/p/practitioneravailability/GBS%20Bench%20Report.csv") as NSURL?
     var session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: EmployeeURLDelegate(), delegateQueue: nil)
     
-    init() {
-        
-    }
-    
+
     func refreshDB() {
         let task = session.dataTaskWithURL(url!, completionHandler:{data,response, error in
             if (error != nil) {
@@ -43,6 +40,8 @@ class EmployeeListProvider {
     }
     
     func login(email:String,password:String) -> Bool{
+        WLClient.sharedInstance().wlConnectWithDelegate(self)
+
 //        let task = session.dataTaskWithURL(url!, completionHandler:{data,response, error in
 //            if (error != nil) {
 //                println(error.localizedDescription)
@@ -52,8 +51,17 @@ class EmployeeListProvider {
 //
 //        
 //        })
-        
+            
         
         return true
+    }
+    
+    
+    func onFailure(response: WLFailResponse!) {
+        println(response.errorMsg)
+    }
+    func onSuccess(response:WLResponse!) {
+        //println(response.responseText)
+        println("we created!")
     }
 }
