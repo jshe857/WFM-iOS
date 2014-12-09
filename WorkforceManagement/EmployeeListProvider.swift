@@ -9,6 +9,8 @@
 import Foundation
 class EmployeeListProvider {
     var EmployeeList:CSV?
+    var sessionToken:String?
+    
     let url = NSURL(string:"https://sydgsa.ibm.com/projects/p/practitioneravailability/GBS%20Bench%20Report.csv") as NSURL?
     var session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: EmployeeURLDelegate(), delegateQueue: nil)
     
@@ -26,7 +28,6 @@ class EmployeeListProvider {
                     let rawCSV = String(contentsOfFile:filePath!)
                     self.EmployeeList = CSV(String: rawCSV!)
                     NSNotificationCenter.defaultCenter().postNotificationName("EmployeeListDidComplete", object: nil)
-                }else {
                 }
             } else {
                 let rawCSV = NSString(data:data, encoding: NSUTF8StringEncoding)
@@ -39,5 +40,20 @@ class EmployeeListProvider {
             }
         })
         task.resume()
+    }
+    
+    func login(email:String,password:String) -> Bool{
+//        let task = session.dataTaskWithURL(url!, completionHandler:{data,response, error in
+//            if (error != nil) {
+//                println(error.localizedDescription)
+//            } else {
+//                
+//            }
+//
+//        
+//        })
+        
+        
+        return true
     }
 }

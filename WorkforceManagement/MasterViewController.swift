@@ -12,7 +12,7 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
     let filterBarShowHeight:CGFloat = 30.0
     
     var detailViewController: DetailViewController? = nil
-    let employeeListProvider = EmployeeListProvider()
+    var employeeListProvider:EmployeeListProvider?
     var employeeList:CSV?
     var alert:UIAlertView?
     var updateDate = UILabel()
@@ -112,7 +112,7 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
             self.activityIndicator.startAnimating()
             self.activityIndicator.hidesWhenStopped = true
             self.tableView.userInteractionEnabled = false
-            employeeListProvider.refreshDB()
+            employeeListProvider!.refreshDB()
             
         }
     }
@@ -120,13 +120,13 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
     func refreshTable(sender: AnyObject) {
         
 
-        employeeList = employeeListProvider.EmployeeList
+        employeeList = employeeListProvider!.EmployeeList
         let notification = sender as NSNotification
         if (notification.name == "EmployeeListDidComplete") {
             let filters = employeeList!.getFilters()
             if filters?.count > 0 {
                 
-                var applied = "Filters: "
+                var applied = "  Filters: "
                 for (key,val) in filters! {
                     applied += "\(filterTitles[key]!), "
                 }
@@ -151,14 +151,16 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
             updateDate.backgroundColor = UIColor(red: 0.114, green: 0.467, blue: 0.937, alpha: 1.0)
             updateDate.frame = CGRectMake(0,0,self.view.bounds.size.width,22)
             updateDate.font = UIFont.boldSystemFontOfSize(14)
-            tableView.tableHeaderView = updateDate
-            
-            NSNotificationCenter.defaultCenter().postNotificationName("FilterUpdated",object: nil)
 
             
+            NSNotificationCenter.defaultCenter().postNotificationName("FilterUpdated",object: nil)
             
-            dispatch_async(dispatch_get_main_queue(), {self.tableView.reloadData()})
-            dispatch_async(dispatch_get_main_queue(), {self.activityIndicator.stopAnimating()})
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                self.tableView.tableHeaderView = self.updateDate
+                self.tableView.reloadData()
+                self.activityIndicator.stopAnimating()
+            })
             self.tableView.userInteractionEnabled = true
             
         } else if (notification.name == "EmployeeListDidFail"){
@@ -251,8 +253,9 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
         jobText.text=object?["jrss"]
         if object?["availWks"] == "0" {
             availDate.text = "Now"
-            let highlight = UIColor(red: 0.18, green: 0.894, blue: 0.471, alpha: 1.0)
-            
+            let highlight = UIColor(red: 0.02, green: 0.463, blue: 0.655, alpha: 1.0)
+            //2, 46.3, 65.5
+            //52.5, 81.2, 93.3
             //18, 89.4, 47.1
             availDate.textColor = highlight
             availDate.font = UIFont.systemFontOfSize(14)
@@ -262,9 +265,7 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
             availDate.textColor = UIColor.darkGrayColor()
             availDate.font = UIFont.systemFontOfSize(12)
             availText.textColor = UIColor.darkGrayColor()
-            
         }
-        
         return cell
     }
     

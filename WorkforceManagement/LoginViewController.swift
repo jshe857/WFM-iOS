@@ -13,13 +13,17 @@ class LoginViewController: UIViewController {
     var connectionAlert = UIAlertView(title:"Could not reach server", message: "Please check your \n connection and try again.", delegate:nil ,cancelButtonTitle: "OK")
     var invalidAlert = UIAlertView(title:"Invalid Email or Password", message: "Please check your details and try again", delegate:nil ,cancelButtonTitle: "OK")
     
+    let employeeListProvider = EmployeeListProvider()
+    
     @IBOutlet weak var loginBox: UIView!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var email: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let bottomBorder = CALayer()
         bottomBorder.frame = CGRectMake(0.0, email.frame.size.height - 1, email.frame.size.width, 0.7);
+        
         let passwordBorder = CALayer()
         passwordBorder.frame = CGRectMake(0.0, email.frame.size.height - 1, email.frame.size.width, 0.7);
 
@@ -49,6 +53,10 @@ class LoginViewController: UIViewController {
 
     
     @IBAction func login(sender: UIButton) {
+        
+        
+        
+        
         // step 1. check the device
         var idiom = UIDevice.currentDevice().userInterfaceIdiom
         
@@ -62,24 +70,31 @@ class LoginViewController: UIViewController {
         } else {
             storyBoard = UIStoryboard(name:"iPad", bundle:nil)
         }
-        
-        
-        let vc = storyBoard!.instantiateInitialViewController() as UIViewController
-        self.presentViewController(vc, animated:true, completion:nil)
-        
         //self.window!.rootViewController = storyBoard!.instantiateInitialViewController() as UINavigationController
         
         
+        
+        let vc = storyBoard!.instantiateInitialViewController() as UIViewController
+        
+        var master:MasterViewController?
+        
         //check if rootview is splitview - not supported on ios 7 iphones
         if let splitViewController = vc as? UISplitViewController {
-            
-            let navigationController = splitViewController.viewControllers[0] as UINavigationController
-            
+            let navigation = splitViewController.viewControllers[0] as UINavigationController
+            (navigationController?.topViewController as MasterViewController).employeeListProvider = employeeListProvider
             if (splitViewController.respondsToSelector(Selector("displayModeButtonItem"))){
                 splitViewController.preferredDisplayMode = UISplitViewControllerDisplayMode.AllVisible
             }
             
+        } else {
+            ((vc as  UINavigationController).topViewController as MasterViewController).employeeListProvider =  employeeListProvider
+
+
         }
+        
+        
+        self.presentViewController(vc, animated:true, completion:nil)
+
     }
     
     
