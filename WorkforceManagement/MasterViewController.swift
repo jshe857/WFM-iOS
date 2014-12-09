@@ -251,7 +251,9 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
         jobText.text=object?["jrss"]
         if object?["availWks"] == "0" {
             availDate.text = "Now"
-            let highlight = UIColor(red: 0.114, green: 0.467, blue: 0.937, alpha: 1.0)
+            let highlight = UIColor(red: 0.18, green: 0.894, blue: 0.471, alpha: 1.0)
+            
+            //18, 89.4, 47.1
             availDate.textColor = highlight
             availDate.font = UIFont.systemFontOfSize(14)
             availText.textColor = highlight

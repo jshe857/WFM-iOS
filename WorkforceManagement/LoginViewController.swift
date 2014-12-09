@@ -18,7 +18,16 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var email: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        let bottomBorder = CALayer()
+        bottomBorder.frame = CGRectMake(0.0, email.frame.size.height - 1, email.frame.size.width, 0.7);
+        let passwordBorder = CALayer()
+        passwordBorder.frame = CGRectMake(0.0, email.frame.size.height - 1, email.frame.size.width, 0.7);
+
+        bottomBorder.backgroundColor = UIColor.blackColor().CGColor
+        passwordBorder.backgroundColor = UIColor.blackColor().CGColor
         
+        email.layer.addSublayer(bottomBorder)
+        password.layer.addSublayer(passwordBorder)
 
     }
     
