@@ -39,6 +39,8 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        employeeListProvider = EmployeeListProvider.sharedInstance()
 
         // Do any additional setup after loading the view, typically from a nib.
         let filterButton = UIBarButtonItem(title:"Filter",style:UIBarButtonItemStyle.Plain, target:self, action: "showFilter:")
@@ -93,7 +95,7 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     func showFilter(sender: AnyObject) {
         if employeeList != nil {
             self.performSegueWithIdentifier("showFilter",sender:nil)
@@ -101,25 +103,24 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
     }
     func clearFilter(sender: AnyObject) {
         employeeList?.applyFilters([String:String]())
-        filterBarHeight.constant = 0
-        filterBar.hidden = true
+        UIView.animateWithDuration(0.3,{
+        self.filterBarHeight.constant = 0
+        self.filterBar.hidden = true
+            })
         NSNotificationCenter.defaultCenter().postNotificationName("EmployeeListDidComplete", object: nil)
         NSNotificationCenter.defaultCenter().postNotificationName("FilterUpdated",object: nil)
     }
     
     func downloadCSV(sender: AnyObject){
-        if !activityIndicator.isAnimating() {
+        if !activityIndicator.isAnimating() && employeeListProvider != nil {
             self.activityIndicator.startAnimating()
             self.activityIndicator.hidesWhenStopped = true
             self.tableView.userInteractionEnabled = false
-            employeeListProvider!.refreshDB()
-            
+            employeeListProvider?.refreshDB()
         }
     }
     
     func refreshTable(sender: AnyObject) {
-        
-
         employeeList = employeeListProvider!.EmployeeList
         let notification = sender as NSNotification
         if (notification.name == "EmployeeListDidComplete") {
@@ -135,11 +136,17 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
                 if filters?.count > 3 {
                     filterNames.font = UIFont.systemFontOfSize(12)
                 }
-                filterBarHeight.constant = filterBarShowHeight
-                filterBar.hidden = false
+                
+                UIView.animateWithDuration(0.3, animations: {
+                    self.filterBarHeight.constant = self.filterBarShowHeight
+                    self.filterBar.hidden = false
+                })
             } else {
-                filterBar.hidden = true
-                filterBarHeight.constant = 0
+                UIView.animateWithDuration(0.3, animations: {
+                    self.filterBarHeight.constant = 0
+                    self.filterBar.hidden = true
+                })
+
             }
             
             //Code to add date to refresh display

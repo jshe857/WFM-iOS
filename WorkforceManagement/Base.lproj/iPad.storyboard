@@ -371,7 +371,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar tag="1" contentMode="redraw" searchBarStyle="prominent" translatesAutoresizingMaskIntoConstraints="NO" id="8Zc-3D-BAq">
+                            <searchBar tag="1" contentMode="redraw" searchBarStyle="prominent" placeholder="Search By Name" translatesAutoresizingMaskIntoConstraints="NO" id="8Zc-3D-BAq">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Ixd-9b-jrO"/>
@@ -546,12 +546,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D2U-AC-bZz">
                                 <rect key="frame" x="0.0" y="108" width="600" height="30"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h03-WY-wje">
-                                        <rect key="frame" x="10" y="0.0" width="510" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vpR-wm-vi1">
                                         <rect key="frame" x="530" y="0.0" width="70" height="30"/>
                                         <color key="backgroundColor" red="0.98369580509999999" green="0.097376180699999995" blue="0.07011352069" alpha="0.93000000000000005" colorSpace="calibratedRGB"/>
@@ -563,8 +557,14 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h03-WY-wje">
+                                        <rect key="frame" x="8" y="0.0" width="510" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.77040816329999995" green="0.77040816329999995" blue="0.77040816329999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.78823529411764703" green="0.78823529411764703" blue="0.80784313725490198" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" secondItem="vpR-wm-vi1" secondAttribute="height" id="4i2-Pb-mcm"/>
                                     <constraint firstItem="h03-WY-wje" firstAttribute="top" secondItem="D2U-AC-bZz" secondAttribute="top" id="Pqe-s1-Gas"/>

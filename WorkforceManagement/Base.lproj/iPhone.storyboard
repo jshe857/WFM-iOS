@@ -330,12 +330,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8aS-AC-rPX">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <subviews>
-                                    <searchBar tag="1" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="OoM-37-hT6">
+                                    <searchBar tag="1" contentMode="redraw" placeholder="Search By Name" translatesAutoresizingMaskIntoConstraints="NO" id="OoM-37-hT6">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="8iy-gG-cDz"/>
                                         </constraints>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                                     </searchBar>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5AX-1l-4C3">
                                         <rect key="frame" x="0.0" y="44" width="600" height="30"/>
@@ -358,7 +358,7 @@
                                                 </state>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.77040816329999995" green="0.77040816329999995" blue="0.77040816329999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
                                         <constraints>
                                             <constraint firstItem="1nO-ST-Aek" firstAttribute="top" secondItem="5AX-1l-4C3" secondAttribute="top" id="1R1-4d-P8E"/>
                                             <constraint firstAttribute="height" constant="30" id="DlN-mk-0xP"/>

@@ -248,8 +248,8 @@
 		180068901A353A100027DC99 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				184839A819E5FAE100527B74 /* iPad.storyboard */,
 				18A5E7ED1A2C7050007AF840 /* iPhone.storyboard */,
+				184839A819E5FAE100527B74 /* iPad.storyboard */,
 				1800688B1A3530DF0027DC99 /* Login.storyboard */,
 			);
 			name = Storyboards;

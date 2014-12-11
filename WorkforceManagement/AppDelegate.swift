@@ -24,6 +24,7 @@
 
 
 
+var employeeListProvider:EmployeeListProvider?
 
 
 import UIKit
@@ -61,14 +62,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    func application(application: UIApplication,
-        openURL url: NSURL,
-        sourceApplication: String?,
-        annotation: AnyObject?) -> Bool {
-            
-            return false
-    }
 
+    
+   
 
 }
 

@@ -7,6 +7,8 @@
 //
 
 import Foundation
+
+
 class EmployeeURLDelegate:NSObject,NSURLSessionDelegate,NSURLSessionTaskDelegate,NSURLSessionDataDelegate {
     let credential = NSURLCredential(user: "pracavai", password: "!u8i9o0p", persistence: NSURLCredentialPersistence.ForSession)
     let failed = 0;

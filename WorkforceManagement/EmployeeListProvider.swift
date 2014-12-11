@@ -7,9 +7,16 @@
 //
 
 import Foundation
+
+
 class EmployeeListProvider : NSObject, WLDelegate{
     var EmployeeList:CSV?
     var sessionToken:String?
+
+    class func sharedInstance() -> EmployeeListProvider {
+        return _sharedInstance
+    }
+
     
     let url = NSURL(string:"https://sydgsa.ibm.com/projects/p/practitioneravailability/GBS%20Bench%20Report.csv") as NSURL?
     var session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: EmployeeURLDelegate(), delegateQueue: nil)
@@ -65,3 +72,7 @@ class EmployeeListProvider : NSObject, WLDelegate{
         println("we created!")
     }
 }
+
+
+let _sharedInstance : EmployeeListProvider = { EmployeeListProvider() }()
+
