@@ -147,6 +147,10 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     
     
     func userAuthenticated(sender: AnyObject) {
+        
+        //NSTimer(timeInterval: 1800, target: self, selector: <#Selector#>, userInfo: <#AnyObject?#>, repeats: <#Bool#>)
+        
+        
         // step 1. check the device
         let isIPhone = UIDevice.currentDevice().model.hasPrefix("iPhone")
         // step 2. take a storyboard variable
@@ -183,23 +187,12 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         //manually transition from login screen
         
         let window = UIApplication.sharedApplication().delegate!.window
-
-        window!!.rootViewController = vc
-        
-        
-        //window!!.makeKeyAndVisible()
-        
-//        [UIView transitionWithView:self.navigationController.view.window
-//            duration:0.75
-//            options:UIViewAnimationOptionTransitionFlipFromRight
-//            animations:^{
-//            app.window.rootViewController = controller;
-//            }
-//            completion:nil];
-        
-        
-        //self.presentViewController(vc, animated:true, completion:nil)
-        
+ 
+        UIView.transitionWithView(window!!,
+            duration:0.5,
+            options:UIViewAnimationOptions.TransitionFlipFromLeft,
+            animations:{ window!!.rootViewController = vc },
+            completion:nil)
 
     }
     

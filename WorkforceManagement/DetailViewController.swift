@@ -20,7 +20,11 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var project: UILabel!
     
     var email:String?
-
+    
+    var mailToUrl:NSURL?
+    var connectionsUrl:NSURL?
+    
+    
 
     var detailItem: AnyObject? {
         didSet {
@@ -57,6 +61,8 @@ class DetailViewController: UIViewController {
                             var jsonError:NSError?
                            if let json = NSJSONSerialization.JSONObjectWithData(data,options:NSJSONReadingOptions.MutableContainers,error:&jsonError) as? NSArray {
                                 self.email = (json[0] as NSDictionary)["email"] as String?
+                                self.connectionsUrl =  NSURL(string:"https://w3-connections.ibm.com/profiles/html/profileView.do?email=\(self.email!)")
+                                self.mailToUrl = NSURL(string:"mailto:"+self.email!)
                             }
                         }
                 })
@@ -73,20 +79,18 @@ class DetailViewController: UIViewController {
     func sendEmail(sender:AnyObject) {
         println("mailto:"+email!)
         if self.email != nil {
-            UIApplication.sharedApplication().openURL(NSURL(string:"mailto:"+email!)!)
+            UIApplication.sharedApplication().openURL(mailToUrl!)
         }
     }
     
     func openConnections(sender:AnyObject) {
         if self.email != nil {
-            UIApplication.sharedApplication().openURL(NSURL(string:"https://w3-connections.ibm.com/profiles/html/profileView.do?email=\(email!)")!)
+            UIApplication.sharedApplication().openURL(connectionsUrl!)
         }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        //self.configureView()
-        
         
     }
 
