@@ -30,7 +30,6 @@
 		184839A319E5FAE100527B74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839A219E5FAE100527B74 /* AppDelegate.swift */; };
 		184839A519E5FAE100527B74 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839A419E5FAE100527B74 /* MasterViewController.swift */; };
 		184839A719E5FAE100527B74 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839A619E5FAE100527B74 /* DetailViewController.swift */; };
-		184839AA19E5FAE100527B74 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184839A819E5FAE100527B74 /* iPad.storyboard */; };
 		184839AC19E5FAE100527B74 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 184839AB19E5FAE100527B74 /* Images.xcassets */; };
 		184839AF19E5FAE100527B74 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184839AD19E5FAE100527B74 /* LaunchScreen.xib */; };
 		184839C819E7877900527B74 /* EmployeeListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184839C719E7877900527B74 /* EmployeeListProvider.swift */; };
@@ -43,7 +42,8 @@
 		1879BE2A1A242228002D7E31 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879BE221A242228002D7E31 /* FMDatabasePool.m */; };
 		1879BE2B1A242228002D7E31 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879BE241A242228002D7E31 /* FMDatabaseQueue.m */; };
 		1879BE2C1A242228002D7E31 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879BE271A242228002D7E31 /* FMResultSet.m */; };
-		18A5E7EF1A2C7050007AF840 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A5E7ED1A2C7050007AF840 /* iPhone.storyboard */; };
+		18A64D031A70724E00A3CD29 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A5E7ED1A2C7050007AF840 /* iPhone.storyboard */; };
+		18A64D041A70725700A3CD29 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184839A819E5FAE100527B74 /* iPad.storyboard */; };
 		18D9ACB71A1C9A0F0098D3EC /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9ACB61A1C9A0F0098D3EC /* ListViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -506,8 +506,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A64D041A70725700A3CD29 /* iPad.storyboard in Resources */,
+				18A64D031A70724E00A3CD29 /* iPhone.storyboard in Resources */,
 				184680021A36DA7A0093BF19 /* Localizations.bundle in Resources */,
-				184839AA19E5FAE100527B74 /* iPad.storyboard in Resources */,
 				184680041A36DA7A0093BF19 /* PleaseWaitViewController~iPad.xib in Resources */,
 				184680051A36DA7A0093BF19 /* PleaseWaitViewController~iPhone.xib in Resources */,
 				184680071A36DA7A0093BF19 /* SplashImageViewController-Portrait.xib in Resources */,
@@ -518,7 +519,6 @@
 				18467F921A36D69F0093BF19 /* worklight.plist in Resources */,
 				184680061A36DA7A0093BF19 /* SplashImageViewController-Landscape.xib in Resources */,
 				184839AC19E5FAE100527B74 /* Images.xcassets in Resources */,
-				18A5E7EF1A2C7050007AF840 /* iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

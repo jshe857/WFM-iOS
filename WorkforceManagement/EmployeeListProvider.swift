@@ -47,8 +47,7 @@ class EmployeeListProvider : NSObject, WLDelegate{
     }
     
     func login(email:String,password:String) -> Bool{
-        WLClient.sharedInstance().wlConnectWithDelegate(self)
-
+        
 //        let task = session.dataTaskWithURL(url!, completionHandler:{data,response, error in
 //            if (error != nil) {
 //                println(error.localizedDescription)
@@ -58,8 +57,8 @@ class EmployeeListProvider : NSObject, WLDelegate{
 //
 //        
 //        })
-        
-        
+        let procedure = WLProcedureInvocationData(adapterName: "PMPAdapter", procedureName: "getCSVList")
+        //WLClient.invokeProcedure(invocationData: procedure, withDelegate: self)
         return true
     }
     

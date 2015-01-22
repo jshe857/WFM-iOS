@@ -26,6 +26,9 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var email: UITextField!
 
+    let isIPhone = UIDevice.currentDevice().model.hasPrefix("iPhone")
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,11 +49,10 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         
         //instantiate next storyboard
         
-        // step 1. check the device
-        let isIPhone = UIDevice.currentDevice().model.hasPrefix("iPhone")
-        // step 2. take a storyboard variable
+        // take a storyboard variable
         var storyBoard:UIStoryboard? = nil
-        //println(NSBundle.mainBundle().pathForResource("iPhone", ofType:"storyboard"))        // step 3. load appropriate storyboard file
+        
+        // step 3. load appropriate storyboard file
         if isIPhone {
             storyBoard = UIStoryboard(name: "iPhone", bundle: nil)
             
@@ -68,40 +70,19 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     
     }
     
-    
-//    func hideKeyboard(sender: AnyObject) {
-//        selectedField?.resignFirstResponder()
-//    }
-//
-//    func textViewDidBeginEditing(textView:UITextView)
-//    {
-//        
-//        self.animateTextView(true)
-//    }
-//    
-//    func textViewDidEndEditing(textView:UITextView)
-//    {
-//        self.animateTextView(false)
-//    }
-//    
-    
     // Called when the UIKeyboardDidShowNotification is sent.
     func keyboardWillShow(sender: NSNotification) {
         let dict = sender.userInfo
         let s = dict?[UIKeyboardFrameEndUserInfoKey] as NSValue
         let kbSize = s.CGRectValue()
-        //let contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
-        UIView.animateWithDuration(0.1, animations: {
-            self.view.bounds.origin.y = 100
-        })
-        //scrollView.contentInset = contentInsets;
-        //scrollView.scrollIndicatorInsets = contentInsets;
+        if (isIPhone) {
+            UIView.animateWithDuration(0.1, animations: {
+                self.view.bounds.origin.y = 100
+            })
+        }
     }
     
     func keyboardWillHide(sender: NSNotification) {
-//        let contentInsets = UIEdgeInsetsZero;
-//        scrollView.contentInset = contentInsets;
-//        scrollView.scrollIndicatorInsets = contentInsets;
         UIView.animateWithDuration(0.1, animations: {
             self.view.bounds.origin.y = 0
         })
@@ -132,7 +113,6 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
 
     
     @IBAction func login(sender: UIButton) {
-        
         let employeeListProvider = EmployeeListProvider.sharedInstance()
         employeeListProvider.login(email.text,password:password.text)
         //userAuthenticated(self)
@@ -149,16 +129,15 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     func userAuthenticated(sender: AnyObject) {
         
         //NSTimer(timeInterval: 1800, target: self, selector: <#Selector#>, userInfo: <#AnyObject?#>, repeats: <#Bool#>)
-        
+
         
         // step 1. check the device
         let isIPhone = UIDevice.currentDevice().model.hasPrefix("iPhone")
         // step 2. take a storyboard variable
         var storyBoard:UIStoryboard? = nil
-        //println(NSBundle.mainBundle().pathForResource("iPhone", ofType:"storyboard"))        // step 3. load appropriate storyboard file
+        // step 3. load appropriate storyboard file
         if isIPhone {
             storyBoard = UIStoryboard(name: "iPhone", bundle: nil)
-            
         } else {
             storyBoard = UIStoryboard(name:"iPad", bundle:nil)
         }
@@ -169,10 +148,6 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         //check if rootview is splitview - not supported on ios 7 iphones
         if let splitViewController = vc as? UISplitViewController {
             let navigation = splitViewController.viewControllers[0] as UINavigationController
-            
-            println(navigation.viewControllers)
-            println(navigation.childViewControllers)
-            
             //let master = (navigationController?.viewControllers[0] as MasterViewController)
             
             //master.employeeListProvider = employeeListProvider
@@ -196,6 +171,9 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
 
     }
     
-    
+    func timedOut() {
+        let logOut = UIAlertView(title: "Timed Out", message: "You have been logged out", delegate: nil, cancelButtonTitle: "OK")
+        dispatch_async(dispatch_get_main_queue(), {logOut.show()})
+    }
 
 }

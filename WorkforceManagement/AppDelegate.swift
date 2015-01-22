@@ -6,8 +6,6 @@
 //  Contact jeshen@au1.ibm.com for more information
 //  Copyright (c) 2014 IBM. All rights reserved.
 //
-
-
 //  WFM Native iOS app
 //
 //
@@ -21,6 +19,7 @@
 //  Features
 //  App contains filter functionality
 //  filter screen interacts with sqldb to filter on given criteria (FilterViewController.swift)
+//
 
 
 
@@ -30,11 +29,20 @@ var employeeListProvider:EmployeeListProvider?
 import UIKit
 import Foundation
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WLDelegate {
 
     var window: UIWindow?
     private var collapseDetailViewController = true
+    
+    var timer:NSTimer?
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "resetTimer:", name: "sessionTimedOut", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "resetTimer:", name: "", object: nil)
+        //var timer = NSTimer.scheduledTimerWithTimeInterval(30.0, target: self, selector: Selector("logout"), userInfo: nil, repeats: true)
+        WLClient.sharedInstance().wlConnectWithDelegate(self)
+
+
         return true
     }
 
@@ -50,6 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         
         //NSDate.dateByAddingTimeInterval(NSDate)
+        
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -64,9 +73,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    func sendEvent(event: UIEvent) {
+        timer = NSTimer.scheduledTimerWithTimeInterval(30.0, target: self, selector: Selector("logout"), userInfo: nil, repeats: true)
+        
+    }
 
+    func logout() {
+        let sb = UIStoryboard(name: "Login", bundle: nil)
+        let loginScreen = sb.instantiateInitialViewController() as LoginViewController
+        
+        if let root = window!.rootViewController as? LoginViewController{
+        }else{
+            UIView.transitionWithView(window!,
+            duration:0.5,
+            options:UIViewAnimationOptions.TransitionFlipFromLeft,
+            animations:{ self.window!.rootViewController = loginScreen },
+            completion:nil)
+            loginScreen.timedOut()
+        }
     
-   
+    }
+    
+    func onFailure(response: WLFailResponse!) {
+        println(response.errorMsg)
+    }
+    func onSuccess(response:WLResponse!) {
+        //println(response.responseText)
+        println("we created!")
+    }
+    
+    
 
 }
 

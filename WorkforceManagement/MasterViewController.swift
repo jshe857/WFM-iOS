@@ -8,7 +8,11 @@
 
 import UIKit
 class MasterViewController: UIViewController,UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+    
+    //dict of names of fields in the csv vs. names to appear on screen
     let filterTitles = ["availWks":"Availability","home":"Home Location","band":"Band","business":"Business Unit","jrss":"JRSS"]
+    
+    //height of the filter bar when shown
     let filterBarShowHeight:CGFloat = 30.0
     
     var detailViewController: DetailViewController? = nil
@@ -276,6 +280,7 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
         return cell
     }
     
+    //MARK: - Search Bar
     
 
     func searchBar(searchBar: UISearchBar,
@@ -285,12 +290,13 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
         let splitStr = searchText.componentsSeparatedByCharactersInSet(NSCharacterSet(charactersInString:"!@#$%^&*(),-' "))
         var sanitized = ""
         
+        //replace with wild card to make search punctuation insensitive
         for substr in splitStr {
             sanitized += (substr + "_")
         }
     
         employeeList?.applySearch(sanitized)
-        NSNotificationCenter.defaultCenter().postNotificationName("SearchDidComplete", object: nil)
+         NSNotificationCenter.defaultCenter().postNotificationName("SearchDidComplete", object: nil)
         
         if countElements(searchText) == 0 {
             searchBar.resignFirstResponder()
