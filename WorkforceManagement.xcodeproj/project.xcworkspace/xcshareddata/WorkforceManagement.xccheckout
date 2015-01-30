@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F81C63C0-4E58-49F2-A25E-B2F4609BA982</string>
+	<key>IDESourceControlProjectName</key>
+	<string>WorkforceManagement</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>0632E058E44DC5197FF8B90EE0E19F8BB47E2D48</key>
+		<string>git.design.ibm.com:jeshen/wfm-ios.git</string>
+		<key>910A3B3A1D352F7A0B5C487506E17B8D6367FF66</key>
+		<string>https://github.com/nerdyc/Squeal.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>WorkforceManagement.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>0632E058E44DC5197FF8B90EE0E19F8BB47E2D48</key>
+		<string>../..</string>
+		<key>910A3B3A1D352F7A0B5C487506E17B8D6367FF66</key>
+		<string>../../Externals/Squeal</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>git.design.ibm.com:jeshen/wfm-ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>0632E058E44DC5197FF8B90EE0E19F8BB47E2D48</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>910A3B3A1D352F7A0B5C487506E17B8D6367FF66</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Squeal</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0632E058E44DC5197FF8B90EE0E19F8BB47E2D48</string>
+			<key>IDESourceControlWCCName</key>
+			<string>WorkforceManagement</string>
+		</dict>
+	</array>
+</dict>
+</plist>

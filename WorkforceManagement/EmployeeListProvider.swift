@@ -22,6 +22,7 @@ class EmployeeListProvider : NSObject, WLDelegate{
     var session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: EmployeeURLDelegate(), delegateQueue: nil)
     
 
+    // Download CSV DB
     func refreshDB() {
         let task = session.dataTaskWithURL(url!, completionHandler:{data,response, error in
             if (error != nil) {
@@ -46,29 +47,47 @@ class EmployeeListProvider : NSObject, WLDelegate{
         task.resume()
     }
     
-    func login(email:String,password:String) -> Bool{
-        
-//        let task = session.dataTaskWithURL(url!, completionHandler:{data,response, error in
-//            if (error != nil) {
-//                println(error.localizedDescription)
-//            } else {
-//                
-//            }
-//
-//        
-//        })
+    // We want to connect to the WL Server here & download the CSV file
+    // This connects to IMC which then goes through the firewall to WAS
+    // WAS downloads the CSV file from SYDGSA & passes it back
+    func downloadCSV() {
+        /* Run getCSV WL app fromserver specified in worklight.plist, this will attempt to DL the CSV File
+        If successful it runs on success, otherwise it runs on failure */
+
         let procedure = WLProcedureInvocationData(adapterName: "PMPAdapter", procedureName: "getCSVList")
-        //WLClient.invokeProcedure(invocationData: procedure, withDelegate: self)
-        return true
+        WLClient.sharedInstance().invokeProcedure(procedure, withDelegate: self)
+        
     }
     
     
-    func onFailure(response: WLFailResponse!) {
+
+    func onFailure(response: WLFailResponse!) { // WL to download CSV was unsuccessfull, use local CSV
         println(response.errorMsg)
+        let filePath = NSBundle.mainBundle().pathForResource("GBS Bench Report",ofType:"csv")
+        if (filePath != nil) {
+            let rawCSV = String(contentsOfFile:filePath!)
+            self.EmployeeList = CSV(String: rawCSV!)
+            NSNotificationCenter.defaultCenter().postNotificationName("EmployeeListDidComplete", object: nil)
+        } else {
+            NSNotificationCenter.defaultCenter().postNotificationName("EmployeeListDidFail", object: nil)
+        }
     }
-    func onSuccess(response:WLResponse!) {
-        //println(response.responseText)
-        println("we created!")
+    func onSuccess(response:WLResponse!) { // WL to download CSV was successfull
+        
+        let responseData: NSData = response.responseText.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
+        let jsonObject = NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+        var rawCSV = jsonObject["text"] as NSString
+        
+        //println("JSON csv")
+        //println(jsonObject)
+        
+        if self.EmployeeList == nil {
+            self.EmployeeList = CSV(String: rawCSV)
+        } else {
+            self.EmployeeList!.update(rawCSV)
+        }
+        NSNotificationCenter.defaultCenter().postNotificationName("EmployeeListDidComplete", object: nil)
+        
     }
 }
 

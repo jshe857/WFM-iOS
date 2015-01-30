@@ -40,9 +40,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WLDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "resetTimer:", name: "sessionTimedOut", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "resetTimer:", name: "", object: nil)
         //var timer = NSTimer.scheduledTimerWithTimeInterval(30.0, target: self, selector: Selector("logout"), userInfo: nil, repeats: true)
+        OCLogger.setLevel(OCLogger_FATAL)
         WLClient.sharedInstance().wlConnectWithDelegate(self)
 
-
+    
+        
         return true
     }
 
@@ -95,7 +97,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WLDelegate {
     }
     
     func onFailure(response: WLFailResponse!) {
+        println("WL failed")
         println(response.errorMsg)
+        println("----")
     }
     func onSuccess(response:WLResponse!) {
         //println(response.responseText)

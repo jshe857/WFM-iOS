@@ -8,6 +8,9 @@
 
 import Foundation
 
+//connects directly to sydgsa
+//provides functional id credentials to server
+//accepts servers untrusted ssl certificate
 
 class EmployeeURLDelegate:NSObject,NSURLSessionDelegate,NSURLSessionTaskDelegate,NSURLSessionDataDelegate {
     let credential = NSURLCredential(user: "pracavai", password: "!u8i9o0p", persistence: NSURLCredentialPersistence.ForSession)

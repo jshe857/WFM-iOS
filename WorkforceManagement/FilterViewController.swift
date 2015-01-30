@@ -71,7 +71,9 @@ class FilterViewController : UITableViewController {
         (cell.viewWithTag(1) as UILabel).text = title
         var criteria = filterKeys[indexPath.row]
         
-
+        // Tag 1 = Filter Name
+        // Tag 2 = Detail text (E.g filter All, 1 Week, Australia, etc....)
+        
         if currFilters![criteria] != nil {
             
             if title == "Availability" {

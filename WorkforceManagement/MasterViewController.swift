@@ -43,7 +43,7 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        //singleton instance of EmployeeListProvider
         employeeListProvider = EmployeeListProvider.sharedInstance()
 
         // Do any additional setup after loading the view, typically from a nib.
@@ -63,6 +63,7 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable:", name: "EmployeeListDidComplete", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable:", name: "EmployeeListDidFail", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable:", name: "SearchDidComplete", object: nil)
+        
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -93,6 +94,12 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
         downloadCSV(self)
         let searchBar = self.view.viewWithTag(1) as UISearchBar
         searchBar.delegate = self
+        
+        // Show downloading animation
+        self.activityIndicator.startAnimating()
+        self.activityIndicator.hidesWhenStopped = true
+        self.tableView.userInteractionEnabled = false
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -115,12 +122,14 @@ class MasterViewController: UIViewController,UITableViewDataSource, UITableViewD
         NSNotificationCenter.defaultCenter().postNotificationName("FilterUpdated",object: nil)
     }
     
+    // Download the csv file from the server
     func downloadCSV(sender: AnyObject){
+        // If activity animator is not running & the employeelistprovider is empty
         if !activityIndicator.isAnimating() && employeeListProvider != nil {
             self.activityIndicator.startAnimating()
             self.activityIndicator.hidesWhenStopped = true
             self.tableView.userInteractionEnabled = false
-            employeeListProvider?.refreshDB()
+            employeeListProvider?.downloadCSV()
         }
     }
     

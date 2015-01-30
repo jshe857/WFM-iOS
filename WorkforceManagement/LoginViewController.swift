@@ -41,6 +41,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "userAuthenticated:", name: "UserAuthenticated", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "userInvalid:", name: "userAuthenticationInvalid", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userValid:", name: "userAuthenticationValid", object: nil)
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: "userTimeout:", name: "userAuthenticationSuccess", object: nil)
         
         
@@ -75,6 +76,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         let dict = sender.userInfo
         let s = dict?[UIKeyboardFrameEndUserInfoKey] as NSValue
         let kbSize = s.CGRectValue()
+        
+        //keyboard doesnt hide input on ipad
         if (isIPhone) {
             UIView.animateWithDuration(0.1, animations: {
                 self.view.bounds.origin.y = 100
@@ -113,19 +116,43 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
 
     
     @IBAction func login(sender: UIButton) {
+
         let employeeListProvider = EmployeeListProvider.sharedInstance()
-        employeeListProvider.login(email.text,password:password.text)
-        //userAuthenticated(self)
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("UserAuthenticated", object: self)
+        
+        /*
+        let loginProvider = LoginProvider()
+        var loginSuccess: Bool = loginProvider.login(email.text, password: password.text)
+        
+        // Show activity indicator loading
+        let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+        activityIndicator.frame = CGRectMake(UIScreen.mainScreen().bounds.width/2 - 100, UIScreen.mainScreen().bounds.height/2 - 100, 200, 200);
+        activityIndicator.backgroundColor = UIColor.darkGrayColor()
+        activityIndicator.startAnimating()
+        self.view.addSubview(activityIndicator)
+        println("test") */
+    }
+    
+    func userValid(sender: AnyObject) {
+        println("user valid")
+        //activityIndicator.stopAnimating()
         NSNotificationCenter.defaultCenter().postNotificationName("UserAuthenticated", object: self)
     }
     
-    
     func userInvalid(sender: AnyObject) {
+        println("user invalid")
+        let alert = UIAlertView()
+        alert.title = "Login Error"
+        alert.message = "Login was unsucessful"
+        alert.addButtonWithTitle("Ok")
+        alert.show()
+        
         dispatch_async(dispatch_get_main_queue(), {self.invalidAlert.show()})
-
     }
     
     
+    // Set storyboard scence based upon device once loged in
     func userAuthenticated(sender: AnyObject) {
         
         //NSTimer(timeInterval: 1800, target: self, selector: <#Selector#>, userInfo: <#AnyObject?#>, repeats: <#Bool#>)
@@ -168,6 +195,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
             options:UIViewAnimationOptions.TransitionFlipFromLeft,
             animations:{ window!!.rootViewController = vc },
             completion:nil)
+        
 
     }
     
